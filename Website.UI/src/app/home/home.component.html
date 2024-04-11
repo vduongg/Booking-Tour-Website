@@ -1,0 +1,180 @@
+<div class="wrapper">
+    <app-site-navbar></app-site-navbar>
+    <div class="home">
+        <div class="slide">
+            <button class="arrow-left" (click)="arrowBack()">
+                <svg style="width: 50px; height: 50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM294.6 135.1c-4.2-4.5-10.1-7.1-16.3-7.1C266 128 256 138 256 150.3V208H160c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h96v57.7c0 12.3 10 22.3 22.3 22.3c6.2 0 12.1-2.6 16.3-7.1l99.9-107.1c3.5-3.8 5.5-8.7 5.5-13.8s-2-10.1-5.5-13.8L294.6 135.1z"/></svg>
+            </button>
+           <button class="arrow-right" (click)="arrowNext()">
+            <svg style="width: 50px; height: 50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M48 256a208 208 0 1 1 416 0A208 208 0 1 1 48 256zm464 0A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM217.4 376.9c4.2 4.5 10.1 7.1 16.3 7.1c12.3 0 22.3-10 22.3-22.3V304h96c17.7 0 32-14.3 32-32V240c0-17.7-14.3-32-32-32H256V150.3c0-12.3-10-22.3-22.3-22.3c-6.2 0-12.1 2.6-16.3 7.1L117.5 242.2c-3.5 3.8-5.5 8.7-5.5 13.8s2 10.1 5.5 13.8l99.9 107.1z"/></svg>
+           </button>
+            <div  class="slide-item" >
+               
+                <div *ngFor="let s of slide, let i = index" >
+                    <img *ngIf="i === position" [src]="s.url">
+                </div>
+  
+            </div>
+        </div>
+    </div>
+    <div class="search">
+        <div class="search-item">
+            <div class="search-title">Bạn đang tìm kiếm Tour hay Khách sạn?</div>
+            <div class="search-choose">
+                <div *ngIf="choose === 'tour', else notTour " style=" padding: 10px 5px 10px 5px;
+                border: 1px solid #B3C8CF; 
+                font-size: 18px;
+                font-weight: 600;
+                background-color: #DD5746;
+                color: white; cursor: pointer;" (click)="updateChoose('tour')"
+                >Tìm kiếm Tour</div>
+                <ng-template #notTour>
+                    <div style=" padding: 10px 5px 10px 5px;
+                        border: 1px solid #B3C8CF; 
+                        font-size: 18px;
+                        cursor:pointer;" (click)="updateChoose('tour')" 
+                    >Tìm kiếm Tour
+                    </div>
+                </ng-template>
+                <div *ngIf="choose === 'hotel', else notHotel " style=" padding: 10px 5px 10px 5px;
+                border: 1px solid #B3C8CF; 
+                font-size: 18px;
+                font-weight: 600;
+                background-color: #DD5746;
+                color: white; cursor: pointer;" (click)="updateChoose('hotel')"
+                >Tìm kiếm Khách sạn</div>
+                <ng-template #notHotel>
+                    <div style=" padding: 10px 5px 10px 5px;
+                    border: 1px solid #B3C8CF;
+                    font-size: 18px; cursor: pointer;" (click)="updateChoose('hotel')">
+                    Tìm kiếm Khách sạn</div>
+                </ng-template>
+                
+            </div>
+            <div class="search-tour" *ngIf="choose === 'tour', else hotel ">
+                <div class="tour">
+                    <div>Tên Tour
+                        <input placeholder="Tên tour">
+                    </div>
+                    <div>Ngày khởi hành
+                        <input type="date">
+                    </div>
+                    <div>Số người
+                        <input> 
+                    </div>
+                    <div>Địa điểm
+                        <select>
+                            <option>1</option>
+                        </select>
+                    </div>
+                    <div>Loại Tour
+                        <select>
+                            <option>1</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <ng-template #hotel >
+                <div class="hotel">
+                    <div>Tên Khách sạn
+                        <input placeholder="Tên Khách sạn">
+                    </div>
+                    <div>Ngày nhận phòng
+                        <input type="date">
+                    </div>
+                    <div>Số người
+                        <input>
+                    </div>
+                    <div>Địa điểm
+                        <select>
+                            <option>1</option>
+                        </select>
+                    </div>
+                   
+                   
+                </div>
+            </ng-template>
+            <div class="search-button">
+                <button>Tìm kiếm</button>
+            </div>
+            
+        </div>
+      
+
+    </div>
+    <div class="top-tour">
+            <div class="top-title">
+                Điểm đến ưa thích của mọi nhà:
+            </div>
+            <div class="list-top-item">
+                <div class="top-item">  
+                    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
+                    <div class="tour-location">yên bái</div>
+                    <div class="tour-type">Du lịch sinh thái </div>
+                    <div class="tour-name">Du lich 1</div>
+                    <div class="tour-space">Còn trống: 12 người</div>
+                    <div class="wrap-price">
+                        <div class="tour-sale">VNĐ 2000000</div>
+                        <div class="tour-price">VNĐ 1000000</div>
+                        <button>Đặt ngay</button>
+                    </div>
+
+                </div>
+                <div class="top-item">  
+                    <img  src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
+                    <div>Du lich 1</div>
+                    <div>2000000</div>
+
+                </div>
+                <div class="top-item">  
+                    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
+                    <div>Du lich 1</div>
+                    <div>2000000</div>
+
+                </div>
+                <div class="top-item">  
+                    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
+                    <div>Du lich 1</div>
+                    <div>2000000</div>
+
+                </div>
+                <div class="top-item">  
+                    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
+                    <div>Du lich 1</div>
+                    <div>2000000</div>
+
+                </div>
+                <div class="top-item">  
+                    <img  src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
+                    <div>Du lich 1</div>
+                    <div>2000000</div>
+
+                </div>
+                <div class="top-item">  
+                    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
+                    <div>Du lich 1</div>
+                    <div>2000000</div>
+
+                </div>
+                <div class="top-item">  
+                    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
+                    <div>Du lich 1</div>
+                    <div>2000000</div>
+
+                </div>
+            </div>
+    </div>
+    <div class="top-hotel">
+            <div class="top-title">
+                Những chỗ ở nổi bật được đề xuất tới bạn:
+            </div>
+    </div>
+    <div class="top-news">
+            <div class="top-title">
+                Tin tức nổi bật:
+            </div>
+    </div>
+</div>
+

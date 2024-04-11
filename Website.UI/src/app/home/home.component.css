@@ -1,0 +1,206 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 200vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.home{
+    margin-top: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
+  
+}
+.slide {
+    position: relative;
+    background-color: transparent;
+    border-radius: 20px;
+}
+.slide-item{
+    border-radius: 20px;
+    background-color: transparent;
+}
+
+.slide-item img{
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+    transition: 2s;
+    animation: slide 2s ease;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+@keyframes slide{
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+.arrow-left{
+    position: absolute;
+    z-index: 1;
+    bottom: 50%;
+    left: 50px;
+    background-color: transparent;
+    border: none;
+}
+
+.arrow-right{
+    position: absolute;
+    z-index: 1;
+    bottom: 50%;
+    right: 50px;
+    background-color: transparent;
+    border: none;
+}
+.arrow-left:hover, .arrow-right:hover{
+    transform: scale(1.1);
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 100px;
+}
+.search-item{
+    border: 1px solid #B3C8CF;
+    border-radius: 20px;
+    background-color: white;
+    width: 40%;
+    height: 100%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    position: relative;
+}
+.search-title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+.search-choose {
+    display: flex;
+    flex-direction: row;
+}
+
+.tour{
+    border-top: 1px solid #B3C8CF;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 20px;
+    
+}
+.hotel{
+    border-top: 1px solid #B3C8CF;
+    display: grid;
+    grid-template-columns: auto auto ;
+    padding: 20px;
+    justify-items: center;
+}
+.tour div , .hotel div{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+.tour select, .hotel select{
+    margin-left: 10px;
+    height: 30px;
+    border-radius: 20px;
+}
+.tour input, .hotel input{
+    padding-left: 10px;
+    margin-left:  10px;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid;
+}
+.search-button{
+    display: flex;
+    justify-content: center;
+}
+.search-button button{
+    position: absolute;
+    bottom: -40px;
+    width: 30%;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #DD5746 ;
+    border: 1px solid #B3C8CF;
+    color: white;
+    font-weight: 600;
+}
+.search-button button:hover{
+    background-color: #8B322C;
+}
+.top-tour, .top-hotel, .top-news{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-bottom: 50px;
+}
+.top-title{
+    font-size: 24px;
+    font-weight: 700;
+}
+.list-top-item{
+    box-sizing: border-box;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+.top-item{
+    min-height: 300px;
+    max-width: 295px;
+    margin: 10px;
+    border: 1px solid #B3C8CF ;
+    border-radius: 20px;
+    background-color: white;
+    padding: 10px;
+}
+.top-item img{
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 200px;
+    border-radius: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 10px;
+}
+.wrap-price{
+    display: flex;
+    flex-direction: row;
+}
+.wrap-price button{
+    color: white;
+    border: 1px solid #B3C8CF ;
+    background-color: #DD5746 ;
+    border-radius: 20px;
+    padding: 5px;
+}
+.wrap-price button:hover{
+    background-color: #8B322C;
+}
+.top-item div{
+    padding-top: 3px;
+}
+.tour-name{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tour-price, .tour-sale, .tour-location, .tour-type{
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tour-sale{
+    font-weight: 600;
+    text-decoration: line-through;
+}
+.tour-price{
+    color: red ;
+    font-weight: 600;
+}
