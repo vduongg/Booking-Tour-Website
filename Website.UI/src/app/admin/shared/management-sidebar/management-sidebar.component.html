@@ -1,0 +1,11 @@
+<div class="sidebar">
+    <span class="logo">S-Travel</span>
+    <div class="list-item">
+            <div class="menu-item"  *ngFor="let items of menuItem" [routerLink]="items.route" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}" >
+                <fa-icon [icon]="items.icon"></fa-icon>
+                <span>{{items.label}}</span>
+            </div>
+    </div>
+  
+
+</div>

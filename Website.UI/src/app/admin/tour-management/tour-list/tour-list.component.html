@@ -1,0 +1,33 @@
+<div class = "wrapper">
+    <app-management-sidebar></app-management-sidebar>
+    <div class="wrap-management">
+        <app-management-navbar></app-management-navbar>
+        <div class="list-tour">
+            <div>Danh sách Tour</div>
+            <button routerLink="/admin/tour/add" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Thêm Tour mới</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên Tour</th>
+                        <th>Tags</th>
+                        <th>Ngày tạo</th>
+                    </tr>
+                </thead>
+               <tbody>
+                <tr>
+                    <td>Tour 1</td>
+                    <td>Du lịch</td>
+                    <td>3/3/2022</td>
+                </tr>
+                <tr>
+                    <td>Tour 2</td>
+                    <td>Du lịch</td>
+                    <td>3/3/2022</td>
+                </tr>
+               </tbody>
+            </table>
+        </div>
+    </div>
+   
+</div>
+

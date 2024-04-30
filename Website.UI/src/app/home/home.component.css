@@ -1,4 +1,4 @@
-.wrapper {
+.wrapper-home{
     display: flex;
     flex-direction: column;
     height: 200vh;
@@ -189,12 +189,16 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-weight: 600;
+    font-size: 18px;
 }
 .tour-price, .tour-sale, .tour-location, .tour-type{
     width: 50%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
 }
 .tour-sale{
     font-weight: 600;
