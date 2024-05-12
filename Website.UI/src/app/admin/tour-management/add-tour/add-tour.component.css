@@ -8,15 +8,52 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .add-tour{
+    margin-left: 250px;
+    margin-top: 50px;
     padding: 20px
 }
 .title{
     font-size: 24px;
     font-weight: 600;
 }
-.add-tour-item{
+.add-tour-list{
     padding: 20px;
     width: 100%;
     height: 100%;
     background-color: white;
+    box-sizing: border-box;
+}
+.hide{
+    margin-left: 70px;
+}
+.add-tour-item {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.add-tour-item div, .list-img-title , 
+.describe-title {
+    padding-bottom: 20px;
+    font-weight: 600;
+    padding-right: 20px;
+
+}
+.list-img-title{
+    padding-top: 20px;
+}
+.add-tour-item input, .add-tour-item select {
+    width: 100%;
+    height: 30px;
+    outline-color: #DD5746;
+    padding-left: 10px;
+    box-sizing: border-box;
+
+}
+.list-img-item {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding-bottom: 20px;
+}
+.list-img-item img{
+   max-width: 380px;
+   max-height: 250px;
 }

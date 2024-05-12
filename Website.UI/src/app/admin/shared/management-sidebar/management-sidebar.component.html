@@ -1,9 +1,37 @@
 <div class="sidebar">
     <span class="logo">S-Travel</span>
     <div class="list-item">
-            <div class="menu-item"  *ngFor="let items of menuItem" [routerLink]="items.route" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}" >
-                <fa-icon [icon]="items.icon"></fa-icon>
-                <span>{{items.label}}</span>
+            <div *ngFor="let items of menuItem"  (mouseover)="key = items.key" (mouseleave)="key = ''" >
+                <div  class="menu-item"  [routerLink]="items.route" routerLinkActive="active"  *ngIf="!items.item?.length" >
+                    <div> <fa-icon [icon]="items.icon"></fa-icon>
+                        <span>{{items.label}}</span>
+                        
+                     </div>
+                </div>
+              <div *ngIf="items.item?.length">
+                <div class="menu-item"    [routerLink]="items.route" routerLinkActive="active"  >
+                    <div> <fa-icon [icon]="items.icon"></fa-icon>
+                        <span>{{items.label}}</span>
+                        
+                     </div>
+                    <div *ngIf="key === items.key; else notMenu">
+                        <fa-icon [icon] = "faDown"></fa-icon>
+                    </div>
+                    <ng-template #notMenu>
+                        <fa-icon [icon] = "faRight"></fa-icon>
+                    </ng-template>
+                
+                </div>
+                <div *ngIf="key === items.key" >
+                    <div *ngFor="let childItem of items.item"  >
+                        <div class="menu-child"  [routerLink]="childItem.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >{{childItem.label}}</div>
+                    </div>
+                </div>
+              
+              </div>
+               
+               
+               
             </div>
     </div>
   

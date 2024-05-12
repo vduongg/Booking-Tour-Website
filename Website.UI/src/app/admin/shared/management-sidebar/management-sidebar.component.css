@@ -9,6 +9,8 @@
     align-items: center;
     border-right: 1px solid #C7C8CC;
     transition: all 0.5s ease-out;
+    position: fixed;
+    z-index: 99;
 }
 .logo{
     display: flex;
@@ -24,17 +26,13 @@
     box-sizing: border-box;
     width: 100%;
     height: 70%;
+    
 }
-.list-item div{
-    box-sizing: border-box;
-    padding: 10px 10px 10px 25px;
-    margin-bottom: 10px;
-  
-}
+
 .list-item span{
     padding-left: 20px;
 }
-.list-item div:hover{
+.menu-parent:hover{
     cursor: pointer;
     font-weight: 600;
 }
@@ -42,14 +40,27 @@
     height: 10%;
 }
 .menu-item{
+    height: 30px;
+    justify-content: center;
     border-left: 5px solid;
     border-left-color: rgb(0,0,0,0);
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.menu-item:hover{
+    cursor: pointer;
+    background-color: #C7C8CC;
 }
 .active {
+    box-sizing: border-box;
     color: #DD5746;
     font-weight: 600;
     position: relative;
-    width: 95%;
     border-left-color: #DD5746;
 }
 .hide {
@@ -60,6 +71,13 @@
 .hide span{
     display: none;
 }
-.hide div{
-    padding: 10px;
+
+
+.menu-child{
+    width: 100%;
+    padding-left: 50px;
+    box-sizing: border-box;
+}
+.menu-child:hover{
+    cursor: pointer;
 }

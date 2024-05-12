@@ -23,7 +23,7 @@
             <div class="search-choose">
                 <div *ngIf="choose === 'tour', else notTour " style=" padding: 10px 5px 10px 5px;
                 border: 1px solid #B3C8CF; 
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: 600;
                 background-color: #DD5746;
                 color: white; cursor: pointer;" (click)="updateChoose('tour')"
@@ -31,14 +31,14 @@
                 <ng-template #notTour>
                     <div style=" padding: 10px 5px 10px 5px;
                         border: 1px solid #B3C8CF; 
-                        font-size: 18px;
+                        font-size: 16px;
                         cursor:pointer;" (click)="updateChoose('tour')" 
                     >Tìm kiếm Tour
                     </div>
                 </ng-template>
                 <div *ngIf="choose === 'hotel', else notHotel " style=" padding: 10px 5px 10px 5px;
                 border: 1px solid #B3C8CF; 
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: 600;
                 background-color: #DD5746;
                 color: white; cursor: pointer;" (click)="updateChoose('hotel')"
@@ -46,7 +46,7 @@
                 <ng-template #notHotel>
                     <div style=" padding: 10px 5px 10px 5px;
                     border: 1px solid #B3C8CF;
-                    font-size: 18px; cursor: pointer;" (click)="updateChoose('hotel')">
+                    font-size: 16px; cursor: pointer;" (click)="updateChoose('hotel')">
                     Tìm kiếm Khách sạn</div>
                 </ng-template>
                 
@@ -120,7 +120,7 @@
                     <div class="wrap-price">
                         <div class="tour-sale">VNĐ 2000000</div>
                         <div class="tour-price">VNĐ 1000000</div>
-                        <button>Đặt ngay</button>
+                       
                     </div>
 
                 </div>

@@ -13,17 +13,17 @@
 .slide {
     position: relative;
     background-color: transparent;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 .slide-item{
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: transparent;
 }
 
 .slide-item img{
     width: 100%;
     height: 500px;
-    border-radius: 20px;
+    border-radius: 10px;
     transition: 2s;
     animation: slide 2s ease;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -62,7 +62,7 @@
 }
 .search-item{
     border: 1px solid #B3C8CF;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: white;
     width: 40%;
     height: 100%;
@@ -74,7 +74,7 @@
     display: flex;
     justify-content: center;
     padding-top: 30px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     margin-bottom: 30px;
 }
@@ -123,7 +123,7 @@
     bottom: -40px;
     width: 30%;
     height: 50px;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: #DD5746 ;
     border: 1px solid #B3C8CF;
     color: white;
@@ -141,7 +141,7 @@
     margin-bottom: 50px;
 }
 .top-title{
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
 }
 .list-top-item{
@@ -178,9 +178,7 @@
     border-radius: 20px;
     padding: 5px;
 }
-.wrap-price button:hover{
-    background-color: #8B322C;
-}
+
 .top-item div{
     padding-top: 3px;
 }

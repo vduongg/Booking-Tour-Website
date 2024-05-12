@@ -14,6 +14,8 @@ import { TourListComponent } from './admin/tour-management/tour-list/tour-list.c
 import { AddTourComponent } from './admin/tour-management/add-tour/add-tour.component';
 import { EditTourComponent } from './admin/tour-management/edit-tour/edit-tour.component';
 import { ManagementNavbarComponent } from './admin/shared/management-navbar/management-navbar.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { TourTimeListComponent } from './tags/tourTime/tour-time-list/tour-time-list.component';
 
 
 
@@ -31,13 +33,14 @@ import { ManagementNavbarComponent } from './admin/shared/management-navbar/mana
     AddTourComponent,
     EditTourComponent,
     ManagementNavbarComponent,
+    TourTimeListComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule,
-    
+    FontAwesomeModule, 
+    CKEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

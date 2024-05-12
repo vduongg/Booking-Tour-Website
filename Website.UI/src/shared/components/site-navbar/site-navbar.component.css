@@ -35,7 +35,7 @@
     flex-direction: row;
     justify-self: start;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
 }
 .nav-mid a{
@@ -50,7 +50,7 @@
     flex-direction: row;
     justify-content: start;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
 }
 .login {
@@ -63,7 +63,7 @@
    
     padding: 10px 15px 10px 15px;
     background-color: #DD5746;
-    border-radius: 20px;
+    border-radius: 10px;
     color: white;
 }
 .active {

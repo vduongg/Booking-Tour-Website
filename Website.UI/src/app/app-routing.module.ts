@@ -5,6 +5,7 @@ import { ManagementHomeComponent } from './admin/general-management/management-h
 import { ListHotelComponent } from './admin/hotel-management/list-hotel/list-hotel.component';
 import { TourListComponent } from './admin/tour-management/tour-list/tour-list.component';
 import { AddTourComponent } from './admin/tour-management/add-tour/add-tour.component';
+import { TourTimeListComponent } from './tags/tourTime/tour-time-list/tour-time-list.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   ,{
     component:AddTourComponent,
     path: "admin/tour/add"
+  },
+  {
+    component:TourTimeListComponent,
+    path: "admin/tags/tourtime"
   }
   
 ];

@@ -1,10 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { faChartLine, faChevronRight, faHome, faHotel, faShuttleVan, faTags, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faChevronCircleDown, faChevronDown, faChevronRight, faHome, faHotel, faShuttleVan, faTags, faUser } from '@fortawesome/free-solid-svg-icons';
+
+export type Item = {
+    label: string;
+    route: string;
+}
 
 export type MenuItem = {
   icon: any;
   label: string;
   route: string;
+  key: string
+  item: Item[]
 }
 
 @Component({
@@ -13,43 +20,95 @@ export type MenuItem = {
   styleUrls: ['./management-sidebar.component.css']
 })
 export class ManagementSidebarComponent implements OnInit {
-  fachevron = faChevronRight
-
-  
+  faRight = faChevronRight;
+  faDown = faChevronDown;
+  key = "";
   constructor() { }
 
   ngOnInit(): void {
+    
   }
   menuItem = [
     {
       icon: faHome,
       label: "Bảng điều khiển",
-      route: "/admin/home"
+      route: "/admin/home",
+      key: "dashboard",
     },
     {
       icon: faTags,
       label: "Thẻ",
-      route: "/admin/tags"
+      route: "/admin/tags",
+      key: "tags",
+      item: [
+        {
+          label: "Loại du lịch",
+          route: "/"
+      },
+      {
+        label: "Thành phố",
+        route: "/"
+      },
+      {
+        label: "Thời gian Tour",
+        route: "/admin/tags/tourtime"
+      },
+      {
+        label: "Phương tiện",
+        route: "/"
+      },
+      {
+        label: "Quy định",
+        route: "/"
+      }
+    ]
     },
     {
       icon: faShuttleVan,
       label: "Tour",
-      route: "/admin/tour"
+      route: "/admin/tour",
+      key: "tour",
+      item: [
+        {
+          label: "Danh sách Tour",
+          route: "/admin/tour",
+        },
+        {
+        label: "Thêm Tour mới",
+        route: "/admin/tour/add",
+      }]
     }
     ,
     {
       icon: faHotel,
       label: "Khách sạn",
-      route: "/admin/hotel"
+      route: "/admin/hotel",
+      key: "hotel",
+      item: [
+        {
+        label: "Danh sách Khách sạn",
+        route: "/"
+      },
+      {
+        label: "Thêm Khách sạn",
+        route: "/"
+      }
+    ]
+
     },
     {
       icon: faChartLine,
       label: "Thống kê",
+      key: "chart",
     },
     {
       icon: faUser ,
-      label: "Người dùng"
+      label: "Người dùng",
+      key: "user",
     }
   ]
+ 
+
+
 
 }

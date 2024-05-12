@@ -17,5 +17,9 @@ export class ManagementNavbarComponent implements OnInit {
   toggleSidebar() {
     const sidebar = document.querySelector('.sidebar') as HTMLElement;
     sidebar.classList.toggle('hide');
+    const navbar = document.querySelector('.management-navbar') as HTMLElement;
+    navbar.classList.toggle('hide');
+    const addTour = document.querySelector('.add-tour') as HTMLElement;
+    addTour.classList.toggle('hide');
 }
 }
