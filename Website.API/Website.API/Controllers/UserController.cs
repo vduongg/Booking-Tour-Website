@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Website.API.Data;
 
 namespace Website.API.Controllers
@@ -14,10 +15,12 @@ namespace Website.API.Controllers
             _context = context;
         }
         [HttpGet]
+
         public async Task<ActionResult<User>> getUser( int userId)
         {
            var user = await _context.Users.FindAsync(userId);
             return user == null ? NotFound() : Ok(user);
         }
+       
     }
 }

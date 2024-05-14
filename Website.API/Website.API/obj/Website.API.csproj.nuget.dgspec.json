@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\CDTN\\Booking-Tour-Website\\Website.API\\Website.API\\Website.API.csproj": {}
+    "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Website.API.csproj": {}
   },
   "projects": {
-    "E:\\CDTN\\Booking-Tour-Website\\Website.API\\Website.API\\Website.API.csproj": {
+    "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Website.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\CDTN\\Booking-Tour-Website\\Website.API\\Website.API\\Website.API.csproj",
+        "projectUniqueName": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Website.API.csproj",
         "projectName": "Website.API",
-        "projectPath": "E:\\CDTN\\Booking-Tour-Website\\Website.API\\Website.API\\Website.API.csproj",
+        "projectPath": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Website.API.csproj",
         "packagesPath": "C:\\Users\\Vu Duong\\.nuget\\packages\\",
-        "outputPath": "E:\\CDTN\\Booking-Tour-Website\\Website.API\\Website.API\\obj\\",
+        "outputPath": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Vu Duong\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -84,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }

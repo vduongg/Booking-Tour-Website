@@ -11,5 +11,6 @@ namespace Website.API.Data
         public DbSet<Policy> Policy { get; set; }
         public DbSet<WishList> WishList { get; set; }
         public DbSet<FeedBack> FeedBacks { get; set; }
+        public DbSet<TourDate> TourDate { get; set; }
     }
 }

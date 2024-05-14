@@ -13,13 +13,15 @@
                         <input type="date">
                     </div>
                     <div>Thời gian Tour
-                        <input>
+                        <select>
+                            <option *ngFor="let date of tourDate" [value]="date.id">
+                                {{date.day}} ngày {{date.night}} đêm
+                            </option>
+                        </select>
                     </div>
                     <div>Địa điểm
                         <select>
-                            <option>
-                                1
-                            </option>
+                            <option *ngFor="let loc of location.data" [value]="loc.id">{{loc.name}}</option>
                         </select>
                     </div>
                     <div>
@@ -49,7 +51,7 @@
 
                 <div>
                     <div class="describe-title">Mô tả</div>
-                    <ckeditor [editor]="Editor" data=""></ckeditor>
+                    <ckeditor [editor]="Editor"  [(ngModel)]="data" ></ckeditor>
                     
                 </div>
                <div>
@@ -57,7 +59,8 @@
                     <input type="file" (change)="onFileSelected($event)" multiple>
                 </div>
                 <div class="list-img-item">
-                    <img *ngFor="let url of imageUrls"  [src] = "url">
+                    <img *ngFor="let url of imageUrls"  [src] = "url" >
+                    
                 </div>
               
                 <button>Thêm Tour mới</button>

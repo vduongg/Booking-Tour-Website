@@ -46,10 +46,6 @@ export class ManagementSidebarComponent implements OnInit {
           route: "/"
       },
       {
-        label: "Thành phố",
-        route: "/"
-      },
-      {
         label: "Thời gian Tour",
         route: "/admin/tags/tourtime"
       },

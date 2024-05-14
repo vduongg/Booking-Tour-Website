@@ -12,8 +12,8 @@ using Website.API.Data;
 namespace Website.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240508092753_v2")]
-    partial class v2
+    [Migration("20240513083535_v1")]
+    partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,7 +64,7 @@ namespace Website.API.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("FeedBack");
+                    b.ToTable("FeedBacks");
                 });
 
             modelBuilder.Entity("Website.API.Policy", b =>
@@ -93,6 +93,9 @@ namespace Website.API.Migrations
                     b.Property<string>("TourId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("DepartureDate")
                         .HasColumnType("datetime2");
 
@@ -115,6 +118,10 @@ namespace Website.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TourStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TourType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -129,6 +136,25 @@ namespace Website.API.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Tours");
+                });
+
+            modelBuilder.Entity("Website.API.TourDate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Day")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Night")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TourDate");
                 });
 
             modelBuilder.Entity("Website.API.User", b =>

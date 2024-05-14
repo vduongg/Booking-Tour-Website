@@ -18,7 +18,7 @@ thead tr{
 }
 th, td{
     text-align: center;
-    padding: 12px 15px;
+    padding:20px 15px;
 }
 tbody tr {
     border-bottom: 1px solid #dddddd;
@@ -107,7 +107,7 @@ tbody tr:last-of-type{
 .action{
     position: absolute;
     top: 10px;
-    right: 40%;
+    right: 38%;
     width: 60px;
     height: 60px;
     background-color: white;
@@ -123,4 +123,20 @@ tbody tr:last-of-type{
 }
 .action div:hover{
     background-color: #f3f3f3;
+}
+.page {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+.page div{
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    padding: 5px;
+}
+.page div:hover{
+    background-color: #dddddd;
+    cursor: pointer;
 }

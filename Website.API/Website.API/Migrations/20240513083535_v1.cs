@@ -24,6 +24,20 @@ namespace Website.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TourDate",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Day = table.Column<int>(type: "int", nullable: false),
+                    Night = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TourDate", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -53,7 +67,9 @@ namespace Website.API.Migrations
                     TourPrice = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TourDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PolicyId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TourStatus = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,6 +108,33 @@ namespace Website.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FeedBacks",
+                columns: table => new
+                {
+                    FeedbackId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FeedbackDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    TourId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FeedBacks", x => x.FeedbackId);
+                    table.ForeignKey(
+                        name: "FK_FeedBacks_Tours_TourId",
+                        column: x => x.TourId,
+                        principalTable: "Tours",
+                        principalColumn: "TourId",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_FeedBacks_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TourWishList",
                 columns: table => new
                 {
@@ -116,6 +159,16 @@ namespace Website.API.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_FeedBacks_TourId",
+                table: "FeedBacks",
+                column: "TourId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FeedBacks_UserId",
+                table: "FeedBacks",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tours_PolicyId",
                 table: "Tours",
                 column: "PolicyId");
@@ -138,6 +191,12 @@ namespace Website.API.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "FeedBacks");
+
+            migrationBuilder.DropTable(
+                name: "TourDate");
+
             migrationBuilder.DropTable(
                 name: "TourWishList");
 

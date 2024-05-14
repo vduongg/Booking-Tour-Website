@@ -16,7 +16,9 @@ import { EditTourComponent } from './admin/tour-management/edit-tour/edit-tour.c
 import { ManagementNavbarComponent } from './admin/shared/management-navbar/management-navbar.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { TourTimeListComponent } from './tags/tourTime/tour-time-list/tour-time-list.component';
-
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { VehicleComponent } from './tags/vehicle/vehicle.component'
 
 
 @NgModule({
@@ -34,13 +36,16 @@ import { TourTimeListComponent } from './tags/tourTime/tour-time-list/tour-time-
     EditTourComponent,
     ManagementNavbarComponent,
     TourTimeListComponent,
+    VehicleComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule, 
-    CKEditorModule
+    CKEditorModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

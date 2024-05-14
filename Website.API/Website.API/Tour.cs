@@ -18,6 +18,8 @@ namespace Website.API
         public User User { get; set; }
    
         public int UserId { get; set; }
+        public DateTime CreateDate { get; set; }
+        public string TourStatus { get; set; }
         public List<WishList> WishList { get; set; }
         public List<FeedBack> FeedBacks { get; set; }
     }
