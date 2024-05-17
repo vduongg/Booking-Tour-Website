@@ -4,7 +4,6 @@
  */
 
 import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
-
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import { Autosave } from '@ckeditor/ckeditor5-autosave';
 import { Bold, Italic, Underline } from '@ckeditor/ckeditor5-basic-styles';
@@ -33,7 +32,7 @@ class Editor extends ClassicEditor {
 		LegacyList,
 		Paragraph,
 		Underline,
-		Undo
+		Undo,
 	];
 
 	public static override defaultConfig: EditorConfig = {

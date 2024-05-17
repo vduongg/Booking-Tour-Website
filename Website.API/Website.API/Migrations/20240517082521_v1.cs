@@ -38,6 +38,20 @@ namespace Website.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TourType",
+                columns: table => new
+                {
+                    TourTypeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TourType", x => x.TourTypeId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -62,7 +76,7 @@ namespace Website.API.Migrations
                     TourId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     TourName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TourPlace = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TourType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TourTypeId = table.Column<int>(type: "int", nullable: false),
                     DepartureDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TourPrice = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TourDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -79,6 +93,12 @@ namespace Website.API.Migrations
                         column: x => x.PolicyId,
                         principalTable: "Policy",
                         principalColumn: "PolicyId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tours_TourType_TourTypeId",
+                        column: x => x.TourTypeId,
+                        principalTable: "TourType",
+                        principalColumn: "TourTypeId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tours_Users_UserId",
@@ -135,6 +155,27 @@ namespace Website.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Image",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TourId1 = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TourId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Image", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Image_Tours_TourId1",
+                        column: x => x.TourId1,
+                        principalTable: "Tours",
+                        principalColumn: "TourId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TourWishList",
                 columns: table => new
                 {
@@ -169,9 +210,19 @@ namespace Website.API.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Image_TourId1",
+                table: "Image",
+                column: "TourId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tours_PolicyId",
                 table: "Tours",
                 column: "PolicyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tours_TourTypeId",
+                table: "Tours",
+                column: "TourTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tours_UserId",
@@ -195,6 +246,9 @@ namespace Website.API.Migrations
                 name: "FeedBacks");
 
             migrationBuilder.DropTable(
+                name: "Image");
+
+            migrationBuilder.DropTable(
                 name: "TourDate");
 
             migrationBuilder.DropTable(
@@ -208,6 +262,9 @@ namespace Website.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Policy");
+
+            migrationBuilder.DropTable(
+                name: "TourType");
 
             migrationBuilder.DropTable(
                 name: "Users");

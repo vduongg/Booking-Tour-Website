@@ -12,5 +12,6 @@ namespace Website.API.Data
         public DbSet<WishList> WishList { get; set; }
         public DbSet<FeedBack> FeedBacks { get; set; }
         public DbSet<TourDate> TourDate { get; set; }
+        public DbSet<TourType> TourType { get; set; }
     }
 }

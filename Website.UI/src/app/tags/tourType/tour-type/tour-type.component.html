@@ -1,0 +1,66 @@
+<div class="popup"  *ngIf="popup">
+    <div class="form">
+        <div class="icon-close" (click)="statusPopup()">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </div>
+        <div class="form-title">Thêm loại hình du lịch</div>
+        
+        <div class="form-item" >
+            <div>Nhập kiểu du lịch <input [(ngModel)]="formTourType.name"> </div>
+            <div>Nhập mô tả <input [(ngModel)]="formTourType.description"> </div>
+        </div>
+        <button (click)="createTourTime(formTourType)">Thêm</button>
+       
+    </div>
+   
+</div>
+
+<div class = "wrapper">
+    <app-management-sidebar></app-management-sidebar>
+    <div class="wrap-management">
+        <app-management-navbar></app-management-navbar>
+        <div class="list-tour-type">
+            <div class="list-tour-header">
+                <div class="title">Loại hình du lịch</div>
+                <button (click)="statusPopup()">Thêm loại hình du lịch</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Loại hình du lịch</th>
+                        <th>Mô tả</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let type of tourType.reverse(), let i = index">
+                        <ng-container *ngIf="pageItem().includes(type.tourTypeId)" >
+                            <td>{{i + 1}}</td>
+                            <td>{{type.name}}</td>
+                            <td>{{type.description}}</td>
+                            <td class="iconAction">
+                                <div (click)="statusAction(type.tourTypeId)"><fa-icon [icon]="faAction"></fa-icon></div>
+                                
+                                <div *ngIf="isAction && (type.tourTypeId == id)" class="action">
+                                    <div>Sửa</div>
+                                    <div>Xóa</div>
+                                </div> 
+                            </td>
+                        </ng-container>
+                       
+                    </tr>
+                </tbody>
+            </table>
+                <div class="page">
+                        <ng-container *ngFor="let page of loadPage()">
+                            <div (click)="pageClick(page)">
+                                {{page}}
+                            </div>
+                            
+                        </ng-container>
+                 </div>
+        </div>
+    </div>
+</div>
+

@@ -4,6 +4,7 @@ import { ListLocation } from 'src/app/models/ListLocation';
 import { Location } from 'src/app/models/Location';
 import { TourDate } from 'src/app/models/TourDate';
 import { LocationService } from 'src/services/location.service';
+import { TourTimeService } from 'src/services/tour-time.service';
 import { TourService } from 'src/services/tour.service';
 
 @Component({
@@ -27,7 +28,7 @@ export class TourTimeListComponent implements OnInit {
   numPage = 1;
   formDate: TourDate = new TourDate();
 
-  constructor(private tourDateService: TourService) {
+  constructor(private tourDateService: TourTimeService) {
     
    }
 
@@ -53,12 +54,15 @@ export class TourTimeListComponent implements OnInit {
       array.push(i);
     }
     
+    
    return  array
   }
   pageItem() {
     let item: number[] = [];
   if (this.pageNow <= 0 || this.totalItem <= 0 || this.itemInPage <= 0) {
+   
     return item;
+    
   }
   
   const startIndex = this.totalItem - (this.pageNow - 1) * this.itemInPage;
@@ -67,7 +71,7 @@ export class TourTimeListComponent implements OnInit {
   for (let i = startIndex; i >= endIndex; i--) {
     item.push(i);
   }
-
+  
   return item;
 
   }

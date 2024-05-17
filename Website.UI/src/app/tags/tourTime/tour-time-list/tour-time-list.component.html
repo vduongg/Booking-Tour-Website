@@ -34,13 +34,13 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let date of tourDate.reverse(), let i = index">
-                        <ng-container *ngIf="pageItem().includes(date.id)" >
-                            <td>{{date.id}}</td>
+                        <ng-container *ngIf="pageItem().includes(date.tourDateId)"  >
+                            <td>{{i + 1 }}</td>
                             <td>{{date.day}} ngày {{date.night}} đêm</td>
                             <td class="iconAction">
-                                <div (click)="statusAction(date.id)"><fa-icon [icon]="faAction"></fa-icon></div>
+                                <div (click)="statusAction(date.tourDateId)"><fa-icon [icon]="faAction"></fa-icon></div>
                                 
-                                <div *ngIf="isAction && (date.id == id)" class="action">
+                                <div *ngIf="isAction && (date.tourDateId == id)" class="action">
                                     <div>Sửa</div>
                                     <div>Xóa</div>
                                 </div> 

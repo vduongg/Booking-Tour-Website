@@ -18,7 +18,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { TourTimeListComponent } from './tags/tourTime/tour-time-list/tour-time-list.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { VehicleComponent } from './tags/vehicle/vehicle.component'
+import { VehicleComponent } from './tags/vehicle/vehicle.component';
+import { TourTypeComponent } from './tags/tourType/tour-type/tour-type.component';
+import { TourPolicyComponent } from './tags/policy/tour-policy/tour-policy.component'
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { VehicleComponent } from './tags/vehicle/vehicle.component'
     ManagementNavbarComponent,
     TourTimeListComponent,
     VehicleComponent,
+    TourTypeComponent,
+    TourPolicyComponent,
     
   ],
   imports: [

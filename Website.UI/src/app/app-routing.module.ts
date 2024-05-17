@@ -6,6 +6,9 @@ import { ListHotelComponent } from './admin/hotel-management/list-hotel/list-hot
 import { TourListComponent } from './admin/tour-management/tour-list/tour-list.component';
 import { AddTourComponent } from './admin/tour-management/add-tour/add-tour.component';
 import { TourTimeListComponent } from './tags/tourTime/tour-time-list/tour-time-list.component';
+import { TourPolicyComponent } from './tags/policy/tour-policy/tour-policy.component';
+import { VehicleComponent } from './tags/vehicle/vehicle.component';
+import { TourTypeComponent } from './tags/tourType/tour-type/tour-type.component';
 
 const routes: Routes = [
   {
@@ -31,6 +34,18 @@ const routes: Routes = [
   {
     component:TourTimeListComponent,
     path: "admin/tags/tourtime"
+  },
+  {
+    component:TourPolicyComponent,
+    path: "admin/tags/tourpolicy"
+  },
+  {
+    component:VehicleComponent,
+    path: "admin/tags/vehicle"
+  },
+  {
+    component:TourTypeComponent,
+    path: "admin/tags/tourtype"
   }
   
 ];

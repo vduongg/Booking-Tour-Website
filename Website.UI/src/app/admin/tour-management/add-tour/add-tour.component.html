@@ -14,7 +14,7 @@
                     </div>
                     <div>Thời gian Tour
                         <select>
-                            <option *ngFor="let date of tourDate" [value]="date.id">
+                            <option *ngFor="let date of tourDate" [value]="date.tourDateId">
                                 {{date.day}} ngày {{date.night}} đêm
                             </option>
                         </select>
@@ -27,14 +27,9 @@
                     <div>
                         Loại hình du lịch
                         <select>
-                            <option>
-                                1
+                            <option *ngFor="let type of tourType" [value]="type.tourTypeId">
+                                {{type.name}}
                             </option>
-                        </select>
-                    </div>
-                    <div>Phương tiện
-                        <select>
-                            <option>1</option>
                         </select>
                     </div>
                     

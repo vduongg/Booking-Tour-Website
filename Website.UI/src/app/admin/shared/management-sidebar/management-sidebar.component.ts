@@ -43,19 +43,15 @@ export class ManagementSidebarComponent implements OnInit {
       item: [
         {
           label: "Loại du lịch",
-          route: "/"
+          route: "/admin/tags/tourtype"
       },
       {
         label: "Thời gian Tour",
         route: "/admin/tags/tourtime"
       },
       {
-        label: "Phương tiện",
-        route: "/"
-      },
-      {
-        label: "Quy định",
-        route: "/"
+        label: "Chính sách",
+        route: "/admin/tags/tourpolicy"
       }
     ]
     },
@@ -75,23 +71,7 @@ export class ManagementSidebarComponent implements OnInit {
       }]
     }
     ,
-    {
-      icon: faHotel,
-      label: "Khách sạn",
-      route: "/admin/hotel",
-      key: "hotel",
-      item: [
-        {
-        label: "Danh sách Khách sạn",
-        route: "/"
-      },
-      {
-        label: "Thêm Khách sạn",
-        route: "/"
-      }
-    ]
-
-    },
+   
     {
       icon: faChartLine,
       label: "Thống kê",

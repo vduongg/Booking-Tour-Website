@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { ListLocation } from 'src/app/models/ListLocation';
 import { TourDate } from 'src/app/models/TourDate';
+import { TourType } from 'src/app/models/TourType';
 import { LocationService } from 'src/services/location.service';
+import { TourTimeService } from 'src/services/tour-time.service';
+import { TourTypeService } from 'src/services/tour-type.service';
 import { TourService } from 'src/services/tour.service';
 
 @Component({
@@ -15,14 +18,16 @@ export class AddTourComponent implements OnInit {
   data : string = "";
   location: ListLocation = new ListLocation;
   tourDate: TourDate[] = [];
+  tourType: TourType[] = [];
   
-  constructor(private LocationService: LocationService, private tourDateService: TourService) {
+  constructor(private LocationService: LocationService, private tourDateService: TourTimeService, private tourTypeService: TourTypeService) {
 
    }
 
   ngOnInit(): void {
     this.LocationService.getListLocation().subscribe((result: ListLocation)=> (this.location = result));
     this.tourDateService.getTourDate().subscribe((result: TourDate[]) => (this.tourDate = result));
+    this.tourTypeService.getTourType().subscribe((result: TourType[]) => (this.tourType = result));
   }
 
   imageUrls: string[] = [];
