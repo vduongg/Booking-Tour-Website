@@ -14,7 +14,11 @@ export class TourService {
   constructor( private http:HttpClient  ) {
 
    }
-   public getTourDate() :Observable<Tour[]> {
+   public getTour() :Observable<Tour[]> {
     return this.http.get<Tour[]>(`${environment.apiUrl}/${this.url}`)
+   }
+  
+   public createTour(tour : Tour) :Observable<Tour[]> {
+    return this.http.post<Tour[]>(`${environment.apiUrl}/${this.url}`,tour)
    }
 }

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faEllipsisH, faEllipsisV, faXRay } from '@fortawesome/free-solid-svg-icons';
 import { ListLocation } from 'src/app/models/ListLocation';
 import { Location } from 'src/app/models/Location';
+import { Tour } from 'src/app/models/Tour';
 import { TourDate } from 'src/app/models/TourDate';
 import { LocationService } from 'src/services/location.service';
 import { TourTimeService } from 'src/services/tour-time.service';
@@ -27,6 +28,7 @@ export class TourTimeListComponent implements OnInit {
   pageNow = 1;
   numPage = 1;
   formDate: TourDate = new TourDate();
+
 
   constructor(private tourDateService: TourTimeService) {
     
@@ -81,7 +83,6 @@ export class TourTimeListComponent implements OnInit {
   createTourTime(date: TourDate){
     this.tourDateService.createTourDate(date).subscribe( (date: TourDate[]) => this.dateUpdate.emit(date));
     window.location.reload();
-
   }
 
 }

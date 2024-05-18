@@ -9,7 +9,6 @@ namespace Website.API
 
         public string PolicyName { get; set; }
         public string PolicyDescription { get; set; }
-        public List<Tour> Tour { get; set; }
    
     }
 }

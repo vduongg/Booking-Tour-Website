@@ -21,7 +21,6 @@ export class TourPolicyComponent implements OnInit {
   pageNow = 1;
   numPage = 1;
   totalItem = 0;
-  data = ""
  
   faAction = faEllipsisV
 
@@ -30,7 +29,7 @@ export class TourPolicyComponent implements OnInit {
   constructor(private tourPolicyService: PolicyService ) { }
 
   ngOnInit(): void {
-    this.tourPolicyService.getTourDate().subscribe((result: TourPolicy[]) => (this.tourPolicy = result , this.totalItem = result.length ));
+    this.tourPolicyService.getTourPolicy().subscribe((result: TourPolicy[]) => (this.tourPolicy = result , this.totalItem = result.length ));
   }
   statusPopup(){
     this.popup = !this.popup
@@ -39,9 +38,10 @@ export class TourPolicyComponent implements OnInit {
   }
   statusAction(id:number){
     this.isAction = !this.isAction
-
+    this.id = id
   }
-  createTourTime(policy: TourPolicy){
+  createTourPolicy(policy: TourPolicy){
+    console.log(policy)
     this.tourPolicyService.createTourPolicy(policy).subscribe( (policy: TourPolicy[]) => this.tourPolicyUpdate.emit(policy));
     window.location.reload();
 

@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class TourTimeService {
 
-  private url = "Tour"
+  private url = "TourDate"
   constructor( private http:HttpClient  ) {
 
    }

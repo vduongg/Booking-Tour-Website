@@ -19,13 +19,13 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let type of tour.reverse(), let i = index">
-                        <ng-container *ngIf="pageItem().includes(type.tourid)" >
-                            <td>{{type.tourid}}</td>
-                            <td>{{type.tourname}}</td>
+                        <ng-container *ngIf="pageItem().includes(type.tourId)" >
+                            <td>{{type.tourId}}</td>
+                            <td>{{type.tourName}}</td>
                             <td class="iconAction">
-                                <div (click)="statusAction(type.tourid)"><fa-icon [icon]="faAction"></fa-icon></div>
+                                <div (click)="statusAction(type.tourId)"><fa-icon [icon]="faAction"></fa-icon></div>
                                 
-                                <div *ngIf="isAction && (type.tourid == id)" class="action">
+                                <div *ngIf="isAction && (type.tourId == id)" class="action">
                                     <div>Sửa</div>
                                     <div>Xóa</div>
                                 </div> 

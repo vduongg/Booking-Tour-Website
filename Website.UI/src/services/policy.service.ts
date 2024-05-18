@@ -12,7 +12,7 @@ export class PolicyService {
   private url = "Policy"
 
   constructor(private http:HttpClient) { }
-  public getTourDate() :Observable<TourPolicy[]> {
+  public getTourPolicy() :Observable<TourPolicy[]> {
     return this.http.get<TourPolicy[]>(`${environment.apiUrl}/${this.url}`)
    }
   public createTourPolicy(policy : TourPolicy) :Observable<TourPolicy[]> {

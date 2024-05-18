@@ -16,19 +16,19 @@ namespace Website.API.Controllers
 
         }
         [HttpPost]
-        public async Task<ActionResult<TourDate>> addTourDate(TourDate date)
+        public async Task<ActionResult<Tour>> addTour(Tour tour)
         {
 
-                await _context.TourDate.AddAsync(date);
+                await _context.Tours.AddAsync(tour);
                 await _context.SaveChangesAsync();
-                return Ok(date);
+                return Ok(tour);
 
         }
         [HttpGet]
-        public async Task<ActionResult<List<TourDate>>> getTourDate()
+        public async Task<ActionResult<List<TourDate>>> getTour()
         {
             
-            return Ok(await _context.TourDate.ToListAsync());
+            return Ok(await _context.Tours.ToListAsync());
         }
     }
 }

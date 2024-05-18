@@ -9,11 +9,11 @@
             <div>Nhập tên chính sách<input [(ngModel)]="formPolicy.policyName"> </div>
             <div>
                 Nhập mô tả
-                <ckeditor  [editor]="Editor" [(ngModel)]="data" ></ckeditor>
+                <ckeditor  [editor]="Editor" [(ngModel)]="formPolicy.policyDescription" ></ckeditor>
             </div>
             
         </div>
-        <button (click)="createTourTime(formPolicy)">Thêm</button>
+        <button (click)="createTourPolicy(formPolicy)">Thêm</button>
        
     </div>
    

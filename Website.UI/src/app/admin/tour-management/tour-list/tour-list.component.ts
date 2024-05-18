@@ -27,7 +27,7 @@ export class TourListComponent implements OnInit {
   constructor(private tourService: TourService ) { }
 
   ngOnInit(): void {
-    this.tourService.getTourDate().subscribe((result: Tour[]) => (this.tour = result , this.totalItem = result.length ));
+    this.tourService.getTour().subscribe((result: Tour[]) => (this.tour = result , this.totalItem = result.length ));
   }
 
   statusAction(id:number){

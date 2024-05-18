@@ -1,7 +1,10 @@
-﻿namespace Website.API
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Website.API
 {
     public class FeedBack
     {
+        [Key]
         public int FeedbackId { get; set; }
         public string FeedbackDescription { get; set;}
         public User User { get; set; }
