@@ -70,25 +70,24 @@ namespace Website.API.Migrations
 
             modelBuilder.Entity("Website.API.Image", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageId"), 1L, 1);
 
                     b.Property<string>("ImageURL")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TourId")
+                    b.Property<int?>("TourId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ImageId");
 
                     b.HasIndex("TourId");
 
-                    b.ToTable("Image");
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("Website.API.Policy", b =>
@@ -120,42 +119,37 @@ namespace Website.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TourId"), 1L, 1);
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DepartureDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PolicyId")
+                    b.Property<int?>("PolicyId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TourDateId")
+                    b.Property<int?>("TourDateId")
                         .HasColumnType("int");
 
                     b.Property<string>("TourDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TourName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TourPlace")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TourPrice")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TourStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TourTypeId")
+                    b.Property<int?>("TourTypeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("TourId");
@@ -304,9 +298,7 @@ namespace Website.API.Migrations
                 {
                     b.HasOne("Website.API.Tour", "Tour")
                         .WithMany("Image")
-                        .HasForeignKey("TourId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TourId");
 
                     b.Navigation("Tour");
                 });
@@ -315,27 +307,19 @@ namespace Website.API.Migrations
                 {
                     b.HasOne("Website.API.Policy", "Policy")
                         .WithMany()
-                        .HasForeignKey("PolicyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PolicyId");
 
                     b.HasOne("Website.API.TourDate", "TourDate")
-                        .WithMany()
-                        .HasForeignKey("TourDateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("tours")
+                        .HasForeignKey("TourDateId");
 
                     b.HasOne("Website.API.TourType", "TourType")
-                        .WithMany()
-                        .HasForeignKey("TourTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("tours")
+                        .HasForeignKey("TourTypeId");
 
                     b.HasOne("Website.API.User", "User")
                         .WithMany("Tour")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Policy");
 
@@ -362,6 +346,16 @@ namespace Website.API.Migrations
                     b.Navigation("FeedBacks");
 
                     b.Navigation("Image");
+                });
+
+            modelBuilder.Entity("Website.API.TourDate", b =>
+                {
+                    b.Navigation("tours");
+                });
+
+            modelBuilder.Entity("Website.API.TourType", b =>
+                {
+                    b.Navigation("tours");
                 });
 
             modelBuilder.Entity("Website.API.User", b =>

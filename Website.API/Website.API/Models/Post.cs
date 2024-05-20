@@ -1,4 +1,4 @@
-﻿namespace Website.API
+﻿namespace Website.API.Models
 {
     public class Post
     {

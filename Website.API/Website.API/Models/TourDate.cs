@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Website.API
+namespace Website.API.Models
 {
     public class TourDate
     {
@@ -8,6 +8,6 @@ namespace Website.API
         public int TourDateId { get; set; }
         public int Day { get; set; }
         public int Night { get; set; }
-        public List<Tour> tours { get; set; }
+        public List<Tour>? tours { get; set; }
     }
 }

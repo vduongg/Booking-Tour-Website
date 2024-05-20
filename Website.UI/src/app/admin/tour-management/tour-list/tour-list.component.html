@@ -26,7 +26,8 @@
                                 <div (click)="statusAction(type.tourId)"><fa-icon [icon]="faAction"></fa-icon></div>
                                 
                                 <div *ngIf="isAction && (type.tourId == id)" class="action">
-                                    <div>Sửa</div>
+                                   
+                                    <div routerLink="/admin/tour/edit/{{type.tourId}}">Sửa</div>
                                     <div>Xóa</div>
                                 </div> 
                             </td>

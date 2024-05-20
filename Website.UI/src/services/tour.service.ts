@@ -15,10 +15,17 @@ export class TourService {
 
    }
    public getTour() :Observable<Tour[]> {
-    return this.http.get<Tour[]>(`${environment.apiUrl}/${this.url}`)
+  
+      return this.http.get<Tour[]>(`${environment.apiUrl}/${this.url}`)
+   }
+   public getLastTour(id?:number):Observable<Tour>{
+    return this.http.get<Tour>(`${environment.apiUrl}/${this.url}/LastTour/${id}`)
    }
   
    public createTour(tour : Tour) :Observable<Tour[]> {
     return this.http.post<Tour[]>(`${environment.apiUrl}/${this.url}`,tour)
+   }
+   public updateTour(id?:number, tour?: Tour):Observable<Tour[]>{
+    return this.http.put<Tour[]>(`${environment.apiUrl}/${this.url}/${id}`,tour)
    }
 }

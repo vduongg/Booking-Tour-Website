@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
+import { Tour } from 'src/app/models/Tour';
 import { TourPolicy } from 'src/app/models/TourPolicy';
 import { PolicyService } from 'src/services/policy.service';
 
@@ -12,6 +13,7 @@ import { PolicyService } from 'src/services/policy.service';
 export class TourPolicyComponent implements OnInit {
   public Editor = Editor;
 
+ 
   popup = false;
   isAction = false;
   tourPolicy : TourPolicy[] = []
@@ -41,7 +43,7 @@ export class TourPolicyComponent implements OnInit {
     this.id = id
   }
   createTourPolicy(policy: TourPolicy){
-    console.log(policy)
+    
     this.tourPolicyService.createTourPolicy(policy).subscribe( (policy: TourPolicy[]) => this.tourPolicyUpdate.emit(policy));
     window.location.reload();
 

@@ -9,6 +9,7 @@ import { TourTimeListComponent } from './tags/tourTime/tour-time-list/tour-time-
 import { TourPolicyComponent } from './tags/policy/tour-policy/tour-policy.component';
 import { VehicleComponent } from './tags/vehicle/vehicle.component';
 import { TourTypeComponent } from './tags/tourType/tour-type/tour-type.component';
+import { EditTourComponent } from './admin/tour-management/edit-tour/edit-tour.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   ,{
     component:AddTourComponent,
     path: "admin/tour/add"
+  }
+  ,{
+    component:EditTourComponent,
+    path: "admin/tour/edit/:id"
   },
   {
     component:TourTimeListComponent,

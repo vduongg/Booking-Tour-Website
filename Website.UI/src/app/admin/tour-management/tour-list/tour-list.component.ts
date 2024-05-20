@@ -21,17 +21,18 @@ export class TourListComponent implements OnInit {
   numPage = 1;
   totalItem = 0;
   faAction = faEllipsisV
-
+  tourItem: Tour[] = []
   @Output()  tourUpdate = new EventEmitter<Tour[]>();
 
   constructor(private tourService: TourService ) { }
 
   ngOnInit(): void {
-    this.tourService.getTour().subscribe((result: Tour[]) => (this.tour = result , this.totalItem = result.length ));
+    this.tourService.getTour().subscribe((result: Tour[]) => (this.tour = result , this.totalItem = result.length));
   }
 
   statusAction(id:number){
     this.isAction = !this.isAction
+    this.id = id
 
   }
   
@@ -64,5 +65,5 @@ export class TourListComponent implements OnInit {
   pageClick(num:number) {
       this.pageNow = num;
   }
-
+  
 }

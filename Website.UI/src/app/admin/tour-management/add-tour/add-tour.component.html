@@ -7,26 +7,26 @@
             <div class="add-tour-list">
                 <div class="add-tour-item">
                     <div>Tên Tour
-                        <input [ngModel]="formTour.tourName" placeholder="Điền tên Tour">
+                        <input [(ngModel)]="formTour.tourName" placeholder="Điền tên Tour">
                     </div>
                     <div >Ngày khởi hành
-                        <input [ngModel]="formTour.departureDate" type="date">
+                        <input [(ngModel)]="formTour.departureDate" type="date">
                     </div>
                     <div>Thời gian Tour
-                        <select [ngModel]="formTour.tourDateId">
+                        <select [(ngModel)]="formTour.tourDateId">
                             <option *ngFor="let date of tourDate" [value]="date.tourDateId">
                                 {{date.day}} ngày {{date.night}} đêm
                             </option>
                         </select>
                     </div>
                     <div>Địa điểm
-                        <select [ngModel]="formTour.tourPlace">
-                            <option *ngFor="let loc of location.data">{{loc.name}}</option>
+                        <select [(ngModel)]="formTour.tourPlace">
+                            <option *ngFor="let loc of location.data" [value]="loc.id">{{loc.name}}</option>
                         </select>
                     </div>
                     <div>
                         Loại hình du lịch
-                        <select [ngModel]="formTour.tourTypeId">
+                        <select [(ngModel)]="formTour.tourTypeId">
                             <option *ngFor="let type of tourType" [value]="type.tourTypeId">
                                 {{type.name}}
                             </option>
@@ -34,10 +34,10 @@
                     </div>
                     
                     <div >Giá Tour
-                        <input [ngModel]="formTour.tourPrice">
+                        <input [(ngModel)]="formTour.tourPrice">
                     </div>
                     <div>Chính sách
-                        <select [ngModel]="formTour.policyId">
+                        <select [(ngModel)]="formTour.policyId">
                             <option *ngFor="let type of tourPolicy" [value]="type.policyId">
                                 {{type.policyName}}
                             </option>
@@ -59,9 +59,9 @@
                     <img *ngFor="let url of imageUrls"  [src] = "url" >
                     
                 </div>
-                <input hidden [ngModel]="formTour.tourStatus" value="Hoạt động">
-                <input hidden [ngModel]="formTour.createDate" [value]="dateNow">
-                <button (click)="createTourTime(formTour)">Thêm Tour mới</button>
+                <input hidden [(ngModel)]="formTour.tourStatus" value="Hoạt động">
+                <input hidden [(ngModel)]="formTour.createDate" [value]="dateNow">
+                <button (click)="createTour(formTour)">Thêm Tour mới</button>
             </div>
             
         </div>

@@ -28,7 +28,7 @@ export class TourTimeListComponent implements OnInit {
   pageNow = 1;
   numPage = 1;
   formDate: TourDate = new TourDate();
-
+  formTour: Tour = new Tour();
 
   constructor(private tourDateService: TourTimeService) {
     

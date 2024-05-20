@@ -75,17 +75,17 @@ namespace Website.API.Migrations
                 {
                     TourId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TourName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TourPlace = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TourTypeId = table.Column<int>(type: "int", nullable: false),
-                    TourDateId = table.Column<int>(type: "int", nullable: false),
+                    TourName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TourPlace = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TourTypeId = table.Column<int>(type: "int", nullable: true),
+                    TourDateId = table.Column<int>(type: "int", nullable: true),
                     DepartureDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TourPrice = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TourDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PolicyId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TourStatus = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    TourPrice = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TourDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PolicyId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    TourStatus = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -94,26 +94,22 @@ namespace Website.API.Migrations
                         name: "FK_Tours_Policy_PolicyId",
                         column: x => x.PolicyId,
                         principalTable: "Policy",
-                        principalColumn: "PolicyId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PolicyId");
                     table.ForeignKey(
                         name: "FK_Tours_TourDate_TourDateId",
                         column: x => x.TourDateId,
                         principalTable: "TourDate",
-                        principalColumn: "TourDateId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "TourDateId");
                     table.ForeignKey(
                         name: "FK_Tours_TourType_TourTypeId",
                         column: x => x.TourTypeId,
                         principalTable: "TourType",
-                        principalColumn: "TourTypeId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "TourTypeId");
                     table.ForeignKey(
                         name: "FK_Tours_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -164,23 +160,22 @@ namespace Website.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Image",
+                name: "Images",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TourId = table.Column<int>(type: "int", nullable: false)
+                    TourId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Image", x => x.Id);
+                    table.PrimaryKey("PK_Images", x => x.ImageId);
                     table.ForeignKey(
-                        name: "FK_Image_Tours_TourId",
+                        name: "FK_Images_Tours_TourId",
                         column: x => x.TourId,
                         principalTable: "Tours",
-                        principalColumn: "TourId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "TourId");
                 });
 
             migrationBuilder.CreateTable(
@@ -218,8 +213,8 @@ namespace Website.API.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Image_TourId",
-                table: "Image",
+                name: "IX_Images_TourId",
+                table: "Images",
                 column: "TourId");
 
             migrationBuilder.CreateIndex(
@@ -259,7 +254,7 @@ namespace Website.API.Migrations
                 name: "FeedBacks");
 
             migrationBuilder.DropTable(
-                name: "Image");
+                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "TourWishList");

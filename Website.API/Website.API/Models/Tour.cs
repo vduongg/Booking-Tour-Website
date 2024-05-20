@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Website.API
+namespace Website.API.Models
 {
     public class Tour
     {
@@ -12,16 +12,16 @@ namespace Website.API
         public string? TourPlace { get; set; }
         public int? TourTypeId { get; set; }
         public TourType? TourType { get; set; } = null;
-        public TourDate? TourDate { get; set; } = null; 
+        public TourDate? TourDate { get; set; } = null;
         public int? TourDateId { get; set; }
-        public DateTime DepartureDate { get; set; }
+        public DateTime? DepartureDate { get; set; }
         public string? TourPrice { get; set; }
         public string? TourDescription { get; set; }
-    
+
         public Policy? Policy { get; set; } = null;
         public int? PolicyId { get; set; }
         public User? User { get; set; } = null;
-   
+
         public int? UserId { get; set; }
         public DateTime? CreateDate { get; set; }
         public string? TourStatus { get; set; }

@@ -7,3 +7,63 @@
     background-color: #EEEEEE;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.edit-tour{
+    margin-left: 250px;
+    margin-top: 50px;
+    padding: 20px
+}
+.title{
+    font-size: 24px;
+    font-weight: 600;
+}
+.edit-tour-list{
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    box-sizing: border-box;
+}
+.hide{
+    margin-left: 70px;
+}
+.edit-tour-item {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.edit-tour-item div, .list-img-title , 
+.describe-title {
+    padding-bottom: 20px;
+    font-weight: 600;
+    padding-right: 20px;
+
+}
+.list-img-title{
+    padding-top: 20px;
+}
+.edit-tour-item input, .edit-tour-item select {
+    width: 100%;
+    height: 30px;
+    outline-color: #DD5746;
+    padding-left: 10px;
+    box-sizing: border-box;
+
+}
+.list-img-item {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding-bottom: 20px;
+}
+.list-img-item img{
+   width: 100%;
+   height: 100%;
+}
+.item{
+    position: relative;
+    max-width: 380px;
+    max-height: 250px;
+}
+.iconClose {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

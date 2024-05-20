@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Website.API.Models;
 
 namespace Website.API.Data
 {
@@ -13,5 +14,6 @@ namespace Website.API.Data
         public DbSet<FeedBack> FeedBacks { get; set; }
         public DbSet<TourDate> TourDate { get; set; }
         public DbSet<TourType> TourType { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }
