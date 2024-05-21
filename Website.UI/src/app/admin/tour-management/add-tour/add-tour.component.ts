@@ -23,6 +23,7 @@ export class AddTourComponent implements OnInit {
   @Output() TourUpdate = new EventEmitter<Tour[]>() 
   public Editor = Editor;
   data : string = "";
+  currentDate?: string;
   location: ListLocation = new ListLocation;
   tourDate: TourDate[] = [];
   tourType: TourType[] = [];
@@ -32,7 +33,7 @@ export class AddTourComponent implements OnInit {
   tourItem: Tour = new Tour();
   img:TourImage = new TourImage();
   constructor(private LocationService: LocationService, private imageService: ImageService ,private tourDateService: TourTimeService, private tourTypeService: TourTypeService, private tourPolicyService: PolicyService, private tourService: TourService, ) {
-
+    this.currentDate = `${this.dateNow.getFullYear()}-${ (this.dateNow.getMonth()+1) <10? "0"+ (this.dateNow.getMonth()+1)  : (this.dateNow.getMonth() + 1)}-${this.dateNow.getDate() < 10? "0"+ this.dateNow.getDate():this.dateNow.getDate()}`;
    }
 
   ngOnInit(): void {
@@ -40,6 +41,7 @@ export class AddTourComponent implements OnInit {
     this.tourDateService.getTourDate().subscribe((result: TourDate[]) => (this.tourDate = result));
     this.tourTypeService.getTourType().subscribe((result: TourType[]) => (this.tourType = result));
     this.tourPolicyService.getTourPolicy().subscribe((result: TourPolicy[]) => (this.tourPolicy = result));
+    
   }
 
   imageFiles: FormData[] = []
@@ -82,4 +84,11 @@ export class AddTourComponent implements OnInit {
    
   
   }
+  onKeyPress( event: KeyboardEvent) {
+    const inputChar = event.key;
+    if (!(inputChar >= 'a' && inputChar <= 'z') && isNaN(Number(inputChar)) && inputChar !=="@") {
+      event.preventDefault(); 
+    }
+  }
+  
 }

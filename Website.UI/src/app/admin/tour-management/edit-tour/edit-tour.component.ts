@@ -121,4 +121,10 @@ export class EditTourComponent implements OnInit {
     
    
   }
+  onKeyPress( event: KeyboardEvent) {
+    const inputChar = event.key;
+    if (!(inputChar >= 'a' && inputChar <= 'z') && isNaN(Number(inputChar)) && inputChar !=="@") {
+      event.preventDefault(); 
+    }
+  }
 }

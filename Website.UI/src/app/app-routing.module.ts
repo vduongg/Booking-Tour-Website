@@ -10,6 +10,7 @@ import { TourPolicyComponent } from './tags/policy/tour-policy/tour-policy.compo
 import { VehicleComponent } from './tags/vehicle/vehicle.component';
 import { TourTypeComponent } from './tags/tourType/tour-type/tour-type.component';
 import { EditTourComponent } from './admin/tour-management/edit-tour/edit-tour.component';
+import { LoginAdminComponent } from './auth/admin/login-admin/login-admin.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     component:TourTypeComponent,
     path: "admin/tags/tourtype"
+  },
+  {
+    component:LoginAdminComponent,
+    path: "admin/login"
   }
   
 ];

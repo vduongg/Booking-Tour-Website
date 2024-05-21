@@ -6,26 +6,27 @@
             <div class="title">Sửa thông tin tour</div>
             <div class="edit-tour-list" >
                 <div class="edit-tour-item">
-                    <div>Tên Tour
-                        <input [(ngModel)]="formTour.tourName">
+                    <div>Tên Tour(*)
+                        <input [(ngModel)]="formTour.tourName"  (keypress)="onKeyPress($event)" #tourName = ngModel required>
+                        <small class="error"  *ngIf="!tourName.valid">Tên Tour còn trống </small>
                     </div>
-                    <div >Ngày khởi hành
+                    <div >Ngày khởi hành(*)
                         <input [(ngModel)]="formTour.departureDate" type="date">
                     </div>
-                    <div>Thời gian Tour
+                    <div>Thời gian Tour(*)
                         <select [(ngModel)]="formTour.tourDateId">
                             <option *ngFor="let date of tourDate" [value]="date.tourDateId">
                                 {{date.day}} ngày {{date.night}} đêm
                             </option>
                         </select>
                     </div>
-                    <div>Địa điểm
+                    <div>Địa điểm(*)
                         <select [(ngModel)]="formTour.tourPlace">
                             <option *ngFor="let loc of location.data" [value]="loc.id">{{loc.name}}</option>
                         </select>
                     </div>
                     <div>
-                        Loại hình du lịch
+                        Loại hình du lịch(*)
                         <select [(ngModel)]="formTour.tourTypeId">
                             <option *ngFor="let type of tourType" [value]="type.tourTypeId">
                                 {{type.name}}
@@ -33,10 +34,11 @@
                         </select>
                     </div>
                     
-                    <div >Giá Tour
-                        <input [(ngModel)]="formTour.tourPrice">
+                    <div >Giá Tour(*)
+                        <input [(ngModel)]="formTour.tourPrice" #tourPrice = ngModel required>
+                        <small  class="error" *ngIf="!tourPrice.valid">Giá Tour còn trống </small>
                     </div>
-                    <div>Chính sách
+                    <div>Chính sách(*)
                         <select [(ngModel)]="formTour.policyId">
                             <option *ngFor="let type of tourPolicy" [value]="type.policyId">
                                 {{type.policyName}}

@@ -16,11 +16,12 @@ import { EditTourComponent } from './admin/tour-management/edit-tour/edit-tour.c
 import { ManagementNavbarComponent } from './admin/shared/management-navbar/management-navbar.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { TourTimeListComponent } from './tags/tourTime/tour-time-list/tour-time-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { VehicleComponent } from './tags/vehicle/vehicle.component';
 import { TourTypeComponent } from './tags/tourType/tour-type/tour-type.component';
-import { TourPolicyComponent } from './tags/policy/tour-policy/tour-policy.component'
+import { TourPolicyComponent } from './tags/policy/tour-policy/tour-policy.component';
+import { LoginAdminComponent } from './auth/admin/login-admin/login-admin.component'
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { TourPolicyComponent } from './tags/policy/tour-policy/tour-policy.compo
     VehicleComponent,
     TourTypeComponent,
     TourPolicyComponent,
+    LoginAdminComponent,
     
   ],
   imports: [
@@ -50,6 +52,7 @@ import { TourPolicyComponent } from './tags/policy/tour-policy/tour-policy.compo
     CKEditorModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,15 +2,15 @@ export class Tour {
     tourId = 0;
     tourName = '';
     tourPlace= "";
-    tourTypeId = 0;
+    tourTypeId?:number;
     tourType= null;
     tourDate=  null;
-    tourDateId = 0;
+    tourDateId?:number;
     departureDate  = "";
     tourPrice = "" ;
     tourDescription = "";
     policy = null;
-    policyId = 0;
+    policyId?:number;
     user =null;
     userId = 1;
     createDate = "";

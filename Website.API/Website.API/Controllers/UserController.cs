@@ -15,13 +15,42 @@ namespace Website.API.Controllers
         
             _context = context;
         }
-        [HttpGet]
+        [HttpPost("authentication")]
 
-        public async Task<ActionResult<User>> getUser( int userId)
+        public async Task<ActionResult<User>> Authentication(LoginForm user)
         {
-           var user = await _context.Users.FindAsync(userId);
-            return user == null ? NotFound() : Ok(user);
+          if(user == null)
+            {
+                return BadRequest();
+            }
+          var userObj = await _context.Users.FirstOrDefaultAsync(u=> u.Email == user.Email && u.Password == user.Password);
+            if(userObj == null)
+            {
+                return NotFound(new { Message = "User not Found!" });
+            }
+            return Ok(new {Message = "Login Success!"});
         }
+        [HttpPost("register")]
+        public async Task<ActionResult<User>> Register(User user)
+        {
+            if(user == null)
+            {
+                return BadRequest();
+            }
+            var userObj = _context.Users.FirstOrDefault(u => u.Email == user.Email);
+            if(userObj == null)
+            {
+                _context.Users.AddAsync(user);
+                _context.SaveChangesAsync();
+                return Ok(new { Message = "User Registed!" });
+            }
+            else
+            {
+                return Ok(new { Massage = "User exists" });
+            }
+         
+        }
+
        
     }
 }
