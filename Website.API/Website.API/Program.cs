@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using Website.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +20,23 @@ builder.Services.AddCors( options => options.AddPolicy(name: "BookingTour", poli
     policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
 
 }));
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("thekeyveryveryverysecret........")),
+        ValidateAudience = false,
+        ValidateIssuer = false,
+        ClockSkew = TimeSpan.Zero,
+    };
+});
 
 var app = builder.Build();
 
@@ -29,6 +49,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors("BookingTour");
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

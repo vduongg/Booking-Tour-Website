@@ -18,7 +18,7 @@ namespace Website.API.Controllers
         public async Task<ActionResult<TourType>> addTourType(TourType tourType)
         {
 
-            await _context.TourType.AddAsync(tourType);
+             _context.TourType.AddAsync(tourType);
             await _context.SaveChangesAsync();
             return Ok(tourType);
 

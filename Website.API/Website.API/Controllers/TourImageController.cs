@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Website.API.Data;
@@ -55,8 +56,8 @@ namespace Website.API.Controllers
             var image = new Image();
             image.ImageURL = filePath;
             image.TourId = id;
-            await _context.Images.AddAsync(image);
-            _context.SaveChanges();
+             _context.Images.AddAsync(image);
+            await _context.SaveChangesAsync();
 
 
             return Ok(image);
@@ -64,29 +65,30 @@ namespace Website.API.Controllers
         [HttpDelete("deleteAllImage/{id}")]
         public async Task<ActionResult> deleteAllImage(int id)
         {
-            var listImage = _context.Images.Where(i => i.TourId == id).ToList();
+            var listImage = await _context.Images.Where(i => i.TourId == id).ToListAsync();
             
            for (int i = 0; i< listImage.Count() ; i++)
             {
 
                 _context.Images.Remove(listImage[i]);
-                _context.SaveChanges();
+               await _context.SaveChangesAsync();
             }
 
             return Ok();
 
            
         }
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> deleteImage(int id)
         {
 
-            var image = _context.Images.Find(id);
+            var image = await _context.Images.FindAsync(id);
             _context.Images.Remove(image);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             
 
-            return Ok();
+            return Ok(new {message = "Delete Successed!"});
         }
 
     }

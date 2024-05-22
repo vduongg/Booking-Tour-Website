@@ -18,7 +18,7 @@ namespace Website.API.Controllers
         public async Task<ActionResult<Policy>> addTourPolicy(Policy policy)
         {
 
-            await _context.Policy.AddAsync(policy);
+             _context.Policy.AddAsync(policy);
             await _context.SaveChangesAsync();
             return Ok(policy);
 

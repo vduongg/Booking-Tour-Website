@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './user/home/home.component';
 import { ManagementHomeComponent } from './admin/general-management/management-home/management-home.component';
-import { ListHotelComponent } from './admin/hotel-management/list-hotel/list-hotel.component';
 import { TourListComponent } from './admin/tour-management/tour-list/tour-list.component';
 import { AddTourComponent } from './admin/tour-management/add-tour/add-tour.component';
-import { TourTimeListComponent } from './tags/tourTime/tour-time-list/tour-time-list.component';
-import { TourPolicyComponent } from './tags/policy/tour-policy/tour-policy.component';
-import { VehicleComponent } from './tags/vehicle/vehicle.component';
-import { TourTypeComponent } from './tags/tourType/tour-type/tour-type.component';
+import { TourTimeListComponent } from './admin/tags/tour-time-list/tour-time-list.component';
+import { TourTypeComponent } from './admin/tags/tour-type-list/tour-type.component';
 import { EditTourComponent } from './admin/tour-management/edit-tour/edit-tour.component';
 import { LoginAdminComponent } from './auth/admin/login-admin/login-admin.component';
+import { AuthenGuard } from './guards/authen.guard';
+import { TourPolicyComponent } from './admin/tags/tour-policy-list/tour-policy-list.component';
+import { AccountsComponent } from './admin/general-management/accounts/accounts.component';
 
 const routes: Routes = [
   {
@@ -20,10 +20,7 @@ const routes: Routes = [
   {
     component:ManagementHomeComponent,
     path: "admin/home",
-  },
-  {
-    component:ListHotelComponent,
-    path: "admin/hotel"
+    canActivate:[AuthenGuard]
   },
   {
     component:TourListComponent,
@@ -46,16 +43,16 @@ const routes: Routes = [
     path: "admin/tags/tourpolicy"
   },
   {
-    component:VehicleComponent,
-    path: "admin/tags/vehicle"
-  },
-  {
     component:TourTypeComponent,
     path: "admin/tags/tourtype"
   },
   {
     component:LoginAdminComponent,
     path: "admin/login"
+  },
+  {
+    component:AccountsComponent,
+    path: "admin/accounts"
   }
   
 ];

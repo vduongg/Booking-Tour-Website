@@ -135,3 +135,6 @@ E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\obj\Debug\net6.0\Websi
 E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\obj\Debug\net6.0\ref\Website.API.dll
 E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\obj\Debug\net6.0\Website.API.sourcelink.json
 E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\obj\Debug\net6.0\Website..17523344.Up2Date
+E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\bin\Debug\net6.0\BCrypt.Net-Next.dll
+E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll

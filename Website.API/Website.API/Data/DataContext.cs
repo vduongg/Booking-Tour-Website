@@ -5,7 +5,7 @@ namespace Website.API.Data
 {
     public class DataContext : DbContext 
     {
-        public DataContext(DbContextOptions<DataContext> options ) : base(options)
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         { }    
         public DbSet<User> Users { get; set; }
         public DbSet<Tour> Tours { get; set; }
@@ -15,5 +15,6 @@ namespace Website.API.Data
         public DbSet<TourDate> TourDate { get; set; }
         public DbSet<TourType> TourType { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<UserInfo> UserInfo { get; set; }
     }
 }

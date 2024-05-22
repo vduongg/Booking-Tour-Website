@@ -81,6 +81,13 @@ export class ManagementSidebarComponent implements OnInit {
       icon: faUser ,
       label: "Người dùng",
       key: "user",
+      route: "/admin/accounts",
+      item: [
+        {
+          label: "Danh sách người dùng",
+          route: "/admin/accounts"
+        }
+      ]
     }
   ]
  
