@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.OpenApi.Any;
 using Website.API.Data;
 using Website.API.Models;
 
@@ -35,6 +37,34 @@ namespace Website.API.Controllers
 
             return Ok(images);
         }
+        [HttpGet("firstImg")]
+        public async Task<ActionResult> getFirstImage()
+        {
+            var listImage = _context.Tours.Select(tour => new
+            {
+               tourId = tour.TourId,
+               url = tour.Image.OrderBy( img => img.ImageId).FirstOrDefault().ImageURL
+            }).ToList() ;
+           
+            List<FirstTourImage> images = new List<FirstTourImage>();
+            foreach (var img in listImage)
+            {
+                if(img.url != null)
+                {
+                    byte[] imageByte = System.IO.File.ReadAllBytes(img.url);
+                    string base64toString = Convert.ToBase64String(imageByte);
+                    FirstTourImage imgdata = new FirstTourImage();
+                    imgdata.TourId = img.tourId;
+                    imgdata.Url = "data:image/jpeg;base64," + base64toString;
+                    images.Add(imgdata);
+
+                }
+               
+            }
+
+
+            return Ok(images);
+        }
         [HttpPost("{id}")]
         public async Task<ActionResult> addImage(int id ,IFormFile file)
         {
@@ -62,6 +92,7 @@ namespace Website.API.Controllers
 
             return Ok(image);
         }
+
         [HttpDelete("deleteAllImage/{id}")]
         public async Task<ActionResult> deleteAllImage(int id)
         {

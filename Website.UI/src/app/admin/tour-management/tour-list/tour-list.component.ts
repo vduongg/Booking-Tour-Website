@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV, faToggleOff, faToggleOn } from '@fortawesome/free-solid-svg-icons';
 import { Tour } from 'src/app/models/Tour';
-import { TourType } from 'src/app/models/TourType';
+import { ImageService } from 'src/services/image.service';
 import { TourService } from 'src/services/tour.service';
 
 @Component({
@@ -21,14 +21,22 @@ export class TourListComponent implements OnInit {
   numPage = 1;
   totalItem = 0;
   faAction = faEllipsisV
+  faOn = faToggleOn
+  faOff = faToggleOff
   tourItem: Tour[] = []
+  listFirstImg = new Map<number,string>()
   @Output()  tourUpdate = new EventEmitter<Tour[]>();
 
-  constructor(private tourService: TourService ) { }
+  constructor(private tourService: TourService, private imageService: ImageService ) { }
 
   ngOnInit(): void {
     this.tourService.getTour().subscribe((result: Tour[]) => (this.tour = result , this.totalItem = result.length));
-  }
+    this.imageService.getFirstTourImage().subscribe((result: any) => {
+      for(let i = 0 ; i < result.length ; i++) {
+          this.listFirstImg.set(result[i].tourId, result[i].url)
+      }
+    })
+  } 
 
   statusAction(id:number){
     this.isAction = !this.isAction
@@ -52,6 +60,8 @@ export class TourListComponent implements OnInit {
   return item;
 
   }
+  
+ 
 
   loadPage() {
     this.numPage = Math.ceil(this.totalItem/this.itemInPage);

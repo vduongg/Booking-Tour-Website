@@ -40,9 +40,12 @@
                         <ng-container *ngIf="pageItem().includes(date.tourDateId)"  >
                             <td>{{i}}</td>
                             <td>{{date.day}} ngày {{date.night}} đêm</td>
+                            <td>
+                                <ng-container  *ngIf="true" ><fa-icon class="fa-lg" [icon]="faOn" [style]="{color: 'blue'}"></fa-icon></ng-container>
+                                <ng-container *ngIf="false" ><fa-icon  class="fa-lg" [icon]="faOff" [style]="{color: 'red'}"></fa-icon></ng-container>
+                            </td>
                             <td class="iconAction">
                                 <div (click)="statusAction(date.tourDateId)"><fa-icon [icon]="faAction"></fa-icon></div>
-                                
                                 <div *ngIf="isAction && (date.tourDateId == id)" class="action">
                                     <div>Sửa</div>
                                     <div>Xóa</div>

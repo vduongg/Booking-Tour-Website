@@ -9,11 +9,16 @@
                 <div class="title">Danh sách Tour</div>
                 <button routerLink="/admin/tour/add" >Thêm Tour</button>
             </div>
+         
             <table>
                 <thead>
                     <tr>
                         <th>STT</th>
+                        <th>Ảnh Tour</th>
                         <th>Tên Tour</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày tạo</th>
+                        <th>Người tạo</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
@@ -21,7 +26,14 @@
                     <tr *ngFor="let type of tour.reverse(), let i = index">
                         <ng-container *ngIf="pageItem().includes(type.tourId)" >
                             <td>{{type.tourId}}</td>
+                            <td><img width="200px" height="100px" [src]="listFirstImg.get(type.tourId)"></td>
                             <td>{{type.tourName}}</td>
+                            <td>
+                                <ng-container  *ngIf="type.tourStatus == 'running'" ><fa-icon class="fa-lg" [icon]="faOn" [style]="{color: 'blue'}"></fa-icon></ng-container>
+                                <ng-container *ngIf="type.tourStatus != 'running'" ><fa-icon  class="fa-lg" [icon]="faOff" [style]="{color: 'red'}"></fa-icon></ng-container>
+                            </td>
+                            <td>{{type.createDate}}</td>
+                            <td>{{type.userId}}</td>
                             <td class="iconAction">
                                 <div (click)="statusAction(type.tourId)"><fa-icon [icon]="faAction"></fa-icon></div>
                                 

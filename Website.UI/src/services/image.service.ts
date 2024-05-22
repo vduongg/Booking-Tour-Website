@@ -16,6 +16,9 @@ export class ImageService {
    public getTourImage(id?:number):Observable<TourImage[]>{
     return this.http.get<TourImage[]>(`${environment.apiUrl}/${this.url}/${id}`)
    }
+   public getFirstTourImage(){
+    return this.http.get<any>(`${environment.apiUrl}/${this.url}/firstImg`)
+   }
    public deleteTourImage(id?:number):Observable<any>{
     return this.http.delete<any>(`${environment.apiUrl}/${this.url}/${id}`)
    }

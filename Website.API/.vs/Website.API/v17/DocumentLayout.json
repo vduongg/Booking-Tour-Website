@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\controllers\\tourimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\controllers\\tourimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\models\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\models\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\models\\firsttourimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\models\\firsttourimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\models\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\models\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,20 +27,12 @@
       "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\models\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\models\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\models\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\controllers\\policycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\controllers\\policycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\controllers\\tourimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\controllers\\tourimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\controllers\\tourtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,7 +62,33 @@
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FirstTourImage.cs",
+              "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Models\\FirstTourImage.cs",
+              "RelativeDocumentMoniker": "Website.API\\Models\\FirstTourImage.cs",
+              "ToolTip": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Models\\FirstTourImage.cs",
+              "RelativeToolTip": "Website.API\\Models\\FirstTourImage.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T13:40:29.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Image.cs",
+              "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Models\\Image.cs",
+              "RelativeDocumentMoniker": "Website.API\\Models\\Image.cs",
+              "ToolTip": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Models\\Image.cs",
+              "RelativeToolTip": "Website.API\\Models\\Image.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T12:53:05.719Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "RegisterForm.cs",
               "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Models\\RegisterForm.cs",
               "RelativeDocumentMoniker": "Website.API\\Models\\RegisterForm.cs",
@@ -62,12 +96,11 @@
               "RelativeToolTip": "Website.API\\Models\\RegisterForm.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T10:05:46.297Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T10:05:46.297Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Program.cs",
               "RelativeDocumentMoniker": "Website.API\\Program.cs",
@@ -75,12 +108,11 @@
               "RelativeToolTip": "Website.API\\Program.cs",
               "ViewState": "AQIAACUAAAAAAAAAAADgvzYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T09:56:04.439Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T09:56:04.439Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "TourTypeController.cs",
               "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Controllers\\TourTypeController.cs",
               "RelativeDocumentMoniker": "Website.API\\Controllers\\TourTypeController.cs",
@@ -88,25 +120,24 @@
               "RelativeToolTip": "Website.API\\Controllers\\TourTypeController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T09:55:24.128Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T09:55:24.128Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "TourImageController.cs",
               "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Controllers\\TourImageController.cs",
               "RelativeDocumentMoniker": "Website.API\\Controllers\\TourImageController.cs",
               "ToolTip": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Controllers\\TourImageController.cs",
               "RelativeToolTip": "Website.API\\Controllers\\TourImageController.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAAFcAAAArAAAA",
+              "ViewState": "AQIAACIAAAAAAAAAAAAAADsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-22T09:53:55.08Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "PolicyController.cs",
               "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Controllers\\PolicyController.cs",
               "RelativeDocumentMoniker": "Website.API\\Controllers\\PolicyController.cs",
@@ -114,25 +145,23 @@
               "RelativeToolTip": "Website.API\\Controllers\\PolicyController.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAAAAABQAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T09:52:38.03Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T09:52:38.03Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "UserController.cs",
               "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Website.API\\Controllers\\UserController.cs",
               "ToolTip": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Controllers\\UserController.cs",
               "RelativeToolTip": "Website.API\\Controllers\\UserController.cs",
-              "ViewState": "AQIAAFgAAAAAAAAAAAAAAFAAAAAwAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFAAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T08:51:01.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T08:51:01.691Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "User.cs",
               "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Models\\User.cs",
               "RelativeDocumentMoniker": "Website.API\\Models\\User.cs",
@@ -140,12 +169,11 @@
               "RelativeToolTip": "Website.API\\Models\\User.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T08:52:34.439Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T08:52:34.439Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UserInfo.cs",
               "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Models\\UserInfo.cs",
               "RelativeDocumentMoniker": "Website.API\\Models\\UserInfo.cs",
@@ -153,12 +181,11 @@
               "RelativeToolTip": "Website.API\\Models\\UserInfo.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T08:52:25.073Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T08:52:25.073Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "DataContext.cs",
               "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Data\\DataContext.cs",
               "RelativeDocumentMoniker": "Website.API\\Data\\DataContext.cs",
@@ -166,12 +193,11 @@
               "RelativeToolTip": "Website.API\\Data\\DataContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAkAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T08:57:30.441Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T08:57:30.441Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "TourDateController.cs",
               "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Controllers\\TourDateController.cs",
               "RelativeDocumentMoniker": "Website.API\\Controllers\\TourDateController.cs",
@@ -179,8 +205,7 @@
               "RelativeToolTip": "Website.API\\Controllers\\TourDateController.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAAAAABUAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T09:55:08.192Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T09:55:08.192Z"
             }
           ]
         }

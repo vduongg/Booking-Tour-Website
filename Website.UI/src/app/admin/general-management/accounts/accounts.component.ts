@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faEllipsisH, faEllipsisV, faXRay } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisH, faEllipsisV, faToggleOff, faToggleOn, faXRay } from '@fortawesome/free-solid-svg-icons';
 import { Tour } from 'src/app/models/Tour';
 import { TourDate } from 'src/app/models/TourDate';
 import { TourTimeService } from 'src/services/tour-time.service';
@@ -25,7 +25,8 @@ export class AccountsComponent implements OnInit {
   numPage = 1;
   formDate: TourDate = new TourDate();
   formTour: Tour = new Tour();
-
+  faOn = faToggleOn
+  faOff = faToggleOff
   constructor(private tourDateService: TourTimeService) {
     
    }
