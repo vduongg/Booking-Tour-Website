@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginForm } from 'src/app/models/LoginForm';
+import { AuthService } from 'src/services/auth.service';
 import { UserService } from 'src/services/user.service';
 
 @Component({
@@ -12,16 +13,16 @@ export class LoginAdminComponent implements OnInit {
   isOpenSuccess = false;
   isOpenError = false;
   LoginForm:LoginForm = new LoginForm();
-  constructor(private userService: UserService, private routeService :Router) { }
+  constructor(private authService: AuthService, private routeService :Router) { }
 
   ngOnInit(): void {
   }
   login(user: LoginForm) {
-    this.userService.login(user).subscribe(
+    this.authService.login(user).subscribe(
       response => {
         this.isOpenSuccess = true;
         this.isOpenError = false;
-        this.userService.setToken(response.token)
+        this.authService.setToken(response.token)
         setTimeout(() => {
           this.routeService.navigate(['/admin/home'])
         }, 1000);

@@ -18,7 +18,7 @@ namespace Website.API.Controllers
         public TourImageController(DataContext context) { _context = context; }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> getImage(int id)
+        public async Task<ActionResult<List<Image>>> getImage(int id)
         {
             
             var listImage = await _context.Images.Where(i => i.TourId == id).ToListAsync();
@@ -38,7 +38,7 @@ namespace Website.API.Controllers
             return Ok(images);
         }
         [HttpGet("firstImg")]
-        public async Task<ActionResult> getFirstImage()
+        public async Task<ActionResult<List<FirstTourImage>>> getFirstImage()
         {
             var listImage = _context.Tours.Select(tour => new
             {

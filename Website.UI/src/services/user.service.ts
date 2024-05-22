@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoginForm } from 'src/app/models/LoginForm';
+import { UserInfo } from 'src/app/models/UserInfo';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -11,21 +12,9 @@ import { environment } from 'src/environments/environment';
 export class UserService {
   private url = "User"
   constructor(private http:HttpClient, private route: Router) { }
-  public login(user:LoginForm):Observable<any>{
-    return this.http.post<any>(`${environment.apiUrl}/${this.url}/authentication`,user);
+  public getAllUser():Observable<any>{
+    return this.http.get<UserInfo[]>(`${environment.apiUrl}/${this.url}`);
   }
-  public logOut(){
-    localStorage.clear()
-    this.route.navigate(['/admin/login'])
-  }
-  public setToken(tokenValue:string) {
-    localStorage.setItem('token',tokenValue)
-  }
-  public getToken(){
-    return localStorage.getItem('token')
-  }
-  public isLoggedIn():boolean {
-    return !!localStorage.getItem('token')
-  }
+ 
 
 }

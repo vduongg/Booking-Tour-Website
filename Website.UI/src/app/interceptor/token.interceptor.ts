@@ -7,17 +7,17 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
-import { UserService } from 'src/services/user.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/services/auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private userService:UserService, private route: Router) {}
+  constructor(private authService:AuthService, private route: Router) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if(request.url !== "https://esgoo.net/api-tinhthanh/1/0.htm") {
-       const myToken =  this.userService.getToken();
+       const myToken =  this.authService.getToken();
       if(myToken){
         request = request.clone({
           setHeaders: {Authorization: `Bearer ${myToken}`}

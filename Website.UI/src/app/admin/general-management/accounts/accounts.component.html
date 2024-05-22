@@ -6,11 +6,11 @@
         <div class="form-title">Thêm thời gian Tour</div>
         
         <div class="form-item" >
-            <div>Nhập số ngày <input [(ngModel)]="formDate.day"> </div>
-            <div>Nhập số đêm <input [(ngModel)]="formDate.night"> </div>
+            <div>Nhập số ngày <input > </div>
+            <div>Nhập số đêm <input > </div>
          
         </div>
-        <button (click)="createTourTime(formDate)">Thêm</button>
+        <button >Thêm</button>
        
     </div>
    
@@ -29,6 +29,7 @@
                 <thead>
                     <tr>
                         <th>STT</th>
+                        <th>Họ tên</th>
                         <th>Email</th>
                         <th>Loại tài khoản</th>
                         <th>Trạng thái</th>
@@ -36,17 +37,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let date of tourDate.reverse(), let i = index">
-                        <ng-container *ngIf="pageItem().includes(date.tourDateId)"  >
+                    <tr *ngFor="let user of listUser.reverse(), let i = index">
+                        <ng-container *ngIf="pageItem().includes(user.userInfoId)"  >
                             <td>{{i}}</td>
-                            <td>{{date.day}} ngày {{date.night}} đêm</td>
+                            <td>{{user.firstName}} {{user.lastName}}</td>
+                            <td>{{user.role}}</td>
                             <td>
                                 <ng-container  *ngIf="true" ><fa-icon class="fa-lg" [icon]="faOn" [style]="{color: 'blue'}"></fa-icon></ng-container>
                                 <ng-container *ngIf="false" ><fa-icon  class="fa-lg" [icon]="faOff" [style]="{color: 'red'}"></fa-icon></ng-container>
                             </td>
                             <td class="iconAction">
-                                <div (click)="statusAction(date.tourDateId)"><fa-icon [icon]="faAction"></fa-icon></div>
-                                <div *ngIf="isAction && (date.tourDateId == id)" class="action">
+                                <div (click)="statusAction(user.userInfoId)"><fa-icon [icon]="faAction"></fa-icon></div>
+                                <div *ngIf="isAction && (user.userInfoId == id)" class="action">
                                     <div>Sửa</div>
                                     <div>Xóa</div>
                                 </div> 
