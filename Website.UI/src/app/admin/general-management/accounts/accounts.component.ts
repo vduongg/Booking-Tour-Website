@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faEllipsisH, faEllipsisV, faToggleOff, faToggleOn, faXRay } from '@fortawesome/free-solid-svg-icons';
+import { RegisterForm } from 'src/app/models/RegisterForm';
 import { Tour } from 'src/app/models/Tour';
 import { TourDate } from 'src/app/models/TourDate';
 import { UserInfo } from 'src/app/models/UserInfo';
+import { AuthService } from 'src/services/auth.service';
 import { TourTimeService } from 'src/services/tour-time.service';
 import { UserService } from 'src/services/user.service';
 
@@ -13,12 +15,16 @@ import { UserService } from 'src/services/user.service';
 })
 export class AccountsComponent implements OnInit {
 
-  @Output() dateUpdate = new EventEmitter<TourDate[]>();
+  @Output() userUpdate = new EventEmitter<RegisterForm[]>();
 
+  popup_delete = false;
+  registerForm: RegisterForm = new RegisterForm();
   totalItem = 0;
   listUser: UserInfo[] = []
   faAction = faEllipsisV
   popup = false;
+  popup_edit = false;
+  popup_undo = false;
   isAction = false;
   id = 0;
   itemInPage = 10;
@@ -26,7 +32,8 @@ export class AccountsComponent implements OnInit {
   numPage = 1;
   faOn = faToggleOn
   faOff = faToggleOff
-  constructor(private userServices: UserService) {
+
+  constructor(private userServices: UserService, private authService:AuthService) {
     
    }
 
@@ -45,6 +52,37 @@ export class AccountsComponent implements OnInit {
     this.isAction = !this.isAction
     this.id = id;
   }
+  edit(){
+    this.popup_edit = !this.popup_edit
+  }
+  action(id:number, index?:string){
+    if(id== -1) {
+      if(index == "delete") {
+        this.popup_delete = !this.popup_delete
+        this.authService.editStatusUser(this.id).subscribe()
+        window.location.reload();
+        
+      }
+      if(index == "undo") {
+        this.popup_undo = !this.popup_undo
+        this.authService.editStatusUser(this.id).subscribe()
+        window.location.reload();
+      }
+     
+    }
+    else {
+      if(index == "delete") {
+        this.popup_delete = !this.popup_delete
+      }
+      if(index == "undo") {
+        this.popup_undo = !this.popup_undo
+      }
+      
+      this.id = id
+    }
+    
+  }
+  
   loadPage() {
     this.numPage = Math.ceil(this.totalItem/this.itemInPage);
     let array: number[] = [];
@@ -75,6 +113,9 @@ export class AccountsComponent implements OnInit {
   }
   pageClick(num:number) {
       this.pageNow = num;
+  }
+  createUser(form:RegisterForm){
+    this.authService.createUser(form).subscribe()
   }
  
 

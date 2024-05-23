@@ -6,4 +6,5 @@ export class UserInfo{
     emailConfirmed?:string
     status?:string
     role?:string
+    email?:string
 }

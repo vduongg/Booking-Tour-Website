@@ -35,7 +35,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let date of tourDate.reverse(), let i = index">
-                        <ng-container *ngIf="pageItem().includes(date.tourDateId)"  >
+                        <ng-container *ngIf="pageItem().includes(tourDate.length - i)"  >
                             <td>{{i + 1 }}</td>
                             <td>{{date.day}} ngày {{date.night}} đêm</td>
                             <td class="iconAction">

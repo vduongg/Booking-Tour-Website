@@ -1,12 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faEllipsisH, faEllipsisV, faXRay } from '@fortawesome/free-solid-svg-icons';
-import { ListLocation } from 'src/app/models/ListLocation';
-import { Location } from 'src/app/models/Location';
 import { Tour } from 'src/app/models/Tour';
 import { TourDate } from 'src/app/models/TourDate';
-import { LocationService } from 'src/services/location.service';
 import { TourTimeService } from 'src/services/tour-time.service';
-import { TourService } from 'src/services/tour.service';
 
 @Component({
   selector: 'app-tour-time-list',
@@ -36,7 +32,7 @@ export class TourTimeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.tourDateService.getTourDate().subscribe((result: TourDate[]) => (this.tourDate = result , this.totalItem = result.length ));
-
+    
   }
   
 

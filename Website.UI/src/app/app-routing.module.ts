@@ -11,6 +11,7 @@ import { LoginAdminComponent } from './auth/admin/login-admin/login-admin.compon
 import { AuthenGuard } from './guards/authen.guard';
 import { TourPolicyComponent } from './admin/tags/tour-policy-list/tour-policy-list.component';
 import { AccountsComponent } from './admin/general-management/accounts/accounts.component';
+import { RegisterComponent } from './auth/user/register/register.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     component:AccountsComponent,
     path: "admin/accounts"
+  },
+  {
+    component:RegisterComponent,
+    path: "register"
   }
   
 ];

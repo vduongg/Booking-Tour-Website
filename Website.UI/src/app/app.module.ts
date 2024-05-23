@@ -20,6 +20,8 @@ import { LoginAdminComponent } from './auth/admin/login-admin/login-admin.compon
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { AccountsComponent } from './admin/general-management/accounts/accounts.component';
 import { TourPolicyComponent } from './admin/tags/tour-policy-list/tour-policy-list.component';
+import { RegisterComponent } from './auth/user/register/register.component';
+import { LoginComponent } from './auth/user/login/login.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { TourPolicyComponent } from './admin/tags/tour-policy-list/tour-policy-l
     LoginAdminComponent,
     AccountsComponent,
     TourPolicyComponent,
-    AccountsComponent
+    AccountsComponent,
+    RegisterComponent,
+    LoginComponent
     
   ],
   imports: [

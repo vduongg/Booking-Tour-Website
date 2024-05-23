@@ -11,7 +11,10 @@
     top: 0;
     left: 0;
     z-index: 99;
-
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+a {
+    text-decoration: none;
 }
 .nav-left{
     width: 30%;
@@ -52,6 +55,7 @@
     box-sizing: border-box;
     font-size: 16px;
     font-weight: 500;
+   
 }
 .login {
     display: flex;

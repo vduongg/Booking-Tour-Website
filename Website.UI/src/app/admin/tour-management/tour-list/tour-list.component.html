@@ -24,7 +24,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let type of tour.reverse(), let i = index">
-                        <ng-container *ngIf="pageItem().includes(type.tourId)" >
+                        <ng-container *ngIf="pageItem().includes(tour.length - i)" >
+                       
                             <td>{{type.tourId}}</td>
                             <td><img width="200px" height="100px" [src]="listFirstImg.get(type.tourId)"></td>
                             <td>{{type.tourName}}</td>

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Website.API.Models
 {
@@ -14,5 +15,7 @@ namespace Website.API.Models
         public string? Role { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }
+        [NotMapped]
+        public string Email { get; set; }
     }
 }

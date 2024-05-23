@@ -56,7 +56,7 @@ export class TourListComponent implements OnInit {
   for (let i = startIndex; i >= endIndex; i--) {
     item.push(i);
   }
-
+ 
   return item;
 
   }
@@ -69,7 +69,6 @@ export class TourListComponent implements OnInit {
     for (let i = 1; i <= this.numPage; i++){
       array.push(i);
     }
-    
    return  array
   }
   pageClick(num:number) {

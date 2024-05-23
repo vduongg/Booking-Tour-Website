@@ -35,7 +35,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let type of tourType.reverse(), let i = index">
-                        <ng-container *ngIf="pageItem().includes(type.tourTypeId)" >
+                        <ng-container *ngIf="pageItem().includes(tourType.length - i)" >
                             <td>{{i + 1}}</td>
                             <td>{{type.name}}</td>
                             <td>{{type.description}}</td>

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -68,7 +69,19 @@ namespace Website.API.Controllers
         public async Task<ActionResult<List<UserInfo>>> getAllUserInfo()
         {
             var userInfo = await _context.UserInfo.ToListAsync();
-            return Ok(userInfo);
+            if(userInfo != null)
+            {
+                for (int i = 0; i < userInfo.Count(); i++)
+                {
+                    var email = await _context.Users.FindAsync(userInfo[i].UserId);
+                    userInfo[i].Email = email.Email;
+                }
+                return Ok(userInfo);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

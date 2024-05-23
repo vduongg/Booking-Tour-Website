@@ -1,16 +1,97 @@
+<div class="popup"  *ngIf="popup_delete">
+    <div class="form">
+        <div class="icon-close" (click)="popup_delete =!popup_delete">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </div>
+        <div class="form-title">Bạn muốn dừng hoạt động của tài khoản này?</div>
+
+        <div class="yesno">
+            <div> <button (click)="action(-1,'delete')">Có</button></div>
+           <div> <button (click)="popup_delete =!popup_delete">Không</button></div>
+           
+        </div>
+      
+       
+    </div>
+   
+</div>
+<div class="popup"  *ngIf="popup_undo">
+    <div class="form">
+        <div class="icon-close" (click)="action(-1,'undo')">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </div>
+        <div class="form-title">Bạn muốn khôi phục hoạt động của tài khoản này?</div>
+
+        <div class="yesno">
+            <div> <button (click)="action(-1,'undo')">Có</button></div>
+           <div> <button >Không</button></div>
+           
+        </div>
+      
+       
+    </div>
+   
+</div>
+
+<div class="popup"  *ngIf="popup_edit">
+    <div class="form">
+        <div class="icon-close" (click)="edit()">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </div>
+        <div class="form-title">Sửa thông tin tài khoản</div>
+        
+        <div class="form-item" >
+            <div>Email(*)<input [(ngModel)]="registerForm.email"  #email = ngModel required ></div>
+            <small class="error"  *ngIf="!email.valid">Email còn trống </small>
+            <div>Mật khẩu(*)<input  [(ngModel)]="registerForm.password"  type="password"  #pass = ngModel required > </div>
+            <small class="error"  *ngIf="!pass.valid">Mật khẩu còn trống </small>
+            <div>Họ(*)<input  [(ngModel)]="registerForm.firstName"  #firstName = ngModel required ></div>
+            <small class="error"  *ngIf="!firstName.valid">Họ còn trống </small>
+            <div>Tên(*)<input [(ngModel)]="registerForm.lastName"#lastName = ngModel required  ></div>
+            <small class="error"  *ngIf="!lastName.valid">Tên còn trống </small>
+            <div>Số điện thoại<input  [(ngModel)]="registerForm.phoneNumber" ></div>
+            <div>Loại tài khoản<select  [(ngModel)]="registerForm.role" >
+                <option>Admin</option>
+                <option>User</option>
+                <option>Tour Manager</option>
+                <option>Post Manager</option>
+            </select></div>
+
+         
+        </div>
+        <button (click)="edit()">Thêm</button>
+       
+    </div>
+   
+</div>
+
 <div class="popup"  *ngIf="popup">
     <div class="form">
         <div class="icon-close" (click)="statusPopup()">
             <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
         </div>
-        <div class="form-title">Thêm thời gian Tour</div>
+        <div class="form-title">Thêm tài khoản</div>
         
         <div class="form-item" >
-            <div>Nhập số ngày <input > </div>
-            <div>Nhập số đêm <input > </div>
+            <div>Email(*)<input [(ngModel)]="registerForm.email"  #email = ngModel required ></div>
+            <small class="error"  *ngIf="!email.valid">Email còn trống </small>
+            <div>Mật khẩu(*)<input  [(ngModel)]="registerForm.password"  type="password"  #pass = ngModel required > </div>
+            <small class="error"  *ngIf="!pass.valid">Mật khẩu còn trống </small>
+            <div>Họ(*)<input  [(ngModel)]="registerForm.firstName"  #firstName = ngModel required ></div>
+            <small class="error"  *ngIf="!firstName.valid">Họ còn trống </small>
+            <div>Tên(*)<input [(ngModel)]="registerForm.lastName"#lastName = ngModel required  ></div>
+            <small class="error"  *ngIf="!lastName.valid">Tên còn trống </small>
+            <div>Số điện thoại<input  [(ngModel)]="registerForm.phoneNumber" ></div>
+            <div>Loại tài khoản<select  [(ngModel)]="registerForm.role" >
+                <option>Admin</option>
+                <option>User</option>
+                <option>Tour Manager</option>
+                <option>Post Manager</option>
+            </select></div>
+
          
         </div>
-        <button >Thêm</button>
+        <button (click)="createUser(registerForm)" >Thêm</button>
        
     </div>
    
@@ -22,8 +103,8 @@
         <app-management-navbar></app-management-navbar>
         <div class="accounts-list">
             <div class="accounts-list-header">
-                <div class="title">Thời gian Tour</div>
-                <button (click)="statusPopup()">Thêm thời gian Tour</button>
+                <div class="title">Danh sách tài khoản</div>
+                <button (click)="statusPopup()">Thêm tài khoản</button>
             </div>
             <table>
                 <thead>
@@ -39,18 +120,19 @@
                 <tbody>
                     <tr *ngFor="let user of listUser.reverse(), let i = index">
                         <ng-container *ngIf="pageItem().includes(user.userInfoId)"  >
-                            <td>{{i}}</td>
+                            <td>{{i+1}}</td>
                             <td>{{user.firstName}} {{user.lastName}}</td>
+                            <td>{{user.email}}</td>
                             <td>{{user.role}}</td>
                             <td>
-                                <ng-container  *ngIf="true" ><fa-icon class="fa-lg" [icon]="faOn" [style]="{color: 'blue'}"></fa-icon></ng-container>
-                                <ng-container *ngIf="false" ><fa-icon  class="fa-lg" [icon]="faOff" [style]="{color: 'red'}"></fa-icon></ng-container>
+                                <ng-container *ngIf="user.status=='on'" ><div (click)="action(user.userInfoId,'delete')"><fa-icon  class="fa-lg" [icon]="faOn" [style]="{color: 'blue'}"></fa-icon></div></ng-container>
+                                <ng-container *ngIf="user.status=='off' "><div (click)="action(user.userInfoId,'undo')"><fa-icon   class="fa-lg" [icon]="faOff" [style]="{color: 'red'}"></fa-icon></div></ng-container>
                             </td>
                             <td class="iconAction">
                                 <div (click)="statusAction(user.userInfoId)"><fa-icon [icon]="faAction"></fa-icon></div>
-                                <div *ngIf="isAction && (user.userInfoId == id)" class="action">
-                                    <div>Sửa</div>
-                                    <div>Xóa</div>
+                                <div *ngIf="isAction && (user.userInfoId == id)"  class="action">
+                                    <div (click)="edit()">Sửa</div>
+                                    
                                 </div> 
                             </td>
                         </ng-container>
