@@ -139,8 +139,8 @@ namespace Website.API.Migrations
                     b.Property<string>("TourPlace")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TourPrice")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("TourPrice")
+                        .HasColumnType("int");
 
                     b.Property<string>("TourStatus")
                         .HasColumnType("nvarchar(max)");

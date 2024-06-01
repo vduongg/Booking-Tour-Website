@@ -86,7 +86,7 @@ export class AddTourComponent implements OnInit {
   }
   onKeyPress( event: KeyboardEvent) {
     const inputChar = event.key;
-    if (!(inputChar >= 'a' && inputChar <= 'z') && isNaN(Number(inputChar)) && inputChar !=="@") {
+    if (!(inputChar >= 'a' && inputChar <= 'z') && (!(inputChar >= 'A' && inputChar <= 'Z')) && isNaN(Number(inputChar)) && inputChar !=="@") {
       event.preventDefault(); 
     }
   }

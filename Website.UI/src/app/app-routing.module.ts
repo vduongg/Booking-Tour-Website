@@ -12,6 +12,9 @@ import { AuthenGuard } from './guards/authen.guard';
 import { TourPolicyComponent } from './admin/tags/tour-policy-list/tour-policy-list.component';
 import { AccountsComponent } from './admin/general-management/accounts/accounts.component';
 import { RegisterComponent } from './auth/user/register/register.component';
+import { LoginComponent } from './auth/user/login/login.component';
+import { TourListUserComponent } from './user/tour/tour-list-user/tour-list-user.component';
+
 
 const routes: Routes = [
   {
@@ -58,6 +61,15 @@ const routes: Routes = [
   {
     component:RegisterComponent,
     path: "register"
+  },
+  {
+    component:LoginComponent,
+    path: "login"
+  },
+  {
+    component:TourListUserComponent,
+    path: "tour"
+  
   }
   
 ];

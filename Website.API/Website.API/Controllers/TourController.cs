@@ -46,7 +46,8 @@ namespace Website.API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<Tour>> editTour(int id, Tour tour)
         {
-               var tourItem = _context.Tours.Find(id);
+            
+            var tourItem = _context.Tours.Find(id);
             tourItem.TourId = tour.TourId;
             tourItem.UserId = tour.UserId;
             tourItem.TourPrice = tour.TourPrice;

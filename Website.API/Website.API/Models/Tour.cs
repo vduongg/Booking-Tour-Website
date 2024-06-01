@@ -15,7 +15,7 @@ namespace Website.API.Models
         public TourDate? TourDate { get; set; } = null;
         public int? TourDateId { get; set; }
         public DateTime? DepartureDate { get; set; }
-        public string? TourPrice { get; set; }
+        public int? TourPrice { get; set; }
         public string? TourDescription { get; set; }
 
         public Policy? Policy { get; set; } = null;

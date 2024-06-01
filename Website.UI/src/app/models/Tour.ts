@@ -7,7 +7,7 @@ export class Tour {
     tourDate=  null;
     tourDateId?:number;
     departureDate  = "";
-    tourPrice = "" ;
+    tourPrice = 0 ;
     tourDescription = "";
     policy = null;
     policyId?:number;

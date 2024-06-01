@@ -22,6 +22,9 @@ import { AccountsComponent } from './admin/general-management/accounts/accounts.
 import { TourPolicyComponent } from './admin/tags/tour-policy-list/tour-policy-list.component';
 import { RegisterComponent } from './auth/user/register/register.component';
 import { LoginComponent } from './auth/user/login/login.component';
+import { TourDetailsComponent } from './user/tour/tour-details/tour-details.component';
+import { TourFilterComponent } from './user/tour/tour-filter/tour-filter.component';
+import { TourListUserComponent } from './user/tour/tour-list-user/tour-list-user.component';
 
 
 @NgModule({
@@ -42,7 +45,10 @@ import { LoginComponent } from './auth/user/login/login.component';
     TourPolicyComponent,
     AccountsComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    TourDetailsComponent,
+    TourFilterComponent,
+    TourListUserComponent
     
   ],
   imports: [

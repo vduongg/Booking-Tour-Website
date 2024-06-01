@@ -1,0 +1,47 @@
+.wrapper {
+    margin-left: 50px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.tour{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+.tourInfo{
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.tour:hover{
+    background-color: #EEEEEE;
+}
+.sort {
+   width: 100%;
+   display: flex;
+   justify-content: flex-end
+   
+   ;
+}
+.sort select {
+    margin-top: 36px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.more {
+    width: 100%;
+    height: 50px;
+    background-color: #DD5746;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+}
+.more:hover{
+    cursor: pointer;
+    background-color: #8B322C;
+}

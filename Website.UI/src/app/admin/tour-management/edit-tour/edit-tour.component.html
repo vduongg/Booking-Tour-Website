@@ -35,7 +35,7 @@
                     </div>
                     
                     <div >Giá Tour(*)
-                        <input [(ngModel)]="formTour.tourPrice" #tourPrice = ngModel required>
+                        <input [(ngModel)]="formTour.tourPrice" type="number" #tourPrice = ngModel required>
                         <small  class="error" *ngIf="!tourPrice.valid">Giá Tour còn trống </small>
                     </div>
                     <div>Chính sách(*)

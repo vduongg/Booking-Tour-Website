@@ -2,13 +2,15 @@
     margin-top: 100px;
     margin-left: 200px;
     margin-right: 200px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .register-form{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-items: center;
     align-items: center;
     padding-top: 50px;
+    justify-content: center;
 }
 .register{
     display: flex;
@@ -19,6 +21,8 @@
     box-sizing: border-box;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 300px;
+    height: 500px;
 }
 .register div{
     width: 100%;
@@ -27,4 +31,38 @@
     width: 100%;
     box-sizing: border-box;
     height: 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid;
+    outline: none;
+}
+
+.register input:focus {
+    border-bottom:1px solid #DD5746;
+    transition: ease 0.5s;
+}
+
+.register-title {
+    padding-bottom: 50px;
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #DD5746;
+    font-weight: 600;
+    font-size: 20px;
+}
+.register button {
+    margin-top: 20px;
+    width: 100%;
+    height: 30px;
+    background-color: #DD5746;
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+.register button:hover{
+    cursor: pointer;
+    background-color: #8B322C;
 }
