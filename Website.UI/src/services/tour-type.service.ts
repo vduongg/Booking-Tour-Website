@@ -16,6 +16,11 @@ export class TourTypeService {
       return this.http.get<TourType[]>(`${environment.apiUrl}/${this.url}`)
    
    }
+   public getTourTypeDetail(id:any):Observable<any> {
+
+    return this.http.get<any>(`${environment.apiUrl}/${this.url}/${id}`)
+ 
+ }
   public createTourType(tourType : TourType) :Observable<TourType[]> {
     return this.http.post<TourType[]>(`${environment.apiUrl}/${this.url}`,tourType)
    }

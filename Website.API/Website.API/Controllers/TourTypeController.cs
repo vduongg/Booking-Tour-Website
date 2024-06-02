@@ -29,5 +29,12 @@ namespace Website.API.Controllers
 
             return Ok(await _context.TourType.ToListAsync());
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<List<TourType>>> getTourType(int id)
+        {
+
+            return Ok(await _context.TourType.FindAsync(id));
+        }
+
     }
 }

@@ -19,7 +19,7 @@ namespace Website.API.Controllers
         public async Task<ActionResult<TourDate>> addTourDate(TourDate date)
         {
 
-             _context.TourDate.AddAsync(date);
+            _context.TourDate.AddAsync(date);
             await _context.SaveChangesAsync();
             return Ok(date);
 
@@ -29,6 +29,12 @@ namespace Website.API.Controllers
         {
 
             return Ok(await _context.TourDate.ToListAsync());
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<List<TourDate>>> getTourDate(int id)
+        {
+
+            return Ok(await _context.TourDate.FindAsync(id));
         }
     }
 }

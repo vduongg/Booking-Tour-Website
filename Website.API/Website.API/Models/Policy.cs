@@ -9,6 +9,6 @@ namespace Website.API.Models
 
         public string PolicyName { get; set; }
         public string PolicyDescription { get; set; }
-
+    
     }
 }

@@ -29,5 +29,11 @@ namespace Website.API.Controllers
 
             return Ok(await _context.Policy.ToListAsync());
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Policy>> getTourPolicy(int id)
+        {
+
+            return Ok(await _context.Policy.FindAsync(id));
+        }
     }
 }

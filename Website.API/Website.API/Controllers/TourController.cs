@@ -28,7 +28,7 @@ namespace Website.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<TourDate>>> getTour()
         {
-
+            
             return Ok(await _context.Tours.ToListAsync());
         }
         [HttpGet("{id}")]

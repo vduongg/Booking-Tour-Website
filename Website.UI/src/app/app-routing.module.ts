@@ -14,6 +14,8 @@ import { AccountsComponent } from './admin/general-management/accounts/accounts.
 import { RegisterComponent } from './auth/user/register/register.component';
 import { LoginComponent } from './auth/user/login/login.component';
 import { TourListUserComponent } from './user/tour/tour-list-user/tour-list-user.component';
+import { TourDetailsComponent } from './user/tour/tour-details/tour-details.component';
+import { PaymentsComponent } from './user/payment/payments/payments.component';
 
 
 const routes: Routes = [
@@ -69,7 +71,14 @@ const routes: Routes = [
   {
     component:TourListUserComponent,
     path: "tour"
-  
+  },
+  {
+    component:TourDetailsComponent,
+    path:  "tour/:id"
+  },
+  {
+    component:PaymentsComponent,
+    path: "payments"
   }
   
 ];

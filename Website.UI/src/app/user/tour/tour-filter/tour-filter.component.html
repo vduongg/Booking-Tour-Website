@@ -8,7 +8,7 @@
     </div>
    
     <div>
-        <div class="tour"   *ngFor="let tour of tourList, let i = index">
+        <div class="tour" routerLink="/tour/{{tour.tourId}}"  *ngFor="let tour of tourList, let i = index">
            <ng-container *ngIf="pageItem().includes(i)">
                 <div class="tourImg">
                     <img width="250px" height="150px" [src]="listFirstImg.get(tour.tourId)">

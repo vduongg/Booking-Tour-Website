@@ -25,6 +25,7 @@ import { LoginComponent } from './auth/user/login/login.component';
 import { TourDetailsComponent } from './user/tour/tour-details/tour-details.component';
 import { TourFilterComponent } from './user/tour/tour-filter/tour-filter.component';
 import { TourListUserComponent } from './user/tour/tour-list-user/tour-list-user.component';
+import { PaymentsComponent } from './user/payment/payments/payments.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { TourListUserComponent } from './user/tour/tour-list-user/tour-list-user
     LoginComponent,
     TourDetailsComponent,
     TourFilterComponent,
-    TourListUserComponent
+    TourListUserComponent,
+    PaymentsComponent
     
   ],
   imports: [
