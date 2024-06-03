@@ -13,6 +13,7 @@ namespace Website.API.Models
         public string? Token { get; set; }
         public List<Tour>? Tour { get; set; }
         public List<FeedBack>? FeedBack { get; set; }
+        public List<Order>? Order { get; set; }
 
     }
 }

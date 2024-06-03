@@ -1,25 +1,38 @@
 <app-site-navbar></app-site-navbar>
 <div class="wrapper">
    <div class="step-1">
+    <div class="payment">
+        <div class="payment-header" >Điền thông tin liên hệ</div>
         <div class="payment-info">
-            Điền thông tin liên hệ
             <div>Họ và tên*
-                <input> 
+                <input [(ngModel)]="fullname"> 
             </div>
             <div>Email*
-                <input> 
+                <input [(ngModel)]="email"> 
             </div>
             <div>Số điện thoại*
-                <input> 
+                <input [(ngModel)]="phoneNum" > 
+            </div>
+            <div>Yêu cầu đặc biệt
+                <input [(ngModel)]="note"> 
+            </div>
+            <button (click)="createOrder()" >Tiếp tục</button>
+        </div>
+    </div>
+        <div class="tour">
+            <div class="tour-header" > Thông tin đặt Tour</div> 
+            <div class="tour-info">
+                <div class="tour-name">{{tourName}}</div>
+                <div class="tour-item">
+                    <div>Ngày khởi hành: {{departureDate}}</div>
+                    <div>Số khách: {{num}}</div>
+                    <div>Giá tiền: {{tourPrice}}</div>
+                </div>
+                <div>Tổng tiền: {{tourPrice * num}}</div>
+               
             </div>
         </div>
-        <div class="tour-info">
-            Thông tin đặt Tour
-            <div>{{tourName}}</div>
-            <div>Ngày khởi hành: {{departureDate}}</div>
-            <div>Số khách: {{num}}</div>
-            <div>Giá tiền: {{tourPrice}}</div>
-        </div>
+      
    </div>
 </div>
 

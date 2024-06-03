@@ -89,6 +89,63 @@ namespace Website.API.Migrations
                     b.ToTable("Images");
                 });
 
+            modelBuilder.Entity("Website.API.Models.Order", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DepartureDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OrderDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Refund")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalPeople")
+                        .HasColumnType("int");
+
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float");
+
+                    b.Property<int>("TourId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TransactionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Order");
+                });
+
             modelBuilder.Entity("Website.API.Models.Policy", b =>
                 {
                     b.Property<int>("PolicyId")
@@ -323,6 +380,17 @@ namespace Website.API.Migrations
                     b.Navigation("Tour");
                 });
 
+            modelBuilder.Entity("Website.API.Models.Order", b =>
+                {
+                    b.HasOne("Website.API.Models.User", "User")
+                        .WithMany("Order")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Website.API.Models.Tour", b =>
                 {
                     b.HasOne("Website.API.Models.Policy", "Policy")
@@ -392,6 +460,8 @@ namespace Website.API.Migrations
             modelBuilder.Entity("Website.API.Models.User", b =>
                 {
                     b.Navigation("FeedBack");
+
+                    b.Navigation("Order");
 
                     b.Navigation("Tour");
                 });

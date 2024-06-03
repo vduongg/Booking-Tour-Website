@@ -16,5 +16,6 @@ namespace Website.API.Data
         public DbSet<TourType> TourType { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<UserInfo> UserInfo { get; set; }
+        public DbSet<Order> Order { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Website.API.Data;
+using Website.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,7 @@ builder.Services.AddCors( options => options.AddPolicy(name: "BookingTour", poli
     policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
 
 }));
+builder.Services.AddSingleton<IVnPayService, VnPayService>();
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -65,7 +65,8 @@ export class TourDetailsComponent implements OnInit {
       tourName: this.tourDetails.tourName,
       departureDate: this.departureDate,
       price: this.tourDetails.tourPrice,
-      num: this.num
+      num: this.num,
+      tourId: this.tourDetails.tourId,
     }})
   }
 
