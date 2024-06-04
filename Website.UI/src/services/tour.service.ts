@@ -28,4 +28,7 @@ export class TourService {
    public updateTour(id?:number, tour?: Tour):Observable<Tour[]>{
     return this.http.put<Tour[]>(`${environment.apiUrl}/${this.url}/${id}`,tour)
    }
+   public updateStatusTour(id:number){
+    return this.http.put(`${environment.apiUrl}/${this.url}/Status/${id}`,id  )
+   }
 }

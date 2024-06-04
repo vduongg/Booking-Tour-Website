@@ -53,10 +53,9 @@ namespace Website.API.Controllers
                 order.Status = "Thanh toán thất bại";
                  _context.Update(order);
                 await _context.SaveChangesAsync();
-                return Ok(new
-                {
-                    Message =  "Thanh toán thất bại!"
-                });
+                //Payment?vnp_Amount=15000000&vnp_BankCode=VNPAY&vnp_CardType=QRCODE&vnp_OrderInfo=74185516&vnp_PayDate=20240604161846&vnp_ResponseCode=24
+                return Content($"<script>window.open('http://localhost:4200/payments/callback/?vnp_ResponseCode={response.VnPayResponseCode}', " +
+                    $"'_blank');</script>", "text/html");
             }
             else
             {
@@ -65,10 +64,8 @@ namespace Website.API.Controllers
                 order.Status = "Đã thanh toán";
                 _context.Update(order);
                 await _context.SaveChangesAsync();
-                return Ok(new
-                {
-                    Message = "Thanh toán thành công!"
-                });
+                return Content($"<script>window.open('http://localhost:4200/payments/callback/?vnp_OrderInfo={response.OrderId}&vnp_ResponseCode={response.VnPayResponseCode}&vnp_BankCode=VNPAY&vnp_Amount={order.TotalPrice}&people={order.TotalPeople}&vnp_PayDate={order.CreatedDate}&tourId={order.TourId}', " +
+                   $"'_blank');</script>", "text/html");
             }
         }
     }

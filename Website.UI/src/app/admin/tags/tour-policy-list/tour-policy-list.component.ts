@@ -17,12 +17,13 @@ export class TourPolicyComponent implements OnInit {
   isAction = false;
   tourPolicy : TourPolicy[] = []
   formPolicy : TourPolicy = new TourPolicy();
+  formUpdatePolicy : TourPolicy = new TourPolicy();
   id = 0;
   itemInPage = 10;
   pageNow = 1;
   numPage = 1;
   totalItem = 0;
- 
+  popupEdit = false;
   faAction = faEllipsisV
 
   @Output()  tourPolicyUpdate = new EventEmitter<TourPolicy[]>();
@@ -75,5 +76,15 @@ export class TourPolicyComponent implements OnInit {
   }
   pageClick(num:number) {
       this.pageNow = num;
+  }
+  edit(policy?:TourPolicy) {
+    this.popupEdit = !this.popupEdit
+    if(policy != null){
+      this.formUpdatePolicy = policy;
+    }
+  }
+  updateTourPolicy(policy:TourPolicy) {
+    this.tourPolicyService.updateTourPolicy(policy).subscribe(() =>  window.location.reload());
+   
   }
 }

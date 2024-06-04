@@ -11,5 +11,22 @@ export class ManagementHomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  listitem = [
+  {
+    name: "Tổng số Tour",
+    content: 16,
+  },
+  {
+    name: "Tổng số đặt Tour",
+    content: 16,
+  },
+  {
+    name: "Tổng số đặt Tour",
+    content: 16,
+  },
+  {
+    name: "Tổng số đặt Tour",
+    content: 16,
+  }
+  ]
 }

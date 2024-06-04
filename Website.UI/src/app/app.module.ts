@@ -26,6 +26,9 @@ import { TourDetailsComponent } from './user/tour/tour-details/tour-details.comp
 import { TourFilterComponent } from './user/tour/tour-filter/tour-filter.component';
 import { TourListUserComponent } from './user/tour/tour-list-user/tour-list-user.component';
 import { PaymentsComponent } from './user/payment/payments/payments.component';
+import { CallbackComponent } from './user/payment/callback/callback.component';
+import { TourOrderComponent } from './admin/tour-management/tour-order/tour-order.component';
+import { TourOrderDetailsComponent } from './admin/tour-management/tour-order-details/tour-order-details.component';
 
 
 @NgModule({
@@ -50,7 +53,10 @@ import { PaymentsComponent } from './user/payment/payments/payments.component';
     TourDetailsComponent,
     TourFilterComponent,
     TourListUserComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    CallbackComponent,
+    TourOrderComponent,
+    TourOrderDetailsComponent
     
   ],
   imports: [

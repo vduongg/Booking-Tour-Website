@@ -35,6 +35,19 @@ namespace Website.API.Controllers
 
             return Ok(await _context.TourType.FindAsync(id));
         }
+        [HttpPut]
+        public async Task<ActionResult<TourType>> updateTourType( TourType tourType)
+        {
+            var type = await _context.TourType.FindAsync(tourType.TourTypeId);
+            if (type != null) {
+                type.Name = tourType.Name;
+                type.Description = tourType.Description;
+                _context.Update(type);
+                await _context.SaveChangesAsync();
+                return Ok(new { message = "Sửa loại tour thành công!" });
+            }
+            return BadRequest();
+        }
 
     }
 }

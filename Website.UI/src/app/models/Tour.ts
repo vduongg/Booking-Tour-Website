@@ -14,7 +14,7 @@ export class Tour {
     user =null;
     userId = 1;
     createDate = "";
-    tourStatus = "running";
+    tourStatus = "on";
     image = null;
     wishList = null;
     feedBacks = null;

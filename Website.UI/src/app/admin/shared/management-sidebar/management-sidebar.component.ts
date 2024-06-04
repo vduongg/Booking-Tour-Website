@@ -68,7 +68,12 @@ export class ManagementSidebarComponent implements OnInit {
         {
         label: "Thêm Tour mới",
         route: "/admin/tour/add",
-      }]
+      },
+      {
+        label: "Danh sách đơn",
+        route: "/admin/tour/order",
+      }
+    ]
     }
     ,
    

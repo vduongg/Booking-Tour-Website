@@ -3,9 +3,12 @@
     <div class="wrap-management">
         <app-management-navbar></app-management-navbar>
         <div class="main-content">
-            <div class="search">
-                <div>Hello, Admin</div>
-                <input type="search">
+            <div class ="top-content">
+                <div class="top-item" *ngFor="let item of listitem">
+                    <div>{{item.name}}</div>
+                    <div>{{item.content}}</div>
+                </div>
+              
             </div>
         </div>
         <div class="bottom-content"></div>

@@ -16,6 +16,8 @@ import { LoginComponent } from './auth/user/login/login.component';
 import { TourListUserComponent } from './user/tour/tour-list-user/tour-list-user.component';
 import { TourDetailsComponent } from './user/tour/tour-details/tour-details.component';
 import { PaymentsComponent } from './user/payment/payments/payments.component';
+import { CallbackComponent } from './user/payment/callback/callback.component';
+import { TourOrderComponent } from './admin/tour-management/tour-order/tour-order.component';
 
 
 const routes: Routes = [
@@ -79,6 +81,14 @@ const routes: Routes = [
   {
     component:PaymentsComponent,
     path: "payments"
+  },
+  {
+    component:CallbackComponent,
+    path: "payments/callback"
+  },
+  {
+    component:TourOrderComponent,
+    path: "admin/tour/order"
   }
   
 ];

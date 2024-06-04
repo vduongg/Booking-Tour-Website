@@ -9,10 +9,12 @@ import { TourTypeService } from 'src/services/tour-type.service';
   styleUrls: ['./tour-type.component.css']
 })
 export class TourTypeComponent implements OnInit {
+  popupEdit = false;
   popup = false;
   isAction = false;
   tourType : TourType[] = []
   formTourType : TourType = new TourType();
+  formUpdateTourType : TourType = new TourType();
   id = 0;
   itemInPage = 10;
   pageNow = 1;
@@ -37,8 +39,8 @@ export class TourTypeComponent implements OnInit {
     this.id = id
   }
   createTourTime(type: TourType){
-    this.tourTypeService.createTourType(type).subscribe( (type: TourType[]) => this.tourTypeUpdate.emit(type));
-    window.location.reload();
+    this.tourTypeService.createTourType(type).subscribe( (type: TourType[]) => (this.tourTypeUpdate.emit(type),    window.location.reload()));
+
 
   }
   pageItem() {
@@ -68,5 +70,14 @@ export class TourTypeComponent implements OnInit {
     }
     
    return  array
+  }
+  updateTourTime(type:TourType){
+    this.tourTypeService.updateTourType(type).subscribe(() =>  window.location.reload());
+  }
+  edit(type?:TourType){
+    this.popupEdit = !this.popupEdit
+    if(type != null) {
+      this.formUpdateTourType = type
+    }
   }
 }

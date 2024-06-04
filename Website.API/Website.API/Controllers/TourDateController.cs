@@ -36,5 +36,20 @@ namespace Website.API.Controllers
 
             return Ok(await _context.TourDate.FindAsync(id));
         }
+        [HttpPut]
+        public async Task<ActionResult<TourDate>> updateTourDate(TourDate tourdate)
+        {
+            var date = await _context.TourDate.FindAsync(tourdate.TourDateId);
+            if(date != null)
+            {
+                date.tours = null;
+                date.Day = tourdate.Day;
+                date.Night = tourdate.Night;
+                _context.Update(date);
+                await _context.SaveChangesAsync();
+                return Ok(new { message = "Sửa ngày thành công!" });
+            }
+            return BadRequest();
+        }
     }
 }

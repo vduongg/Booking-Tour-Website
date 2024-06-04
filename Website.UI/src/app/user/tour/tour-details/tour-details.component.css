@@ -102,3 +102,6 @@ img {
 .tourDescContent, .tourPolicyContent{
     padding-left: 50px;
 }
+.error {
+    color:red;
+}

@@ -21,7 +21,7 @@ namespace Website.API.Services
             vnpay.AddRequestData("vnp_IpAddr", Utils.GetIpAddress(context));
             vnpay.AddRequestData("vnp_Locale", _config["VnPay:Locale"]);
 
-            vnpay.AddRequestData("vnp_OrderInfo", "Thanh toan don hang:" + model.OrderId);
+            vnpay.AddRequestData("vnp_OrderInfo", model.OrderId.ToString());
             vnpay.AddRequestData("vnp_OrderType","other "); 
             vnpay.AddRequestData("vnp_ReturnUrl", _config["VnPay:ReturnUrl"]);
             vnpay.AddRequestData("vnp_TxnRef",model.OrderId.ToString());

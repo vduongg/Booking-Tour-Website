@@ -35,5 +35,21 @@ namespace Website.API.Controllers
 
             return Ok(await _context.Policy.FindAsync(id));
         }
+        [HttpPut]
+        public async Task<ActionResult<Policy>> updatePolicy(Policy form) 
+        {
+            var policy = await _context.Policy.FindAsync(form.PolicyId);
+            if (policy != null) { 
+                policy.PolicyName = form.PolicyName;
+                policy.PolicyDescription = form.PolicyDescription;
+                _context.Update(policy);
+                await _context.SaveChangesAsync();
+                return(Ok( new
+                {
+                    message= "Sửa chính sách thành công!"
+                } ));
+            }
+            return BadRequest();
+        }
     }
 }

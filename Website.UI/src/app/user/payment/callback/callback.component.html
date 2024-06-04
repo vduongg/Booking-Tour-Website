@@ -1,0 +1,53 @@
+<app-site-navbar></app-site-navbar>
+<div class="wrapper">
+    <div class="success" *ngIf="isSuccess">
+        <div class="success-item">
+            <div class="icon">
+                <fa-icon [icon]="faCheck"></fa-icon>
+            </div>
+            <div>
+                <div class="header">Thanh toán thành công </div>
+                <div class="item">
+                    <div>Đơn hàng: </div>
+                    <div>{{orderId}}</div>
+                </div>
+                <div>
+                    <img width="300px" height="200px" [src]="tourImageList[0]">
+                </div>
+                <div class="item">
+                    <div>Tên Tour: </div>
+                    <div>{{tourDetails.tourName}}</div>
+                </div>
+                <div class="item">
+                    <div>Loại hình thanh toán: </div>
+                    <div>{{bankcode}}</div>
+                </div>
+                <div class="item">
+                    <div>Ngày thanh toán: </div>
+                    <div>{{orderDate}}</div>
+                </div>
+                <div class="item">
+                    <div>Số người: </div>
+                    <div>{{totalPeople}}</div>
+                </div>
+                <div class="item">
+                    <div>Số tiền thanh toán: </div>
+                    <div>{{amount}}</div>
+                </div>
+                <a class="back" routerLink="/">Quay trở lại</a>
+            </div>
+        </div>
+    </div>
+    <div class="error" *ngIf="isError">
+        <div class="error-item">
+            <div class="icon-error">
+                <fa-icon [icon]="faCheck"></fa-icon>
+            </div>
+            <div class="header">Thanh toán thất bại!</div>
+            <div>Vui lòng thanh toán lại.</div>
+            <a class="back" routerLink="/">Quay trở lại</a>
+        </div>
+       
+    </div>
+</div>
+

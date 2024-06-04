@@ -1,0 +1,57 @@
+<div class = "wrapper">
+    <app-management-sidebar></app-management-sidebar>
+    <div class="wrap-management">
+        <app-management-navbar></app-management-navbar>
+        <div class="list-tour-type">
+            <div class="list-tour-header">
+                <div class="title">Danh đặt Tour</div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tour ID</th>
+                        <th>Order ID</th>
+                        <th>User ID</th>
+                        <th>Số người</th>
+                        <th>Tổng tiền</th>
+                        <th>Hoàn tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày thanh toán</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr (click) = "orderStatus(order)" *ngFor="let order of listOrder.reverse(), let i = index">
+                        <ng-container *ngIf="pageItem().includes(listOrder.length - i )"  >
+                            <td>{{i+1}}</td>
+                            <td>{{order.tourId}}</td>
+                            <td>{{order.orderId}}</td>
+                            <td>{{order.userId}}</td>
+                            <td>{{order.totalPeople}}</td>
+                            <td>{{order.totalPrice}}</td>
+                            <td>{{order.refund}}</td>
+                            <td>{{order.status}}</td>
+                            <td>{{order.createdDate}}</td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+                <div class="page">
+                        <ng-container *ngFor="let page of loadPage()">
+                            <div (click)="pageClick(page)">
+                                {{page}}
+                            </div>
+                        </ng-container>
+                 </div>
+        </div>
+    </div>
+    <div class="details" *ngIf="isDetails">
+        <div class="icon-close" (click)="orderStatus()">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </div>
+        <app-tour-order-details [orderDetails]="orderDetails" ></app-tour-order-details>
+    </div>
+</div>
+
+
+

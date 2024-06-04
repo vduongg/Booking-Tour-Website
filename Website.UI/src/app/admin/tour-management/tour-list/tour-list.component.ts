@@ -11,9 +11,11 @@ import { TourService } from 'src/services/tour.service';
 })
 export class TourListComponent implements OnInit {
 
+  popup_delete = false;
+  popup_undo = false;
   popup = false;
   isAction = false;
-  tour : Tour[] = []
+  listTour : Tour[] = []
   formTour : Tour = new Tour();
   id = 0;
   itemInPage = 10;
@@ -30,7 +32,7 @@ export class TourListComponent implements OnInit {
   constructor(private tourService: TourService, private imageService: ImageService ) { }
 
   ngOnInit(): void {
-    this.tourService.getTour().subscribe((result: Tour[]) => (this.tour = result , this.totalItem = result.length));
+    this.tourService.getTour().subscribe((result: Tour[]) => (this.listTour = result , this.totalItem = result.length));
     this.imageService.getFirstTourImage().subscribe((result: any) => {
       for(let i = 0 ; i < result.length ; i++) {
           this.listFirstImg.set(result[i].tourId, result[i].url)
@@ -74,5 +76,35 @@ export class TourListComponent implements OnInit {
   pageClick(num:number) {
       this.pageNow = num;
   }
+  action(id:number, index?:string){
+    if(id== -1) {
+      if(index == "delete") {
+        this.popup_delete = !this.popup_delete
+        console.log(this.id)
+        this.tourService.updateStatusTour(this.id).subscribe( () => window.location.reload())
+        
+      }
+      if(index == "undo") {
+        this.popup_undo = !this.popup_undo
+     
+        this.tourService.updateStatusTour(this.id).subscribe( () => window.location.reload())
+      }
+     
+    }
+    else {
+      if(index == "delete") {
+        this.popup_delete = !this.popup_delete
+      }
+      if(index == "undo") {
+        this.popup_undo = !this.popup_undo
+      }
+      
+      this.id = id
+    }
+    
+  }
+  
+ 
+  
   
 }

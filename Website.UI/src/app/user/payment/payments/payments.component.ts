@@ -20,9 +20,11 @@ export class PaymentsComponent implements OnInit {
   departureDate:Date = new Date();
   num : number = 0;
   tourId: number = 0;
+
   constructor(private route:ActivatedRoute, private paymentService: PaymentsService) { }
 
   ngOnInit(): void {
+   
     this.route.queryParams.subscribe( params =>{
       this.tourName = params["tourName"],
       this.departureDate = params["departureDate"]

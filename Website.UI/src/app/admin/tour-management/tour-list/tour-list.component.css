@@ -140,3 +140,12 @@ tbody tr:last-of-type{
     background-color: #dddddd;
     cursor: pointer;
 }
+.error{
+    color: red;
+}
+.yesno{
+    display:  flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-around;
+}

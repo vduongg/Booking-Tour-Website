@@ -30,7 +30,12 @@ export class TourDetailsComponent implements OnInit {
   policy:TourPolicy = new TourPolicy();
   date:TourDate = new TourDate();
   type:TourType = new TourType();
+  dateNow: Date = new Date();
+  currentDate?: string;
+  isdepartdate = false;
+  isNum = false;
   ngOnInit(): void {
+    this.currentDate = `${this.dateNow.getFullYear()}-${ (this.dateNow.getMonth()+1) <10? "0"+ (this.dateNow.getMonth()+1)  : (this.dateNow.getMonth() + 1)}-${this.dateNow.getDate() < 10? "0"+ this.dateNow.getDate():this.dateNow.getDate()}`;
     this.routeService.params.subscribe(params => {
       this.tourService.getTourDetails(params['id']).subscribe( (result:Tour) =>{
             this.tourDetails = result;
@@ -61,13 +66,28 @@ export class TourDetailsComponent implements OnInit {
   
   }
   payment() {
-    this.route.navigate(['/payments'],{ queryParams:{
-      tourName: this.tourDetails.tourName,
-      departureDate: this.departureDate,
-      price: this.tourDetails.tourPrice,
-      num: this.num,
-      tourId: this.tourDetails.tourId,
-    }})
+    if(this.departureDate == null) {
+      this.isdepartdate = true;
+    }
+    else {
+      this.isdepartdate = false;
+    }
+    if(this.num == null) {
+      this.isNum = true
+    }
+    else {
+      this.isNum = false;
+    }
+    if( this.departureDate != null && this.num != null && this.num > 0) {
+      this.route.navigate(['/payments'],{ queryParams:{
+        tourName: this.tourDetails.tourName,
+        departureDate: this.departureDate,
+        price: this.tourDetails.tourPrice,
+        num: this.num,
+        tourId: this.tourDetails.tourId,
+      }})
+    }
+   
   }
 
 }

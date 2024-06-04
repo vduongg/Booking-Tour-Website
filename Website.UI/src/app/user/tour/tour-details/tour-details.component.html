@@ -40,15 +40,17 @@
         <div class="price"> {{tourDetails.tourPrice}} VND/Người</div>
         <div>
             Ngày khởi hành
-            <input [(ngModel)]= "departureDate" type="date">
+            <input [(ngModel)]= "departureDate" [min]="currentDate" type="date">
+            <small class="error"  *ngIf="isdepartdate">Ngày khởi hành còn trống </small>
         </div>
         <div>
             Số người
-            <input [(ngModel)] ="num" type="number">
+            <input [(ngModel)] ="num" type="number" required>
+            <small class="error"  *ngIf="isNum">Số lượng người còn trống </small>
 
         </div>
         
-        <button (click)="payment()" routerLink="/payments">Đặt Tour</button>
+        <button (click)="payment()">Đặt Tour</button>
     </div>
     
 </div>

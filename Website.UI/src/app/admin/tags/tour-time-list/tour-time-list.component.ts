@@ -13,8 +13,9 @@ export class TourTimeListComponent implements OnInit {
 
   @Output() dateUpdate = new EventEmitter<TourDate[]>();
 
+  error = "";
   totalItem = 0;
-
+  popupEdit = false;
   faAction = faEllipsisV
   popup = false;
   isAction = false;
@@ -24,6 +25,7 @@ export class TourTimeListComponent implements OnInit {
   pageNow = 1;
   numPage = 1;
   formDate: TourDate = new TourDate();
+  formUpdateDate: TourDate = new TourDate();
   formTour: Tour = new Tour();
 
   constructor(private tourDateService: TourTimeService) {
@@ -63,6 +65,7 @@ export class TourTimeListComponent implements OnInit {
     
   }
   
+  
   const startIndex = this.totalItem - (this.pageNow - 1) * this.itemInPage;
   const endIndex = Math.max(startIndex - this.itemInPage + 1, 1);
 
@@ -77,8 +80,36 @@ export class TourTimeListComponent implements OnInit {
       this.pageNow = num;
   }
   createTourTime(date: TourDate){
-    this.tourDateService.createTourDate(date).subscribe( (date: TourDate[]) => this.dateUpdate.emit(date));
-    window.location.reload();
+    this.tourDateService.createTourDate(date).subscribe( (date: TourDate[]) => (this.dateUpdate.emit(date),   window.location.reload()));
+  }
+  edit(date?:TourDate) {
+    this.popupEdit = !this.popupEdit
+    if(date != null) {
+        this.formUpdateDate = date;
+    }
+  }
+  updateTourTime(date:TourDate) {
+    if(date.day == 0 || date.night == 0) {
+        this.error = "Nhập số ngày lớn hơn 0"
+        
+    }
+    else {
+      if( date.day < date.night) {
+        this.error = "Đêm không được lớn hơn ngày" 
+      }
+      else {
+        if( (date.day - date.night) > 1){
+          this.error = "Ngày và đêm quá xa"
+        }
+        else {
+          date.tours = null;
+          this.tourDateService.updateTourDate(date).subscribe( () => { window.location.reload()})
+        }
+       
+      }
+     
+    }
+  
   }
 
 }

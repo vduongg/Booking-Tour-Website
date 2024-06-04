@@ -21,4 +21,7 @@ export class PolicyService {
   public createTourPolicy(policy : TourPolicy) :Observable<TourPolicy[]> {
     return this.http.post<TourPolicy[]>(`${environment.apiUrl}/${this.url}`,policy)
    }
+   public updateTourPolicy(policy : TourPolicy){
+    return this.http.put(`${environment.apiUrl}/${this.url}`,policy)
+   }
 }

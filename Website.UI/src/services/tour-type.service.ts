@@ -24,5 +24,8 @@ export class TourTypeService {
   public createTourType(tourType : TourType) :Observable<TourType[]> {
     return this.http.post<TourType[]>(`${environment.apiUrl}/${this.url}`,tourType)
    }
+   public updateTourType(tourType : TourType) {
+    return this.http.put(`${environment.apiUrl}/${this.url}`,tourType)
+   }
 
 }

@@ -28,7 +28,7 @@ namespace Website.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<TourDate>>> getTour()
         {
-            
+
             return Ok(await _context.Tours.ToListAsync());
         }
         [HttpGet("{id}")]
@@ -46,12 +46,12 @@ namespace Website.API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<Tour>> editTour(int id, Tour tour)
         {
-            
+
             var tourItem = _context.Tours.Find(id);
             tourItem.TourId = tour.TourId;
             tourItem.UserId = tour.UserId;
             tourItem.TourPrice = tour.TourPrice;
-            tourItem.PolicyId = tour.PolicyId;  
+            tourItem.PolicyId = tour.PolicyId;
             tourItem.TourDateId = tour.TourDateId;
             tourItem.DepartureDate = tour.DepartureDate;
             tourItem.TourTypeId = tour.TourTypeId;
@@ -60,8 +60,37 @@ namespace Website.API.Controllers
             tourItem.TourDescription = tour.TourDescription;
             _context.SaveChanges();
 
-            
+
             return Ok(tourItem);
+        }
+        [HttpPut("Status/{id}")]
+        public async Task<ActionResult> editStatusTour(int id)
+        {
+            var tour = await _context.Tours.FindAsync(id);
+            if (tour == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                if (tour.TourStatus == "on")
+                {
+                    tour.TourStatus = "off";
+                    _context.Update(tour);
+                    await _context.SaveChangesAsync();
+                    return Ok(new { Message = "Off" });
+                }
+                if (tour.TourStatus == "off")
+                {
+                    tour.TourStatus = "on";
+                    _context.Update(tour);
+                    await _context.SaveChangesAsync();
+                    return Ok(new { Message = "On" });
+                }
+                return BadRequest();
+
+            }
+
         }
 
     }

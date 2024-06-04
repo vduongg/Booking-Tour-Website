@@ -20,10 +20,12 @@ export class TourTimeService {
    public getTourDateDetail(id:any) :Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/${this.url}/${id}`)
    }
-   public updateTourDate(tourdate : TourDate) :Observable<TourDate[]> {
-    return this.http.put<TourDate[]>(`${environment.apiUrl}/${this.url}`,tourdate)
-   }
+ 
    public createTourDate(tourdate : TourDate) :Observable<TourDate[]> {
     return this.http.post<TourDate[]>(`${environment.apiUrl}/${this.url}`,tourdate)
    }
+   public updateTourDate(tourdate : TourDate) {
+    return this.http.put(`${environment.apiUrl}/${this.url}`,tourdate)
+   }
+  
 }

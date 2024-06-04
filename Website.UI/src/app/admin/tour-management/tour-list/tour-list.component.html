@@ -1,3 +1,37 @@
+<div class="popup"  *ngIf="popup_delete">
+    <div class="form">
+        <div class="icon-close" (click)="popup_delete =!popup_delete">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </div>
+        <div class="form-title">Bạn muốn dừng hoạt động của tài khoản này?</div>
+
+        <div class="yesno">
+            <div> <button (click)="action(-1,'delete')">Có</button></div>
+           <div> <button (click)="popup_delete =!popup_delete">Không</button></div>
+           
+        </div>
+      
+       
+    </div>
+   
+</div>
+<div class="popup"  *ngIf="popup_undo">
+    <div class="form">
+        <div class="icon-close" (click)="action(-1,'undo')">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </div>
+        <div class="form-title">Bạn muốn khôi phục hoạt động của tài khoản này?</div>
+
+        <div class="yesno">
+            <div> <button (click)="action(-1,'undo')">Có</button></div>
+           <div> <button >Không</button></div>
+           
+        </div>
+      
+       
+    </div>
+   
+</div>
 
 
 <div class = "wrapper">
@@ -23,25 +57,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let type of tour.reverse(), let i = index">
-                        <ng-container *ngIf="pageItem().includes(tour.length - i)" >
-                       
-                            <td>{{type.tourId}}</td>
-                            <td><img width="200px" height="100px" [src]="listFirstImg.get(type.tourId)"></td>
-                            <td>{{type.tourName}}</td>
+                    <tr *ngFor="let tour of listTour.reverse(), let i = index">
+                        <ng-container *ngIf="pageItem().includes(listTour.length - i)" >
+                            <td>{{tour.tourId}}</td>
+                            <td><img width="200px" height="100px" [src]="listFirstImg.get(tour.tourId)"></td>
+                            <td>{{tour.tourName}}</td>
                             <td>
-                                <ng-container  *ngIf="type.tourStatus == 'running'" ><fa-icon class="fa-lg" [icon]="faOn" [style]="{color: 'blue'}"></fa-icon></ng-container>
-                                <ng-container *ngIf="type.tourStatus != 'running'" ><fa-icon  class="fa-lg" [icon]="faOff" [style]="{color: 'red'}"></fa-icon></ng-container>
+                                <ng-container *ngIf="tour.tourStatus=='on'" ><div (click)="action(tour.tourId,'delete')"><fa-icon  class="fa-lg" [icon]="faOn" [style]="{color: 'blue'}"></fa-icon></div></ng-container>
+                                <ng-container *ngIf="tour.tourStatus=='off' "><div (click)="action(tour.tourId,'undo')"><fa-icon   class="fa-lg" [icon]="faOff" [style]="{color: 'red'}"></fa-icon></div></ng-container>
                             </td>
-                            <td>{{type.createDate}}</td>
-                            <td>{{type.userId}}</td>
+                            <td>{{tour.createDate}}</td>
+                            <td>{{tour.userId}}</td>
                             <td class="iconAction">
-                                <div (click)="statusAction(type.tourId)"><fa-icon [icon]="faAction"></fa-icon></div>
+                                <div (click)="statusAction(tour.tourId)"><fa-icon [icon]="faAction"></fa-icon></div>
                                 
-                                <div *ngIf="isAction && (type.tourId == id)" class="action">
+                                <div *ngIf="isAction && (tour.tourId == id)" class="action">
                                    
-                                    <div routerLink="/admin/tour/edit/{{type.tourId}}">Sửa</div>
-                                    <div>Xóa</div>
+                                    <div routerLink="/admin/tour/edit/{{tour.tourId}}">Sửa</div>
                                 </div> 
                             </td>
                         </ng-container>
