@@ -138,3 +138,9 @@ E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\obj\Debug\net6.0\Websi
 E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\bin\Debug\net6.0\BCrypt.Net-Next.dll
 E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\bin\Debug\net6.0\MailKit.dll
+E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\bin\Debug\net6.0\MimeKit.dll
+E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\bin\Debug\net6.0\System.Formats.Asn1.dll
+E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+E:\CDTN_2324\Booking-Tour-Website\Website.API\Website.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll

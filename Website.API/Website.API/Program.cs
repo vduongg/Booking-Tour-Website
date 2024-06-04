@@ -21,6 +21,7 @@ builder.Services.AddCors( options => options.AddPolicy(name: "BookingTour", poli
     policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
 
 }));
+builder.Services.AddMemoryCache();
 builder.Services.AddSingleton<IVnPayService, VnPayService>();
 builder.Services.AddAuthentication(x =>
 {
