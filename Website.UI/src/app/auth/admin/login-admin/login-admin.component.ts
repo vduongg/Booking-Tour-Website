@@ -27,7 +27,7 @@ export class LoginAdminComponent implements OnInit {
         this.userService .setFullNameFromStore(tokenPayload.name);
         this.userService.setRoleForStore(tokenPayload.unique_name);
         setTimeout(() => {
-          this.routeService.navigate(['/admin/tour'])
+          window.location.href = '/admin/tour';
         }, 1000);
        
       },

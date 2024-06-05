@@ -11,9 +11,9 @@ export type Item = {
 export type MenuItem = {
   icon: any;
   label: string;
-  route: string;
-  key: string
-  item: Item[]
+  route?: string;
+  key: string;
+  item?: Item[]
 }
 
 @Component({
@@ -27,6 +27,7 @@ export class ManagementSidebarComponent implements OnInit {
   key = "";
   fullName = "";
   role = "";
+  menuItem: MenuItem[] = []
   constructor(private userService:UserService, private authService:AuthService) { }
 
   ngOnInit(): void {
@@ -38,80 +39,121 @@ export class ManagementSidebarComponent implements OnInit {
       this.userService.getRoleFromStore().subscribe( result => {
         const getRoleFromToken = this.authService.getRoleFromToken();
         this.role = result || getRoleFromToken;
+        if(this.role == "Admin"){
+          this.menuItem = [
+            {
+              icon: faHome,
+              label: "Bảng điều khiển",
+              route: "/admin/home",
+              key: "dashboard",
+            },
+            {
+              icon: faTags,
+              label: "Thẻ",
+              route: "/admin/tags",
+              key: "tags",
+              item: [
+                {
+                  label: "Loại du lịch",
+                  route: "/admin/tags/tourtype"
+              },
+              {
+                label: "Thời gian Tour",
+                route: "/admin/tags/tourtime"
+              },
+              {
+                label: "Chính sách",
+                route: "/admin/tags/tourpolicy"
+              }
+              
+            ],
+            },
+            {
+              icon: faShuttleVan,
+              label: "Tour",
+              route: "/admin/tour",
+              key: "tour",
+              item: [
+                {
+                  label: "Danh sách Tour",
+                  route: "/admin/tour",
+                },
+                {
+                label: "Thêm Tour mới",
+                route: "/admin/tour/add",
+              },
+              {
+                label: "Danh sách đơn",
+                route: "/admin/tour/order",
+              }
+            ],
+            }
+            ,
+            {
+              icon: faChartLine,
+              label: "Thống kê",
+              key: "chart",
+            },
+            {
+              icon: faUser ,
+              label: "Người dùng",
+              key: "user",
+              route: "/admin/accounts",
+              item: [
+                {
+                  label: "Danh sách người dùng",
+                  route: "/admin/accounts"
+                }
+              ],
+            }
+          ]
+
+        }
+        else if( this.role == "TourManager"){
+            this.menuItem = [ {
+              icon: faTags,
+              label: "Thẻ",
+              route: "/admin/tags",
+              key: "tags",
+              item: [
+                {
+                  label: "Loại du lịch",
+                  route: "/admin/tags/tourtype"
+              },
+              {
+                label: "Thời gian Tour",
+                route: "/admin/tags/tourtime"
+              },
+              {
+                label: "Chính sách",
+                route: "/admin/tags/tourpolicy"
+              }
+              
+            ],
+            },
+            {
+              icon: faShuttleVan,
+              label: "Tour",
+              route: "/admin/tour",
+              key: "tour",
+              item: [
+                {
+                  label: "Danh sách Tour",
+                  route: "/admin/tour",
+                },
+                {
+                label: "Thêm Tour mới",
+                route: "/admin/tour/add",
+              },
+              {
+                label: "Danh sách đơn",
+                route: "/admin/tour/order",
+              }
+            ],
+            }]
+        }
       })
   }
-  menuItem = [
-    {
-      icon: faHome,
-      label: "Bảng điều khiển",
-      route: "/admin/home",
-      key: "dashboard",
-      role: ["Admin"]
-    },
-    {
-      icon: faTags,
-      label: "Thẻ",
-      route: "/admin/tags",
-      key: "tags",
-      item: [
-        {
-          label: "Loại du lịch",
-          route: "/admin/tags/tourtype"
-      },
-      {
-        label: "Thời gian Tour",
-        route: "/admin/tags/tourtime"
-      },
-      {
-        label: "Chính sách",
-        route: "/admin/tags/tourpolicy"
-      }
-      
-    ],
-    role: ["Admin","TourManager"]
-    },
-    {
-      icon: faShuttleVan,
-      label: "Tour",
-      route: "/admin/tour",
-      key: "tour",
-      item: [
-        {
-          label: "Danh sách Tour",
-          route: "/admin/tour",
-        },
-        {
-        label: "Thêm Tour mới",
-        route: "/admin/tour/add",
-      },
-      {
-        label: "Danh sách đơn",
-        route: "/admin/tour/order",
-      }
-    ],role: ["Admin","TourManager"]
-    }
-    ,
-   
-    {
-      icon: faChartLine,
-      label: "Thống kê",
-      key: "chart",
-      role: ["Admin"]
-    },
-    {
-      icon: faUser ,
-      label: "Người dùng",
-      key: "user",
-      route: "/admin/accounts",
-      item: [
-        {
-          label: "Danh sách người dùng",
-          route: "/admin/accounts"
-        }
-      ],
-      role: ["Admin"]
-    }
-  ]
  
 
 
