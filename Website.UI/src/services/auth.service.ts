@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { LoginForm } from 'src/app/models/LoginForm';
 import { RegisterForm } from 'src/app/models/RegisterForm';
@@ -12,7 +13,10 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   private url = "Auth"
-  constructor(private http:HttpClient, private route: Router) { }
+  private userPayload: any;
+  constructor(private http:HttpClient, private route: Router) {
+    this.userPayload = this.decodedToken();
+   }
   public login(user:LoginForm):Observable<any>{
     return this.http.post<any>(`${environment.apiUrl}/${this.url}/authentication`,user);
   }
@@ -35,6 +39,21 @@ export class AuthService {
   }
   public createUser(form:RegisterForm):Observable<any>{
     return this.http.post<any>(`${environment.apiUrl}/${this.url}/register`,form);
+  }
+  decodedToken()
+  {
+    const jwt = new JwtHelperService();
+    const token = this.getToken()!;
+    console.log(jwt.decodeToken(token))
+    return jwt.decodeToken(token);
+  } 
+  getFullNameFromToken(){
+    if(this.userPayload)
+      return this.userPayload.unique_name;
+  }
+  getRoleFromToken(){
+    if(this.userPayload)
+      return  this.userPayload.role;
   }
   
 }

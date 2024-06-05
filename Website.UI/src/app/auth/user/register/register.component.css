@@ -53,7 +53,7 @@
     font-weight: 600;
     font-size: 20px;
 }
-.register button {
+.btnRegister{
     margin-top: 20px;
     width: 100%;
     height: 30px;
@@ -62,7 +62,15 @@
     font-weight: 600;
     border: none;
 }
-.register button:hover{
+.btnRegister:hover{
     cursor: pointer;
     background-color: #8B322C;
+}
+.capcha {
+    display: flex;
+    flex-direction: row;
+}
+.btnGet{
+   font-weight: 60px;
+   min-width: 50px;
 }

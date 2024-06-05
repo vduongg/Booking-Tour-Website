@@ -4,11 +4,12 @@
         <div class="image"><img src="assets/image/image.jpg" width="300px" height="500px"></div>
        <div class="register">
         <div class="register-title">Đăng ký tài khoản</div>
-        <div>Email<input placeholder="Nhập email của bạn"></div>
-        <div>Mật khẩu<input type="password" placeholder="Nhập mật khẩu của bạn"></div>
-        <div>Họ<input placeholder="Nhập họ của bạn"></div>
-        <div>Tên<input placeholder="Nhập tên của bạn"></div>
-        <button>Đăng ký</button>
+        <div>Email<input [(ngModel)]="registerForm.email"  placeholder="Nhập email của bạn"></div>
+        <div class="capcha"><div>Mã xác nhận<input [(ngModel)] = "registerForm.code" placeholder="Nhập mã xác nhận của bạn"></div> <button class="btnGet"  [disabled]="disableButton" (click)="getCode()">{{btnGetCode}}</button></div>
+        <div>Mật khẩu<input type="password"   [(ngModel)]="registerForm.password" placeholder="Nhập mật khẩu của bạn"></div>
+        <div>Họ<input  [(ngModel)]="registerForm.firstName" placeholder="Nhập họ của bạn"></div>
+        <div>Tên<input [(ngModel)]="registerForm.lastName"  placeholder="Nhập tên của bạn"></div>
+        <button (click)="register()" class="btnRegister">Đăng ký</button>
        </div>
     </div>
    

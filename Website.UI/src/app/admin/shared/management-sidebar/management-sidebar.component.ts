@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faChartLine, faChevronCircleDown, faChevronDown, faChevronRight, faHome, faHotel, faShuttleVan, faTags, faUser } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/services/auth.service';
+import { UserService } from 'src/services/user.service';
 
 export type Item = {
     label: string;
@@ -23,10 +25,20 @@ export class ManagementSidebarComponent implements OnInit {
   faRight = faChevronRight;
   faDown = faChevronDown;
   key = "";
-  constructor() { }
+  fullName = "";
+  role = "";
+  constructor(private userService:UserService, private authService:AuthService) { }
 
   ngOnInit(): void {
-    
+    this.userService.getFullNameFromStore().subscribe(
+      result => {
+        const fullnameFromToken = this.authService.getFullNameFromToken();
+        this.fullName = result || fullnameFromToken
+      })
+      this.userService.getRoleFromStore().subscribe( result => {
+        const getRoleFromToken = this.authService.getRoleFromToken();
+        this.role = result || getRoleFromToken;
+      })
   }
   menuItem = [
     {
@@ -34,6 +46,7 @@ export class ManagementSidebarComponent implements OnInit {
       label: "Bảng điều khiển",
       route: "/admin/home",
       key: "dashboard",
+      role: ["Admin"]
     },
     {
       icon: faTags,
@@ -53,7 +66,9 @@ export class ManagementSidebarComponent implements OnInit {
         label: "Chính sách",
         route: "/admin/tags/tourpolicy"
       }
-    ]
+      
+    ],
+    role: ["Admin","TourManager"]
     },
     {
       icon: faShuttleVan,
@@ -73,7 +88,7 @@ export class ManagementSidebarComponent implements OnInit {
         label: "Danh sách đơn",
         route: "/admin/tour/order",
       }
-    ]
+    ],role: ["Admin","TourManager"]
     }
     ,
    
@@ -81,6 +96,7 @@ export class ManagementSidebarComponent implements OnInit {
       icon: faChartLine,
       label: "Thống kê",
       key: "chart",
+      role: ["Admin"]
     },
     {
       icon: faUser ,
@@ -92,7 +108,8 @@ export class ManagementSidebarComponent implements OnInit {
           label: "Danh sách người dùng",
           route: "/admin/accounts"
         }
-      ]
+      ],
+      role: ["Admin"]
     }
   ]
  

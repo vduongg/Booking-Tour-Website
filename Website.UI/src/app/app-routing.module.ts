@@ -18,6 +18,8 @@ import { TourDetailsComponent } from './user/tour/tour-details/tour-details.comp
 import { PaymentsComponent } from './user/payment/payments/payments.component';
 import { CallbackComponent } from './user/payment/callback/callback.component';
 import { TourOrderComponent } from './admin/tour-management/tour-order/tour-order.component';
+import { AdminGuard } from './guards/admin.guard';
+
 
 
 const routes: Routes = [
@@ -28,31 +30,41 @@ const routes: Routes = [
   {
     component:ManagementHomeComponent,
     path: "admin/home",
-    canActivate:[AuthenGuard]
+    canActivate:[AuthenGuard,AdminGuard],
   },
   {
     component:TourListComponent,
-    path: "admin/tour"
+    path: "admin/tour",
+    canActivate:[AuthenGuard],
   }
   ,{
     component:AddTourComponent,
-    path: "admin/tour/add"
+    path: "admin/tour/add",
+    canActivate:[AuthenGuard],
   }
   ,{
     component:EditTourComponent,
-    path: "admin/tour/edit/:id"
+    path: "admin/tour/edit/:id",
+    canActivate:[AuthenGuard],
+  
   },
   {
     component:TourTimeListComponent,
-    path: "admin/tags/tourtime"
+    path: "admin/tags/tourtime",
+    canActivate:[AuthenGuard],
+
   },
   {
     component:TourPolicyComponent,
-    path: "admin/tags/tourpolicy"
+    path: "admin/tags/tourpolicy",
+    canActivate:[AuthenGuard],
+  
   },
   {
     component:TourTypeComponent,
-    path: "admin/tags/tourtype"
+    path: "admin/tags/tourtype",
+    canActivate:[AuthenGuard],
+
   },
   {
     component:LoginAdminComponent,
@@ -60,7 +72,8 @@ const routes: Routes = [
   },
   {
     component:AccountsComponent,
-    path: "admin/accounts"
+    path: "admin/accounts",
+    canActivate:[AuthenGuard],
   },
   {
     component:RegisterComponent,
@@ -88,7 +101,8 @@ const routes: Routes = [
   },
   {
     component:TourOrderComponent,
-    path: "admin/tour/order"
+    path: "admin/tour/order",
+    canActivate:[AuthenGuard],
   }
   
 ];

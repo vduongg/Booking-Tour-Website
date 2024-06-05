@@ -1,8 +1,9 @@
 export class RegisterForm{
-    email = ""
-    password = ""
-    firstName = ""
-    lastName = ""
-    phoneNumber = ""
-    role = ""
+    email = "";
+    password = "";
+    firstName = "";;
+    lastName = "";
+    phoneNumber = "";
+    role = "";
+    code = "";
 }

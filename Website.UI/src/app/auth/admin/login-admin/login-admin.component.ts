@@ -13,7 +13,7 @@ export class LoginAdminComponent implements OnInit {
   isOpenSuccess = false;
   isOpenError = false;
   LoginForm:LoginForm = new LoginForm();
-  constructor(private authService: AuthService, private routeService :Router) { }
+  constructor(private authService: AuthService, private routeService :Router, private userService:UserService) { }
 
   ngOnInit(): void {
   }
@@ -23,8 +23,11 @@ export class LoginAdminComponent implements OnInit {
         this.isOpenSuccess = true;
         this.isOpenError = false;
         this.authService.setToken(response.token)
+        const tokenPayload = this.authService.decodedToken();
+        this.userService .setFullNameFromStore(tokenPayload.name);
+        this.userService.setRoleForStore(tokenPayload.unique_name);
         setTimeout(() => {
-          this.routeService.navigate(['/admin/home'])
+          this.routeService.navigate(['/admin/tour'])
         }, 1000);
        
       },

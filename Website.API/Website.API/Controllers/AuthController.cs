@@ -40,7 +40,7 @@ namespace Website.API.Controllers
                 var status = await _context.UserInfo.FirstOrDefaultAsync(u => u.UserId == userObj.UserId);
                 if(status != null)
                 {
-                    if (status.Status == "on")
+                    if (status.Status == "on" && (status.Role == "Admin" || status.Role == "TourManager"))
                     {
                         bool verify = BCrypt.Net.BCrypt.Verify(user.Password, userObj.Password);
                         if (verify)
