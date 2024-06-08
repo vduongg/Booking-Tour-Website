@@ -40,9 +40,12 @@ export class RegisterComponent implements OnInit {
     }, 1000);
   }
   register(){
-    this.userService.registerUser(this.registerForm).subscribe( result => {
-      console.log(result);
-    })
-  }
+    this.userService.registerUser(this.registerForm).subscribe( 
+      response => {
+        if(response.message == "User Registed!" ) {
+          window.location.href = "/login"
+        }
+      }
+    )}
 
 }

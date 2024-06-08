@@ -22,8 +22,7 @@ export class TourOrderComponent implements OnInit {
       this.orderService.getListOrder().subscribe( (result:Order[]) =>{
         this.listOrder = result
         this.totalItem = this.listOrder.length
-      }
-      )
+      })
   }
   pageItem() {
     let item: number[] = [];

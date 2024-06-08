@@ -44,7 +44,6 @@ export class AuthService {
   {
     const jwt = new JwtHelperService();
     const token = this.getToken()!;
-    console.log(jwt.decodeToken(token))
     return jwt.decodeToken(token);
   } 
   getFullNameFromToken(){

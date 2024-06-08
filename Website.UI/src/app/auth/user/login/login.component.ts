@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { AuthService } from 'src/services/auth.service';
 import { UserService } from 'src/services/user.service';
 
 @Component({
@@ -13,13 +14,23 @@ export class LoginComponent implements OnInit {
 
   email = "";
   password = "";
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService) { 
+    
+  }
 
   ngOnInit(): void {
   }
   login(){
-    this.userService.loginUser(this.email,this.password).subscribe( result => this.userService.setToken(result.token))
+    this.userService.loginUser(this.email,this.password).subscribe( result => {
+        if(result.message == "Login Success!") {
+          this.userService.setToken(result.token)
+          const tokenPayload = this.userService.decodedToken();
+          this.userService.setFullNameFromStore(tokenPayload.unique_name);
+          this.userService.setRoleForStore(tokenPayload.role);
+          window.location.href = "/"
+        }
+
+    })
   }
-  
 
 }

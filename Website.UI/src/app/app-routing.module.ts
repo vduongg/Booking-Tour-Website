@@ -19,6 +19,9 @@ import { PaymentsComponent } from './user/payment/payments/payments.component';
 import { CallbackComponent } from './user/payment/callback/callback.component';
 import { TourOrderComponent } from './admin/tour-management/tour-order/tour-order.component';
 import { AdminGuard } from './guards/admin.guard';
+import { AuthenUserGuard } from './guards/authen-user.guard';
+import { UserLoginGuard } from './guards/user-login.guard';
+
 
 
 
@@ -77,11 +80,14 @@ const routes: Routes = [
   },
   {
     component:RegisterComponent,
-    path: "register"
+    path: "register",
+    canActivate:[UserLoginGuard]
+    
   },
   {
     component:LoginComponent,
-    path: "login"
+    path: "login",
+    canActivate:[UserLoginGuard]
   },
   {
     component:TourListUserComponent,
@@ -93,7 +99,8 @@ const routes: Routes = [
   },
   {
     component:PaymentsComponent,
-    path: "payments"
+    path: "payments",
+    canActivate:[AuthenUserGuard],
   },
   {
     component:CallbackComponent,

@@ -12,10 +12,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UserService {
+  userPayload: any
   private fullname$ = new BehaviorSubject<string>("");
   private role$ = new BehaviorSubject<string>("");
   private url = "User"
-  constructor(private http:HttpClient, private route: Router) { }
+  constructor(private http:HttpClient, private route: Router) {
+    this.userPayload = this.decodedToken();
+   }
   public getAllUser():Observable<any>{
     return this.http.get<UserInfo[]>(`${environment.apiUrl}/${this.url}`);
   }
@@ -27,7 +30,7 @@ export class UserService {
   }
   public logOut(){
     localStorage.clear()
-    this.route.navigate(['/login'])
+    window.location.href = "/login"
   }
   public setToken(tokenValue:string) {
     localStorage.setItem('user',tokenValue)
@@ -54,8 +57,17 @@ export class UserService {
   {
     const jwt = new JwtHelperService();
     const token = this.getToken()!;
-    console.log(jwt.decodeToken(token))
     return jwt.decodeToken(token);
   } 
+  getFullNameFromToken(){
+    if(this.userPayload)
+      return this.userPayload.unique_name;
+  }
+  getRoleFromToken(){
+    if(this.userPayload)
+      return  this.userPayload.role;
+  }
+  
+  
 
 }

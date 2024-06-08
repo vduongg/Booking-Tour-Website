@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/services/auth.service';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-site-navbar',
@@ -7,9 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteNavbarComponent implements OnInit {
 
-  constructor() { }
+  fullName = ""
+  role = ""
+  faUser = faUserCircle
+  popupUSer = false;
+  constructor(private userService:UserService, private authService:AuthService) { }
 
   ngOnInit(): void {
+    
+    this.userService.getFullNameFromStore().subscribe(
+      result => {
+        const fullnameFromToken = this.userService.getFullNameFromToken();
+        if( fullnameFromToken != null ) {
+          this.fullName = result || fullnameFromToken
+        }
+      
+      })
+      this.userService.getRoleFromStore().subscribe( result => {
+        const getRoleFromToken = this.userService.getRoleFromToken();
+        this.role = result || getRoleFromToken;
+      })
+  
   }
+  logout(){
+    this.userService.logOut();
+  }
+  
 
 }

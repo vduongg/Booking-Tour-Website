@@ -59,14 +59,13 @@ export class AccountsComponent implements OnInit {
     if(id== -1) {
       if(index == "delete") {
         this.popup_delete = !this.popup_delete
-        this.authService.editStatusUser(this.id).subscribe()
-        window.location.reload();
+        this.authService.editStatusUser(this.id).subscribe( () => window.location.reload())
+        
         
       }
       if(index == "undo") {
         this.popup_undo = !this.popup_undo
-        this.authService.editStatusUser(this.id).subscribe()
-        window.location.reload();
+        this.authService.editStatusUser(this.id).subscribe( () => window.location.reload())
       }
      
     }

@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|solutionrelative:website.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2CCA46EF-F809-4C3C-B84C-316A6A32C226}|Website.API\\Website.API.csproj|e:\\cdtn_2324\\booking-tour-website\\website.api\\website.api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -82,7 +82,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AuthController.cs",
               "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Website.API\\Controllers\\AuthController.cs",
@@ -107,15 +107,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "UserController.cs",
               "DocumentMoniker": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Website.API\\Controllers\\UserController.cs",
               "ToolTip": "E:\\CDTN_2324\\Booking-Tour-Website\\Website.API\\Website.API\\Controllers\\UserController.cs",
               "RelativeToolTip": "Website.API\\Controllers\\UserController.cs",
-              "ViewState": "AQIAAJcAAAAAAAAAAAAAAGEAAAA7AAAA",
+              "ViewState": "AQIAAGUAAAAAAAAAAAAAAHcAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T07:33:08.175Z"
+              "WhenOpened": "2024-06-05T07:33:08.175Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

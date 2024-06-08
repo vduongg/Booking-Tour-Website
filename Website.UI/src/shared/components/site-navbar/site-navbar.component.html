@@ -10,8 +10,20 @@
         <a>Tin tức</a>
         <a>Liên hệ</a>
     </div>
-    <div class="nav-right">
+    <div *ngIf="fullName == ''" class="nav-right">
         <a routerLink="/login" class="login">Đăng nhập</a>
         <a routerLink="/register"class="register">Đăng ký</a>
     </div>
+    <div class="user" *ngIf="fullName != '' " >
+        <div>Xin chào, {{fullName}}</div>
+        <div (click)="popupUSer = !popupUSer"><fa-icon class="fa fa-2x" [icon]="faUser" > </fa-icon>
+        </div> 
+        <div class="popupUSer" *ngIf="popupUSer">
+            <div>Thông tin tài khoản</div>
+            <div>Lịch sử đặt Tour</div>
+            <a (click)="logout()">Đăng xuất</a>
+        </div>
+        
+    </div>
+    
 </div>

@@ -24,8 +24,8 @@ export class LoginAdminComponent implements OnInit {
         this.isOpenError = false;
         this.authService.setToken(response.token)
         const tokenPayload = this.authService.decodedToken();
-        this.userService .setFullNameFromStore(tokenPayload.name);
-        this.userService.setRoleForStore(tokenPayload.unique_name);
+        this.userService.setFullNameFromStore(tokenPayload.unique_name);
+        this.userService.setRoleForStore(tokenPayload.role);
         setTimeout(() => {
           window.location.href = '/admin/tour';
         }, 1000);
