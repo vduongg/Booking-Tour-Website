@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './user/home/home.component';
-import { ManagementHomeComponent } from './admin/general-management/management-home/management-home.component';
 import { TourListComponent } from './admin/tour-management/tour-list/tour-list.component';
 import { AddTourComponent } from './admin/tour-management/add-tour/add-tour.component';
 import { TourTimeListComponent } from './admin/tags/tour-time-list/tour-time-list.component';
@@ -21,6 +20,9 @@ import { TourOrderComponent } from './admin/tour-management/tour-order/tour-orde
 import { AdminGuard } from './guards/admin.guard';
 import { AuthenUserGuard } from './guards/authen-user.guard';
 import { UserLoginGuard } from './guards/user-login.guard';
+import { UserInfoComponent } from './user/user-info/user-info.component';
+import { PurchaseHistoryComponent } from './user/purchase-history/purchase-history.component';
+import { TourStatisticComponent } from './admin/general-management/tour-statistic/tour-statistic.component';
 
 
 
@@ -29,11 +31,6 @@ const routes: Routes = [
   {
      component:HomeComponent,
      path: "",
-  },
-  {
-    component:ManagementHomeComponent,
-    path: "admin/home",
-    canActivate:[AuthenGuard,AdminGuard],
   },
   {
     component:TourListComponent,
@@ -110,6 +107,18 @@ const routes: Routes = [
     component:TourOrderComponent,
     path: "admin/tour/order",
     canActivate:[AuthenGuard],
+  },
+  {
+    component:UserInfoComponent,
+    path: "user/info"
+  },
+  {
+    component:PurchaseHistoryComponent,
+    path: "user/history"
+  },
+  {
+    component:TourStatisticComponent,
+    path: "admin/statistic"
   }
   
 ];

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faChartLine, faChevronCircleDown, faChevronDown, faChevronRight, faHome, faHotel, faShuttleVan, faTags, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faChevronCircleDown, faChevronDown, faChevronRight, faHome, faHotel, faShuttleVan, faTags, faUser, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/services/auth.service';
 import { UserService } from 'src/services/user.service';
 
@@ -22,6 +22,7 @@ export type MenuItem = {
   styleUrls: ['./management-sidebar.component.css']
 })
 export class ManagementSidebarComponent implements OnInit {
+  faUser = faUserCircle
   faRight = faChevronRight;
   faDown = faChevronDown;
   key = "";
@@ -41,12 +42,6 @@ export class ManagementSidebarComponent implements OnInit {
         this.role = result || getRoleFromToken;
         if(this.role == "Admin"){
           this.menuItem = [
-            {
-              icon: faHome,
-              label: "Bảng điều khiển",
-              route: "/admin/home",
-              key: "dashboard",
-            },
             {
               icon: faTags,
               label: "Thẻ",
@@ -93,6 +88,7 @@ export class ManagementSidebarComponent implements OnInit {
               icon: faChartLine,
               label: "Thống kê",
               key: "chart",
+              route: "/admin/statistic"
             },
             {
               icon: faUser ,
@@ -109,7 +105,7 @@ export class ManagementSidebarComponent implements OnInit {
           ]
 
         }
-        else if( this.role == "TourManager"){
+        else if( this.role == "Tour Manager"){
             this.menuItem = [ {
               icon: faTags,
               label: "Thẻ",
@@ -155,7 +151,9 @@ export class ManagementSidebarComponent implements OnInit {
       })
   }
  
-
+  logout(){
+    this.authService.logOut();
+  }
 
 
 }

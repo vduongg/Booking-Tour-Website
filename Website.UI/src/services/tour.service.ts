@@ -18,6 +18,7 @@ export class TourService {
   
       return this.http.get<Tour[]>(`${environment.apiUrl}/${this.url}`)
    }
+   
    public getLastTour(id?:number):Observable<Tour>{
     return this.http.get<Tour>(`${environment.apiUrl}/${this.url}/LastTour/${id}`)
    }

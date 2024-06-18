@@ -3,6 +3,7 @@ export class Order{
     orderCode = 0;
     orderDescription = "";
     transactionId = "";
+    fullName = "";
     tourId = 0;
     email = 0;
     userId = 0;

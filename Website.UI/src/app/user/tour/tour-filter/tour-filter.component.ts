@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import { FilterForm } from 'src/app/models/FilterForm';
 import { Tour } from 'src/app/models/Tour';
+import { FilterTourService } from 'src/services/filter-tour.service';
 import { ImageService } from 'src/services/image.service';
 import { TourService } from 'src/services/tour.service';
 
@@ -15,6 +16,7 @@ export class TourFilterComponent implements OnChanges {
   @Input() tourRate = 0;
   @Input() tourPrice = "";
   @Input() tourDate = "";
+  @Input() listType:number[] = []
   tourList: Tour[] = [];
   tourListOld: Tour[] = [];
   tourLowPrice: Tour[] = [];
@@ -23,18 +25,41 @@ export class TourFilterComponent implements OnChanges {
   itemInPage = 5;
   page = 1;
   maxPage = 1;
-
- 
+  array = [1,2,3,4,5]
+  isLoad = true;
+  isNull = false;
+  filterForm:FilterForm = new FilterForm();
+  listChecked:boolean[] = []
   listFirstImg = new Map<number,string>()
-  constructor(private tourService:TourService, private imageService:ImageService) { }
+  constructor(private filterTour:FilterTourService, private imageService:ImageService) { }
 
   ngOnChanges(change: SimpleChanges): void {
-      this.tourService.getTour().subscribe( (result: Tour[]) => (this.tourListOld = result.reverse(), this.tourList = result, this.maxPage = Math.ceil(result.length / 5), this.page = 1))
+    this.isNull = false;
+    this.filterForm.name = this.tourName;
+    this.filterForm.place = this.tourLocation;
+    this.filterForm.type = [...this.listType];
+    this.filterForm.price = this.tourPrice
+    console.log(this.filterForm.price)
+    if(this.tourDate != ""){
+      this.filterForm.departureDate = ( Number(this.tourDate.split("-")[1]) < 10? (this.tourDate.split("-")[1])[1]:this.tourDate.split("-")[1] ) 
+    + "/" + (Number(this.tourDate.split("-")[2]) < 10 ? this.tourDate.split("-")[2][1]:this.tourDate.split("-")[2]) 
+    + "/" + this.tourDate.split("-")[0];
+    }
+      this.filterTour.getFilter(this.filterForm).subscribe( (result: Tour[]) => 
+        {
+          this.tourListOld = result.reverse()
+           this.tourList = result
+            this.maxPage = Math.ceil(result.length / 5)
+            this.page = 1, this.isLoad = false
+            if(result.length < 1) {
+              this.isNull = true;
+            }
+        })
       this.imageService.getFirstTourImage().subscribe((result: any) => {
         for(let i = 0 ; i < result.length ; i++) {
             this.listFirstImg.set(result[i].tourId, result[i].url)
         }
-      }) 
+      })  
   }
   sortTour(){
   if(this.chooseSort == "low") {

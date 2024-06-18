@@ -41,16 +41,13 @@
         <div class="form-title">Sửa thông tin tài khoản</div>
         
         <div class="form-item" >
-            <div>Email(*)<input [(ngModel)]="registerForm.email"  #email = ngModel required ></div>
-            <small class="error"  *ngIf="!email.valid">Email còn trống </small>
-            <div>Mật khẩu(*)<input  [(ngModel)]="registerForm.password"  type="password"  #pass = ngModel required > </div>
-            <small class="error"  *ngIf="!pass.valid">Mật khẩu còn trống </small>
-            <div>Họ(*)<input  [(ngModel)]="registerForm.firstName"  #firstName = ngModel required ></div>
+            <div>{{infoForm.userInfoId}}</div>
+            <div>Họ(*)<input  [(ngModel)]="infoForm.firstName"  #firstName = ngModel required ></div>
             <small class="error"  *ngIf="!firstName.valid">Họ còn trống </small>
-            <div>Tên(*)<input [(ngModel)]="registerForm.lastName"#lastName = ngModel required  ></div>
+            <div>Tên(*)<input [(ngModel)]="infoForm.lastName"#lastName = ngModel required  ></div>
             <small class="error"  *ngIf="!lastName.valid">Tên còn trống </small>
-            <div>Số điện thoại<input  [(ngModel)]="registerForm.phoneNumber" ></div>
-            <div>Loại tài khoản<select  [(ngModel)]="registerForm.role" >
+            <div>Số điện thoại<input  [(ngModel)]="infoForm.phoneNumber" ></div>
+            <div>Loại tài khoản<select  [(ngModel)]="infoForm.role" >
                 <option>Admin</option>
                 <option>User</option>
                 <option>Tour Manager</option>
@@ -59,7 +56,7 @@
 
          
         </div>
-        <button (click)="edit()">Thêm</button>
+        <button (click)="editInfoOK()">Thêm</button>
        
     </div>
    
@@ -118,7 +115,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of listUser.reverse(), let i = index">
+                    <tr  *ngFor="let user of listUser.reverse(), let i = index">
                         <ng-container *ngIf="pageItem().includes(user.userInfoId)"  >
                             <td>{{i+1}}</td>
                             <td>{{user.firstName}} {{user.lastName}}</td>
@@ -131,7 +128,7 @@
                             <td class="iconAction">
                                 <div (click)="statusAction(user.userInfoId)"><fa-icon [icon]="faAction"></fa-icon></div>
                                 <div *ngIf="isAction && (user.userInfoId == id)"  class="action">
-                                    <div (click)="edit()">Sửa</div>
+                                    <div (click)="edit(user)">Sửa</div>
                                     
                                 </div> 
                             </td>

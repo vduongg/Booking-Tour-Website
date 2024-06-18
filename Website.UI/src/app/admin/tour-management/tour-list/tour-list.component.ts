@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faEllipsisV, faToggleOff, faToggleOn } from '@fortawesome/free-solid-svg-icons';
 import { Tour } from 'src/app/models/Tour';
+import { AuthService } from 'src/services/auth.service';
 import { ImageService } from 'src/services/image.service';
 import { TourService } from 'src/services/tour.service';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-tour-list',
@@ -26,12 +28,27 @@ export class TourListComponent implements OnInit {
   faOn = faToggleOn
   faOff = faToggleOff
   tourItem: Tour[] = []
+  email = ""
+  userid = "";
+  role = "";
   listFirstImg = new Map<number,string>()
   @Output()  tourUpdate = new EventEmitter<Tour[]>();
 
-  constructor(private tourService: TourService, private imageService: ImageService ) { }
+  constructor(private tourService: TourService, private imageService: ImageService,  private userService:UserService, private authService:AuthService) { }
 
   ngOnInit(): void {
+    this.userService.getRoleFromStore().subscribe( result => {
+      const getRoleFromToken = this.authService.getRoleFromToken();
+      this.role = result || getRoleFromToken;
+    })
+    this.email = this.authService.decodedToken().email;
+    this.userService.getUserInfo(this.email).subscribe(
+     result => 
+       {
+         this.userid = result.userId
+       }
+     
+    )
     this.tourService.getTour().subscribe((result: Tour[]) => (this.listTour = result , this.totalItem = result.length));
     this.imageService.getFirstTourImage().subscribe((result: any) => {
       for(let i = 0 ; i < result.length ; i++) {

@@ -81,3 +81,10 @@
 .menu-child:hover{
     cursor: pointer;
 }
+.accounts{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}

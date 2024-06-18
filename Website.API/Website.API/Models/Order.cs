@@ -9,7 +9,9 @@ namespace Website.API.Models
        public int OrderCode { get; set; }
        public string? OrderDescription { get; set; }
         public int TransactionId { get; set; } = 0;
+        public Tour Tour { get; set; }
        public int TourId { get; set; }
+        public string FullName { get; set; }
        public string Email { get; set; }
         public User? User { get; set; }
        public int UserId { get; set; }

@@ -19,8 +19,8 @@
         <div (click)="popupUSer = !popupUSer"><fa-icon class="fa fa-2x" [icon]="faUser" > </fa-icon>
         </div> 
         <div class="popupUSer" *ngIf="popupUSer">
-            <div>Thông tin tài khoản</div>
-            <div>Lịch sử đặt Tour</div>
+            <div routerLink="/user/info">Thông tin tài khoản</div>
+            <div routerLink="/user/history">Lịch sử đặt Tour</div>
             <a (click)="logout()">Đăng xuất</a>
         </div>
         

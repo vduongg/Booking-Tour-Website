@@ -1,0 +1,82 @@
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    margin-left: 350px;
+    margin-right: 350px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.purchase-history {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.navbar{
+    width: 30%;
+}
+table{
+    background-color: white;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    
+}
+thead tr{
+    background-color: #DD5746;
+    color: white;
+
+}
+th, td{
+    text-align: center;
+    padding:20px 15px;
+}
+tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+tbody tr:hover{
+    cursor: pointer;
+    background-color: #f3f3f3;
+}
+tbody tr:last-of-type{
+    border-bottom: 2px solid #DD5746;
+}
+.purchase-header, .header{
+    font-weight: 600;
+}
+.page {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+.page div{
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    padding: 5px;
+}
+.page div:hover{
+    background-color: #dddddd;
+    cursor: pointer;
+}
+.orderDetails{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.orderDetails img{
+    width: 200px;
+    height: 100px;
+}
+.item {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   
+    padding: 20px;
+    margin: 10px;
+    height: fit-content;
+}

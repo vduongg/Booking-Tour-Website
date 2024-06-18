@@ -107,6 +107,10 @@ namespace Website.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("OrderCode")
                         .HasColumnType("int");
 
@@ -140,6 +144,8 @@ namespace Website.API.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("OrderId");
+
+                    b.HasIndex("TourId");
 
                     b.HasIndex("UserId");
 
@@ -382,11 +388,19 @@ namespace Website.API.Migrations
 
             modelBuilder.Entity("Website.API.Models.Order", b =>
                 {
+                    b.HasOne("Website.API.Models.Tour", "Tour")
+                        .WithMany("Order")
+                        .HasForeignKey("TourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Website.API.Models.User", "User")
                         .WithMany("Order")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Tour");
 
                     b.Navigation("User");
                 });
@@ -445,6 +459,8 @@ namespace Website.API.Migrations
                     b.Navigation("FeedBacks");
 
                     b.Navigation("Image");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("Website.API.Models.TourDate", b =>

@@ -3,8 +3,11 @@
         <fa-icon [icon]="fabar"></fa-icon>
    </div>
    <div>
-        <fa-icon [icon]="fabell"></fa-icon>
-        <div>Xin chao, admin</div>
+        <div class="accounts">
+          <div>Xin chào,{{fullName}} </div> <div (click)="isLogout = !isLogout"><fa-icon [icon]="faUser" class="fa fa-2x"></fa-icon>
+          <div *ngIf="isLogout" (click) = "logout()"  class="logout">Đăng xuất</div>
+          </div> 
+       </div>
    </div>
 </div>
 

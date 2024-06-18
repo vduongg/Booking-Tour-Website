@@ -3,7 +3,7 @@ export class paymentRequest{
     tourId = 0;
     fullName = "";
     email = "";
-    userName = "";
+    userId = 0;
     phoneNumber = "";
     description= "";
     totalPeople = 0;

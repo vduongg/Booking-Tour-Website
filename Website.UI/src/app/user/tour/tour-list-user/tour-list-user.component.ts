@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faCalendar, faCalendarDay } from '@fortawesome/free-solid-svg-icons';
 import { FilterForm } from 'src/app/models/FilterForm';
+import { ListLocation } from 'src/app/models/ListLocation';
+import { TourType } from 'src/app/models/TourType';
+import { LocationService } from 'src/services/location.service';
+import { TourTypeService } from 'src/services/tour-type.service';
 
 @Component({
   selector: 'app-tour-list-user',
@@ -13,17 +17,29 @@ export class TourListUserComponent implements OnInit {
   filterForm: FilterForm =  new  FilterForm();
   faCalender = faCalendar;
   rate: number[] = [];
+  tourType: TourType[] = [];
+  listType: number[] = []
+  listTypeChange:number [] = []
   isRate5 = false;
   isRate4 = false;
   isRate3 = false;
   isChange1 = false;
   isChange2 = false;
   isChange3 = false;
+  tourPrice: number[] = []
+  location: ListLocation = new ListLocation;
   price:string = ""
-
-  constructor() { }
+  listChecked:boolean[] = []
+  constructor(private LocationService:LocationService, private tourTypeService: TourTypeService) { }
 
   ngOnInit(): void {
+    this.tourTypeService.getTourType().subscribe((result: TourType[]) => {
+      this.tourType = result
+      for(let i = 0; i< result.length ; i++){
+        this.listChecked.push(false);
+      }
+    });
+    this.LocationService.getListLocation().subscribe((result: ListLocation)=> (this.location = result));
   }
 
   
@@ -43,41 +59,42 @@ export class TourListUserComponent implements OnInit {
    
   }
   locationChange(e:string) {
-    this.filterForm.tourPlace = e;
+    this.filterForm.place = e;
   }
   dateChange(e:string) {
-    this.filterForm.tourDate = e;
+    this.filterForm.departureDate = e;
   }
   priceChange(i:number, b:boolean){
+   
     if( b == true ) {
-      this.filterForm.tourPrice.push(i)
+      this.tourPrice.push(i)
     }
     else {
-      this.filterForm.tourPrice = this.filterForm.tourPrice.filter(item => item != i)
+      this.tourPrice = this.tourPrice.filter(item => item != i)
     }
-    if((this.filterForm.tourPrice.includes(1) && this.filterForm.tourPrice.includes(2) && this.filterForm.tourPrice.includes(3) )  ) {
+    if((this.tourPrice.includes(1) && this.tourPrice.includes(2) && this.tourPrice.includes(3) )  ) {
       this.price = "all"
     }
-    else if (!this.filterForm.tourPrice.includes(1) && !this.filterForm.tourPrice.includes(2) && !this.filterForm.tourPrice.includes(3))
+    else if (!this.tourPrice.includes(1) && !this.tourPrice.includes(2) && !this.tourPrice.includes(3))
       {
         this.price = "all"
       }
-    else if(this.filterForm.tourPrice.includes(1) && !this.filterForm.tourPrice.includes(2) && !this.filterForm.tourPrice.includes(3)) {
+    else if(this.tourPrice.includes(1) && !this.tourPrice.includes(2) && !this.tourPrice.includes(3)) {
       this.price = "lower5"
     }
-    else if(!this.filterForm.tourPrice.includes(1) && this.filterForm.tourPrice.includes(2) && !this.filterForm.tourPrice.includes(3)) {
+    else if(!this.tourPrice.includes(1) && this.tourPrice.includes(2) && !this.tourPrice.includes(3)) {
       this.price = "between5and10"
     }
-    else if(!this.filterForm.tourPrice.includes(1) && !this.filterForm.tourPrice.includes(2) && this.filterForm.tourPrice.includes(3)) {
+    else if(!this.tourPrice.includes(1) && !this.tourPrice.includes(2) && this.tourPrice.includes(3)) {
       this.price = "higher10"
     }
-    else if(this.filterForm.tourPrice.includes(1) && this.filterForm.tourPrice.includes(2) && !this.filterForm.tourPrice.includes(3)) {
+    else if(this.tourPrice.includes(1) && this.tourPrice.includes(2) && !this.tourPrice.includes(3)) {
       this.price = "lower10"
     }
-    else if(!this.filterForm.tourPrice.includes(1) && this.filterForm.tourPrice.includes(2) && this.filterForm.tourPrice.includes(3)) {
+    else if(!this.tourPrice.includes(1) && this.tourPrice.includes(2) && this.tourPrice.includes(3)) {
       this.price = "higher5"
     }
-    else if(this.filterForm.tourPrice.includes(1) && !this.filterForm.tourPrice.includes(2) && this.filterForm.tourPrice.includes(3)) {
+    else if(this.tourPrice.includes(1) && !this.tourPrice.includes(2) && this.tourPrice.includes(3)) {
       this.price = "lower5 and higer10"
     }
    
@@ -85,10 +102,21 @@ export class TourListUserComponent implements OnInit {
   
   }
   nameChange(name:string ){
-    this.filterForm.tourName = name;
+    this.filterForm.name = name;
   }
-  search(){
-    
+  selectType(bool:boolean, type:number , index:number){
+    if(bool == false) {
+      this.listChecked[index] = true;
+      this.listType.push(type)
+      this.listTypeChange = [...this.listType]
+    }
+    else {
+      this.listChecked[index] = false;
+      var typeTemp = this.listType.indexOf(type);
+      this.listType.splice(typeTemp,1)
+      this.listTypeChange = [...this.listType]
+    }
   }
+  
 
 }

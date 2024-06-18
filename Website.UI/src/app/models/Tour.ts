@@ -12,7 +12,7 @@ export class Tour {
     policy = null;
     policyId?:number;
     user =null;
-    userId = 1;
+    userId = 0;
     createDate = "";
     tourStatus = "on";
     image = null;

@@ -17,165 +17,48 @@
             </div>
         </div>
     </div>
-    <div class="search">
-        <div class="search-item">
-            <div class="search-title">Bạn đang tìm kiếm Tour hay Khách sạn?</div>
-            <div class="search-choose">
-                <div *ngIf="choose === 'tour', else notTour " style=" padding: 10px 5px 10px 5px;
-                border: 1px solid #B3C8CF; 
-                font-size: 16px;
-                font-weight: 600;
-                background-color: #DD5746;
-                color: white; cursor: pointer;" (click)="updateChoose('tour')"
-                >Tìm kiếm Tour</div>
-                <ng-template #notTour>
-                    <div style=" padding: 10px 5px 10px 5px;
-                        border: 1px solid #B3C8CF; 
-                        font-size: 16px;
-                        cursor:pointer;" (click)="updateChoose('tour')" 
-                    >Tìm kiếm Tour
-                    </div>
-                </ng-template>
-                <div *ngIf="choose === 'hotel', else notHotel " style=" padding: 10px 5px 10px 5px;
-                border: 1px solid #B3C8CF; 
-                font-size: 16px;
-                font-weight: 600;
-                background-color: #DD5746;
-                color: white; cursor: pointer;" (click)="updateChoose('hotel')"
-                >Tìm kiếm Khách sạn</div>
-                <ng-template #notHotel>
-                    <div style=" padding: 10px 5px 10px 5px;
-                    border: 1px solid #B3C8CF;
-                    font-size: 16px; cursor: pointer;" (click)="updateChoose('hotel')">
-                    Tìm kiếm Khách sạn</div>
-                </ng-template>
-                
-            </div>
-            <div class="search-tour" *ngIf="choose === 'tour', else hotel ">
-                <div class="tour">
-                    <div>Tên Tour
-                        <input placeholder="Tên tour">
-                    </div>
-                    <div>Ngày khởi hành
-                        <input type="date">
-                    </div>
-                    <div>Số người
-                        <input> 
-                    </div>
-                    <div>Địa điểm
-                        <select>
-                            <option>1</option>
-                        </select>
-                    </div>
-                    <div>Loại Tour
-                        <select>
-                            <option>1</option>
-                        </select>
-                    </div>
-                    
-                </div>
-                
-            </div>
-            <ng-template #hotel >
-                <div class="hotel">
-                    <div>Tên Khách sạn
-                        <input placeholder="Tên Khách sạn">
-                    </div>
-                    <div>Ngày nhận phòng
-                        <input type="date">
-                    </div>
-                    <div>Số người
-                        <input>
-                    </div>
-                    <div>Địa điểm
-                        <select>
-                            <option>1</option>
-                        </select>
-                    </div>
-                   
-                   
-                </div>
-            </ng-template>
-            <div class="search-button">
-                <button>Tìm kiếm</button>
-            </div>
-            
-        </div>
-      
-
-    </div>
     <div class="top-tour">
             <div class="top-title">
                 Điểm đến ưa thích của mọi nhà:
             </div>
-            <div class="list-top-item">
-                <div class="top-item">  
-                    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
+            <ng-container *ngIf="isNull">
+                <div>Hiện tại không có Tour</div>
+            </ng-container>
+            <div class="list-top-item" *ngIf="isLoad">
+                <div class="top-item"  *ngFor="let tour of load">  
+                    <img>
+                   <div class="item">
                     <div class="tour-location"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 384 512" style="width: 20px; height: 20px"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
-                        yên bái</div>
-                    <div class="tour-type">
-                        Du lịch sinh thái </div>
-                    <div class="tour-name">Du lich 1</div>
-                    <div class="tour-space">Còn trống: 12 người</div>
+                     Đang load</div>
+                    <div class="tour-name">Đang load</div>
+                    <div class="tour-space">Ngày khởi hành: Đang load</div>
                     <div class="wrap-price">
-                        <div class="tour-sale">VNĐ 2000000</div>
-                        <div class="tour-price">VNĐ 1000000</div>
-                       
+                        <div class="tour-sale" *ngIf="false">VNĐ 2000000</div>
+                        <div class="tour-price">VNĐ Đang load</div>
                     </div>
+                   </div>
+                   
 
                 </div>
-                <div class="top-item">  
-                    <img  src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
-                    <div>Du lich 1</div>
-                    <div>2000000</div>
-
-                </div>
-                <div class="top-item">  
-                    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
-                    <div>Du lich 1</div>
-                    <div>2000000</div>
-
-                </div>
-                <div class="top-item">  
-                    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
-                    <div>Du lich 1</div>
-                    <div>2000000</div>
-
-                </div>
-                <div class="top-item">  
-                    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
-                    <div>Du lich 1</div>
-                    <div>2000000</div>
-
-                </div>
-                <div class="top-item">  
-                    <img  src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
-                    <div>Du lich 1</div>
-                    <div>2000000</div>
-
-                </div>
-                <div class="top-item">  
-                    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
-                    <div>Du lich 1</div>
-                    <div>2000000</div>
-
-                </div>
-                <div class="top-item">  
-                    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2017/8/28/551691/Du-Lich_1.jpg">
-                    <div>Du lich 1</div>
-                    <div>2000000</div>
-
-                </div>
+                
             </div>
-    </div>
-    <div class="top-hotel">
-            <div class="top-title">
-                Những chỗ ở nổi bật được đề xuất tới bạn:
-            </div>
-    </div>
-    <div class="top-news">
-            <div class="top-title">
-                Tin tức nổi bật:
+            <div class="list-top-item" *ngIf="!isLoad">
+                <div class="top-item" routerLink="/tour/{{tour.tourId}}" *ngFor="let tour of listTour">  
+                    <ng-container *ngIf="tour.tourStatus == 'on'">
+                        <img  [src]="listFirstImg.get(tour.tourId)" >
+                        <div class="item">
+                         <div class="tour-location"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 384 512" style="width: 20px; height: 20px"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+                             {{tour.tourPlace}}</div>
+                         <div class="tour-name">{{tour.tourName}}</div>
+                         <div class="tour-space">Ngày khởi hành: {{tour.departureDate.split('T')[0]}}</div>
+                         <div class="wrap-price">
+                             <div class="tour-sale" *ngIf="false">VNĐ 2000000</div>
+                             <div class="tour-price">VNĐ {{tour.tourPrice}}</div>
+                         </div>
+                        </div>
+                    </ng-container>
+                    
+                </div>
             </div>
     </div>
 </div>

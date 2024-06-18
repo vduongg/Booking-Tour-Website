@@ -1,0 +1,42 @@
+<app-site-navbar></app-site-navbar>
+<div class="wrapper">
+    <div class="navbar">
+        <app-navbar-user></app-navbar-user>
+    </div>
+    <div class="user-info" *ngIf="userInfo">
+        <div class="header">Thông tin tài khoản</div>
+        <div class="item">
+            <div>Họ: {{userForm.firstName}}</div>
+            <div>Tên: {{userForm.lastName}}</div>
+            <div>Số điện thoại: {{userForm.phoneNumber}}</div>
+            <div>Email: {{email}}</div>
+        </div>
+        <div class="action">
+            <button (click)="changeInfoClick()" >Đổi thông tin</button>
+            <button (click)="changePassClick()">Đổi mật khẩu</button>
+        </div>
+    </div>
+    <div class="user-info" *ngIf="changeInfo">
+        <div class="header">Đổi thông tin tài khoản</div>
+        <div class="item">
+            <div>Họ: <input [(ngModel)]="userForm.firstName" (keypress)="onKeyPress($event)" ></div>
+            <div>Tên: <input [(ngModel)]="userForm.lastName" (keypress)="onKeyPress($event)" ></div>
+            <div>Số điện thoại:<input [(ngModel)]="userForm.phoneNumber" (keypress)="onNumPress($event)" ></div>
+        </div>
+        <div class="action">
+            <button (click)="changeInfoOk()">Đổi thông tin</button>
+            <button (click)="back()">Trở lại</button>
+        </div>
+    </div>
+    <div class="user-info" *ngIf="changePass">
+        <div class="header">Đổi mật khẩu</div>
+        <div class="item">
+            <div>Mật khẩu hiện tại: <input></div>
+            <div>Mật khẩu mới: <input></div>
+        </div>
+        <div class="action">
+            <button>Đổi mật khẩu</button>
+            <button (click)="back()">Trở lại</button>
+        </div>
+    </div>
+</div>

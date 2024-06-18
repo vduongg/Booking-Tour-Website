@@ -1,8 +1,8 @@
 export class FilterForm{
-    tourName = ""
-    tourPlace = ""
-    tourDate = ""
-    tourType: string[] = []
+    name = ""
+    place = ""
+    departureDate = ""
+    type: number[] = []
     tourRate = 0
-    tourPrice: number[] = []
+    price = ""
 }

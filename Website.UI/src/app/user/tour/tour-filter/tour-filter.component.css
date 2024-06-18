@@ -46,3 +46,9 @@
     cursor: pointer;
     background-color: #8B322C;
 }
+.tour-name{
+    font-weight: 600;
+}
+.tour-price {
+   color: #DD5746 ;
+}

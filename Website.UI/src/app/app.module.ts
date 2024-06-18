@@ -4,8 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SiteNavbarComponent } from 'src/shared/components/site-navbar/site-navbar.component';
 import { HomeComponent } from './user/home/home.component';
-import { ManagementSidebarComponent } from './admin/shared/management-sidebar/management-sidebar.component';
-import { ManagementHomeComponent } from './admin/general-management/management-home/management-home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TourListComponent } from './admin/tour-management/tour-list/tour-list.component';
 import { AddTourComponent } from './admin/tour-management/add-tour/add-tour.component';
@@ -29,6 +27,12 @@ import { PaymentsComponent } from './user/payment/payments/payments.component';
 import { CallbackComponent } from './user/payment/callback/callback.component';
 import { TourOrderComponent } from './admin/tour-management/tour-order/tour-order.component';
 import { TourOrderDetailsComponent } from './admin/tour-management/tour-order-details/tour-order-details.component';
+import { UserInfoComponent } from './user/user-info/user-info.component';
+import { NavbarUserComponent } from 'src/shared/navbar-user/navbar-user.component';
+import { PurchaseHistoryComponent } from './user/purchase-history/purchase-history.component';
+import { TourStatisticComponent } from './admin/general-management/tour-statistic/tour-statistic.component';
+import { ManagementSidebarComponent } from './admin/shared/management-sidebar/management-sidebar.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -36,8 +40,6 @@ import { TourOrderDetailsComponent } from './admin/tour-management/tour-order-de
     AppComponent,
     SiteNavbarComponent,
     HomeComponent,
-    ManagementSidebarComponent,
-    ManagementHomeComponent,
     TourListComponent,
     AddTourComponent,
     EditTourComponent,
@@ -56,7 +58,12 @@ import { TourOrderDetailsComponent } from './admin/tour-management/tour-order-de
     PaymentsComponent,
     CallbackComponent,
     TourOrderComponent,
-    TourOrderDetailsComponent
+    TourOrderDetailsComponent,
+    UserInfoComponent,
+    PurchaseHistoryComponent,
+    NavbarUserComponent,
+    TourStatisticComponent,
+    ManagementSidebarComponent
     
   ],
   imports: [
@@ -66,7 +73,8 @@ import { TourOrderDetailsComponent } from './admin/tour-management/tour-order-de
     CKEditorModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

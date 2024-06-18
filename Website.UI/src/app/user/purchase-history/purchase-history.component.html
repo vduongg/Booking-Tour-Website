@@ -1,0 +1,72 @@
+<app-site-navbar></app-site-navbar>
+<div class="wrapper">
+    <div class="navbar">
+        <app-navbar-user></app-navbar-user>
+    </div>
+    <div class="purchase-history" *ngIf="!isDetails">
+            <div class="purchase-header" >
+                <div>Lịch sử đặt Tour</div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã đơn</th>
+                        <th>Số người</th>
+                        <th>Tổng tiền</th>
+                        <th>Hoàn tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày thanh toán</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr (click)="orderDetail(order)"  *ngFor="let order of listOrder.reverse(), let i = index">
+                        <ng-container *ngIf="pageItem().includes(listOrder.length - i )"  >
+                            <td>{{i+1}}</td>
+                            <td>{{order.orderCode}}</td>
+                            <td>{{order.totalPeople}}</td>
+                            <td>{{order.totalPrice}}</td>
+                            <td>{{order.refund}}</td>
+                            <td>{{order.status}}</td>
+                            <td>{{order.createdDate.split(".")[0]}}</td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+                <div class="page">
+                        <ng-container *ngFor="let page of loadPage()">
+                            <div (click)="pageClick(page)">
+                                {{page}}
+                            </div>
+                        </ng-container>
+                 </div>
+    </div>
+    <div class="orderDetails" *ngIf="isDetails">
+        <div class="item">
+            <div class="header">
+                Thông tin đặt Tour
+            </div>
+            <div >
+                <div>Họ tên: {{orderDetails.fullName}}</div>
+                <div>Email: {{orderDetails.email}}</div>
+                <div>Số điện thoại: {{orderDetails.phoneNumber}}</div>
+                <div>Lưu ý: {{orderDetails.orderDescription}}</div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="header">
+                Thông tin Tour
+            </div>
+            <div>
+                <div><img [src]="tourImageList[0]"></div>
+                <div>Tên Tour: {{tourDetails.tourName}}</div>
+                <div>Mã đơn: {{orderDetails.orderCode}}</div>
+                <div>Số người: {{orderDetails.totalPeople}}</div>
+                <div>Tổng tiền: {{orderDetails.totalPrice}}</div>
+                <div>Trạng thái: {{orderDetails.status}} </div>
+            </div>
+            <button (click)="back()">Trở lại</button>
+        </div>
+        
+    </div>
+</div>

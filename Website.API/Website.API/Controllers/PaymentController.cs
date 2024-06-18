@@ -28,6 +28,7 @@ namespace Website.API.Controllers
             vnPayment.TotalPrice = payments.TotalPrice;
             vnPayment.CreatedDate = DateTime.Now;
             order.OrderId = 0;
+            order.FullName = payments.FullName;
             order.OrderCode= vnPayment.OrderId;
             order.PhoneNumber = payments.PhoneNumber;
             order.TourId = payments.TourId;
@@ -37,7 +38,7 @@ namespace Website.API.Controllers
             order.CreatedDate = vnPayment.CreatedDate;
             order.TotalPeople = payments.TotalPeople;
             order.TotalPrice = payments.TotalPrice;
-            order.UserId = 1;
+            order.UserId = payments.UserId;
             await _context.Order.AddAsync(order);
             await _context.SaveChangesAsync();
             var payUrl = _vpnPayService.CreatePaymentUrl(HttpContext, vnPayment);

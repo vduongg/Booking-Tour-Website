@@ -6,12 +6,14 @@ import { TourDate } from 'src/app/models/TourDate';
 import { TourImage } from 'src/app/models/TourImage';
 import { TourPolicy } from 'src/app/models/TourPolicy';
 import { TourType } from 'src/app/models/TourType';
+import { AuthService } from 'src/services/auth.service';
 import { ImageService } from 'src/services/image.service';
 import { LocationService } from 'src/services/location.service';
 import { PolicyService } from 'src/services/policy.service';
 import { TourTimeService } from 'src/services/tour-time.service';
 import { TourTypeService } from 'src/services/tour-type.service';
 import { TourService } from 'src/services/tour.service';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-add-tour',
@@ -32,11 +34,21 @@ export class AddTourComponent implements OnInit {
   dateNow: Date = new Date();
   tourItem: Tour = new Tour();
   img:TourImage = new TourImage();
-  constructor(private LocationService: LocationService, private imageService: ImageService ,private tourDateService: TourTimeService, private tourTypeService: TourTypeService, private tourPolicyService: PolicyService, private tourService: TourService, ) {
+  email = ""
+  userid = ""
+  constructor(private authService:AuthService ,private userService:UserService , private LocationService: LocationService, private imageService: ImageService ,private tourDateService: TourTimeService, private tourTypeService: TourTypeService, private tourPolicyService: PolicyService, private tourService: TourService, ) {
     this.currentDate = `${this.dateNow.getFullYear()}-${ (this.dateNow.getMonth()+1) <10? "0"+ (this.dateNow.getMonth()+1)  : (this.dateNow.getMonth() + 1)}-${this.dateNow.getDate() < 10? "0"+ this.dateNow.getDate():this.dateNow.getDate()}`;
    }
 
   ngOnInit(): void {
+    this.email = this.authService.decodedToken().email;
+    this.userService.getUserInfo(this.email).subscribe(
+     result => 
+       {
+         this.userid = result.userId
+       }
+     
+    )
     this.LocationService.getListLocation().subscribe((result: ListLocation)=> (this.location = result));
     this.tourDateService.getTourDate().subscribe((result: TourDate[]) => (this.tourDate = result));
     this.tourTypeService.getTourType().subscribe((result: TourType[]) => (this.tourType = result));
@@ -66,7 +78,7 @@ export class AddTourComponent implements OnInit {
   }
     
   createTour(tour: Tour){
-    
+    tour.userId = Number(this.userid);
     tour.createDate = `${this.dateNow.getFullYear()}-${ (this.dateNow.getMonth()+1) <10? "0"+ (this.dateNow.getMonth()+1)  : (this.dateNow.getMonth() + 1)}-${this.dateNow.getDate() < 10? "0"+ this.dateNow.getDate():this.dateNow.getDate() }T${this.dateNow.getHours()< 10?"0"+this.dateNow.getHours() : this.dateNow.getHours() }:${this.dateNow.getSeconds()< 10?"0"+this.dateNow.getSeconds() : this.dateNow.getSeconds() }:${this.dateNow.getMinutes()< 10?"0"+this.dateNow.getMinutes() : this.dateNow.getMinutes() }`;
     this.tourService.createTour(tour).subscribe( (tour: Tour[]) => 
       {
@@ -74,12 +86,12 @@ export class AddTourComponent implements OnInit {
         this.tourService.getLastTour(1).subscribe((result: Tour) => {
           this.tourItem = result;
           for(let i = 0 ; i < this.imageFiles.length ; i++) {
-            this.imageService.createTourImage(result.tourId, this.imageFiles[i]).subscribe((File: FormData[]) => this.ImageUpdate.emit(File))
+            this.imageService.createTourImage(result.tourId, this.imageFiles[i]).subscribe((File: FormData[]) => (this.ImageUpdate.emit(File), window.location.href = "/admin/tour" ))
           }
         })
       });
    
-    console.log(tour)
+    
     
    
   

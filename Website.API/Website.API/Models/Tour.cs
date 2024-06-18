@@ -28,5 +28,6 @@ namespace Website.API.Models
         public List<Image>? Image { get; set; } = null;
         public List<WishList>? WishList { get; set; } = null;
         public List<FeedBack>? FeedBacks { get; set; } = null;
+        public List<Order>? Order { get; set; } 
     }
 }

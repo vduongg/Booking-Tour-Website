@@ -57,6 +57,7 @@ namespace Website.API.Controllers
                             userInfo.FirstName = register.FirstName;
                             userInfo.LastName = register.LastName;
                             userInfo.Status = "on";
+                            userInfo.EmailConfirmed = "confirmed";
                             userInfo.PhoneNumber = register.PhoneNumber;
                             userInfo.Role = "User";
                             await _context.UserInfo.AddAsync(userInfo);
@@ -87,6 +88,47 @@ namespace Website.API.Controllers
 
 
         }
+        [HttpGet("{email}")]
+        public async Task<ActionResult<UserInfoForm>> getUserInfo(string email)
+        {
+            var user = await _context.Users.Where( u=> u.Email == email ).FirstOrDefaultAsync();
+            if(user != null)
+            {
+                var userInfo = await _context.UserInfo.Where(u => u.UserId == user.UserId).FirstOrDefaultAsync();
+                if (userInfo == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    var userForm = new UserInfoForm();
+                    userForm.UserId = userInfo.UserId;
+                    userForm.FirstName = userInfo.FirstName;
+                    userForm.LastName = userInfo.LastName;
+                    userForm.PhoneNumber = userInfo.PhoneNumber;
+                    return Ok(userForm);
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
+           
+          
+        }
+        [HttpPut]
+        public async Task<ActionResult<UserInfoForm>> changeInfo(UserInfoForm userInfoForm)
+        {
+
+            var userInfo =  await _context.UserInfo.Where( u=> u.UserId == userInfoForm.UserId).FirstOrDefaultAsync();
+            userInfo.FirstName = userInfoForm.FirstName;
+            userInfo.LastName = userInfoForm.LastName;  
+            userInfo.PhoneNumber = userInfoForm.PhoneNumber;
+            _context.Update(userInfo);
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Changed Success" });
+        }
+        
 
         [HttpGet("{email}/{password}")]
         public async Task<ActionResult<User>> loginUser(string email, string password)
@@ -103,16 +145,20 @@ namespace Website.API.Controllers
             }
             else
             {
-                var status = await _context.UserInfo.FirstOrDefaultAsync(u => u.UserId == userObj.UserId);
-                if(status != null)
+                bool verify = BCrypt.Net.BCrypt.Verify(password, userObj.Password);
+                if (verify)
+                   
                 {
-                    if (status.Status == "on")
-                    {
-                        bool verify = BCrypt.Net.BCrypt.Verify(password, userObj.Password);
-                        if (verify)
+                        var status = await _context.UserInfo.FirstOrDefaultAsync(u => u.UserId == userObj.UserId);
+                        if (status != null)
                         {
-
-                            var userTemp = await _context.UserInfo.FirstOrDefaultAsync(i => i.UserId == userObj.UserId);
+                            if (status.Status == "on")
+                            {
+                            var userTemp = new UserInfo();
+                            userTemp.Email = email;
+                            userTemp.FirstName = status.FirstName; 
+                            userTemp.LastName = status.LastName;
+                            userTemp.Role = status.Role;
                             userObj.Token = CreateJwt(userTemp);
                             return Ok(new
                             {
@@ -121,18 +167,20 @@ namespace Website.API.Controllers
                             });
 
 
-                        }
-                        else
-                        {
-                            return BadRequest(new { Message = "Wrong password!" });
+                            }
+                            else
+                            {
+                                return BadRequest(new { Message = "Accounts blocked" });
+                            }
 
-                        }
 
                     }
                     else
                     {
-                        return BadRequest(new { Message = "Accounts blocked" });
+                        return BadRequest(new { Message = "Wrong password!" });
+
                     }
+                
                 }
                 else
                 {
@@ -159,6 +207,22 @@ namespace Website.API.Controllers
                 return BadRequest();
             }
         }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<UserInfo>> changeInfo(int id, UserInfo user)
+        {
+            var info = await _context.UserInfo.FindAsync(user.UserInfoId);
+            if (info != null)
+            {
+                info.FirstName = user.FirstName;
+                info.LastName = user.LastName;
+                info.PhoneNumber = user.PhoneNumber;
+                info.Role = user.Role;
+                _context.Update(info);
+                await _context.SaveChangesAsync();
+                return Ok(new { message = "Change Success" });
+            }
+            return BadRequest();
+        }
         private string CreateJwt(UserInfo userinfo)
         {
             var jwtTokenHandle = new JwtSecurityTokenHandler();
@@ -166,7 +230,8 @@ namespace Website.API.Controllers
             var identity = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.Role, userinfo.Role),
-                new Claim(ClaimTypes.Name,$"{userinfo.FirstName} {userinfo.LastName}")
+                new Claim(ClaimTypes.Name,$"{userinfo.FirstName} {userinfo.LastName}"),
+                new Claim(ClaimTypes.Email,userinfo.Email),
             });
             var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
             var tokenDescriptor = new SecurityTokenDescriptor

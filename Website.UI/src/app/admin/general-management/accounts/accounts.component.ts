@@ -20,6 +20,7 @@ export class AccountsComponent implements OnInit {
   popup_delete = false;
   registerForm: RegisterForm = new RegisterForm();
   totalItem = 0;
+  infoForm: UserInfo = new UserInfo();
   listUser: UserInfo[] = []
   faAction = faEllipsisV
   popup = false;
@@ -46,14 +47,22 @@ export class AccountsComponent implements OnInit {
   statusPopup(){
     this.popup = !this.popup
     
+    
   
   }
   statusAction(id:number){
     this.isAction = !this.isAction
     this.id = id;
   }
-  edit(){
+  edit(user?:UserInfo){
     this.popup_edit = !this.popup_edit
+    if( user != null) {
+      this.infoForm = user
+    }
+    
+  }
+  editInfoOK(){
+    this.userServices.changeInfo(this.infoForm.userInfoId, this.infoForm).subscribe(result => console.log(result));
   }
   action(id:number, index?:string){
     if(id== -1) {
@@ -114,7 +123,7 @@ export class AccountsComponent implements OnInit {
       this.pageNow = num;
   }
   createUser(form:RegisterForm){
-    this.authService.createUser(form).subscribe()
+    this.authService.createUser(form).subscribe( result => (this.popup = false, window.location.reload()))
   }
  
 

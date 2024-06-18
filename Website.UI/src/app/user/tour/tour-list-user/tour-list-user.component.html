@@ -2,31 +2,28 @@
 <div class="wrapper">
     <div class="wrapper-item">
         <div class="filter">
-            <div class="filter-header" *ngIf="filterForm.tourPlace == ''; else hasLoc ">
+            <div class="filter-header" *ngIf="filterForm.place == ''; else hasLoc ">
                 Tất cả điểm tham quan 
             </div>
           
             <ng-template #hasLoc>
-                <div class="filter-header">Điểm tham quan của {{filterForm.tourPlace}}</div>
+                <div class="filter-header">Điểm tham quan của {{filterForm.place}}</div>
             </ng-template>
             <div class="filter-location">
-                <select [(ngModel)]="filterForm.tourPlace" (ngModelChange)="locationChange($event)">
+                <select [(ngModel)]="filterForm.place" (ngModelChange)="locationChange($event)">
                     <option value="">Tất cả</option>
-                    <option>Yên bái</option>
-                    <option>Hà nội</option>
-                    <option>Bà rịa vũng tàu</option>
+                    <option *ngFor="let loc of location.data">{{loc.name}}</option>
                 </select>
             </div>
             <div class="search">
-                <div><input [(ngModel)]="filterForm.tourName" (ngModelChange)="nameChange($event)" placeholder="Tìm kiếm bằng tên Tour"></div>
-                <div><input [(ngModel)]="filterForm.tourDate" (ngModelChange)="dateChange($event)" type="date" placeholder="Nhập ngày"></div>
-                <button (click)="search()" >Tìm kiếm</button>
+                <div><input [(ngModel)]="filterForm.name" (ngModelChange)="nameChange($event)" placeholder="Tìm kiếm bằng tên Tour"></div>
+                <div><input [(ngModel)]="filterForm.departureDate" (ngModelChange)="dateChange($event)" type="date" placeholder="Nhập ngày"></div>
             </div>
             <div class="filter-item">
                 <div class="filter-item-header" >Lọc kết quả:</div>
                 <div class="item">
                     <div class="item-header" >Loại du lịch</div>
-                    <div><input type="checkbox">Du lịch</div>
+                    <div *ngFor="let type of tourType; let i = index " ><input [checked]="listChecked[i]" (click)="selectType(listChecked[i],type.tourTypeId,i)" type="checkbox">{{type.name}}</div>
                 </div>
                 <div class="item">
                     <div class="item-header">Xếp hạng sao</div>
@@ -43,7 +40,7 @@
             </div>
         </div>
         <div class="tour-list">
-            <app-tour-filter [tourName]="filterForm.tourName" [tourDate]="filterForm.tourDate" [tourLocation]="filterForm.tourPlace" [tourRate]="filterForm.tourRate" [tourPrice]="price"></app-tour-filter>
+            <app-tour-filter [listType]="listTypeChange" [tourName]="filterForm.name" [tourDate]="filterForm.departureDate" [tourLocation]="filterForm.place" [tourRate]="filterForm.tourRate" [tourPrice]="price"></app-tour-filter>
       
         </div>
     </div>

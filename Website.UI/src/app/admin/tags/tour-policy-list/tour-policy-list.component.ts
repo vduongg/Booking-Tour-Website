@@ -44,8 +44,8 @@ export class TourPolicyComponent implements OnInit {
   }
   createTourPolicy(policy: TourPolicy){
     
-    this.tourPolicyService.createTourPolicy(policy).subscribe( (policy: TourPolicy[]) => this.tourPolicyUpdate.emit(policy));
-    window.location.reload();
+    this.tourPolicyService.createTourPolicy(policy).subscribe( (policy: TourPolicy[]) => (this.tourPolicyUpdate.emit(policy),  window.location.reload()));
+  
 
   }
   pageItem() {

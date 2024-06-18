@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MailKit.Search;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Website.API.Data;
 using Website.API.Models;
@@ -19,6 +20,14 @@ namespace Website.API.Controllers
         {
 
             return Ok(await _context.Order.ToListAsync());
+
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Order>> listOrder(int id)
+        {
+
+            var order = await _context.Order.Where(o => o.UserId == id).ToListAsync();
+            return Ok(order);
 
         }
         [HttpPut()]
@@ -45,5 +54,28 @@ namespace Website.API.Controllers
             }
             return BadRequest();
         }
+        [HttpGet("GetTop")]
+        public async Task<ActionResult<Tour[]>> getTopTour()
+        {
+            var topTours = _context.Order
+                .GroupBy(o => o.TourId)
+                .Select(g => new OrderStatistics
+                {
+                    TourId = g.Key,
+                    OrderCount = g.Count()
+                })
+                .OrderByDescending(stat => stat.OrderCount)
+                .Take(8)
+                .ToList();
+
+            return Ok(topTours);
+        }
+
+    }
+
+    internal class OrderStatistics
+    {
+        public object TourId { get; set; }
+        public int OrderCount { get; set; }
     }
 }

@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginForm } from 'src/app/models/LoginForm';
 import { RegisterForm } from 'src/app/models/RegisterForm';
 import { UserInfo } from 'src/app/models/UserInfo';
+import { UserInfoForm } from 'src/app/models/UserInfoForm';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -18,6 +19,15 @@ export class UserService {
   private url = "User"
   constructor(private http:HttpClient, private route: Router) {
     this.userPayload = this.decodedToken();
+   }
+   public changeUserInfo(userInfo:UserInfoForm){
+    return this.http.put<any>(`${environment.apiUrl}/${this.url}`,userInfo)
+   }
+   public getUserInfo(email:string): Observable<UserInfoForm>{
+    return this.http.get<UserInfoForm>(`${environment.apiUrl}/${this.url}/${email}`)
+   }
+   public changeInfo( id:number,user:UserInfo){
+      return this.http.put<any>(`${environment.apiUrl}/${this.url}/${id}`,user)
    }
   public getAllUser():Observable<any>{
     return this.http.get<UserInfo[]>(`${environment.apiUrl}/${this.url}`);

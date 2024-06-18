@@ -40,13 +40,14 @@ namespace Website.API.Controllers
                 var status = await _context.UserInfo.FirstOrDefaultAsync(u => u.UserId == userObj.UserId);
                 if(status != null)
                 {
-                    if (status.Status == "on" && (status.Role == "Admin" || status.Role == "TourManager"))
+                    if (status.Status == "on" && (status.Role == "Admin" || status.Role == "Tour Manager"))
                     {
                         bool verify = BCrypt.Net.BCrypt.Verify(user.Password, userObj.Password);
                         if (verify)
                         {
 
                             var userTemp = await _context.UserInfo.FirstOrDefaultAsync(i => i.UserId == userObj.UserId);
+                            userTemp.Email = user.Email;
                             userObj.Token = CreateJwt(userTemp);
                             return Ok(new
                             {
@@ -155,7 +156,8 @@ namespace Website.API.Controllers
             var identity = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.Role, userinfo.Role),
-                new Claim(ClaimTypes.Name,$"{userinfo.FirstName} {userinfo.LastName}")
+                new Claim(ClaimTypes.Name,$"{userinfo.FirstName} {userinfo.LastName}"),
+                new Claim(ClaimTypes.Email,userinfo.Email),
             });
             var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
             var tokenDescriptor = new SecurityTokenDescriptor
